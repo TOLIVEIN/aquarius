@@ -26,10 +26,10 @@ export class AppComponent implements OnInit {
 
   public canvasClick = (event: MouseEvent) => {
     // console.log('canvas clicked', event);
-    // const cxt: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
-    // cxt.fillStyle = '#fff';
-    // // cxt.fillRect(event.x, event.y, 5, 5);
-    // cxt.fillText('A', event.x, event.y, 5);
+    // const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
+    // ctx.fillStyle = '#fff';
+    // // ctx.fillRect(event.x, event.y, 5, 5);
+    // ctx.fillText('A', event.x, event.y, 5);
   }
 
   public mouseMove = (event: MouseEvent) => {
@@ -39,12 +39,13 @@ export class AppComponent implements OnInit {
 
     console.log(this.canvasRef);
     // console.log(event);
-    const cxt: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext(
+    const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext(
       '2d'
     );
-    cxt.fillStyle = '#ff0000';
-    // cxt.fillRect(event.x, event.y, 5, 5);
-    cxt.fillText(this.letters[Math.floor((Math.random() * event.x + event.y) % this.letters.length)], event.x, event.y, 20);
+    ctx.fillStyle = '#ff0000';
+    ctx.font = '20px sans-serif';
+    // ctx.fillRect(event.x, event.y, 5, 5);
+    ctx.fillText(this.letters[Math.floor((Math.random() * event.x + event.y) % this.letters.length)], event.x, event.y, 50);
   }
 
   ngOnInit(): void {
