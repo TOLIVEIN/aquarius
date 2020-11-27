@@ -1,14 +1,20 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'aquarius';
 
-  private app = document.getElementById('app-container');
+  // private app = document.getElementById('app-container');
 
   @ViewChild('app')
   appRef!: ElementRef;
@@ -16,8 +22,8 @@ export class AppComponent implements OnInit {
   @ViewChild('backgroundCanvas')
   canvasRef!: ElementRef;
 
-  canvasWidth = 0;
-  canvasHeight = 0;
+  // canvasWidth = 0;
+  // canvasHeight = 0;
 
   coordinates = {} as Coordinates;
   letter = [] as Letter[];
@@ -37,10 +43,6 @@ export class AppComponent implements OnInit {
 
   public mouseMove = (event: MouseEvent) => {
     // console.log(this.appRef.nativeElement.wi)
-    this.canvasRef.nativeElement.width = this.appRef.nativeElement.clientWidth;
-    this.canvasRef.nativeElement.height = this.appRef.nativeElement.clientHeight;
-    this.ctx = this.canvasRef.nativeElement.getContext('2d');
-
 
     // console.log(this.canvasRef);
     // console.log(event.x, event.y);
@@ -56,7 +58,7 @@ export class AppComponent implements OnInit {
     oneLetter.seven = this.randomNumber(20, 0);
     this.letter.push(oneLetter);
 
-    this.fade();
+    // this.fade();
 
     // console.log(this.letter);
 
@@ -89,6 +91,7 @@ export class AppComponent implements OnInit {
    * drawText
    */
   public drawText(effectText: EffectText): void {
+    // console.log(effectText);
     this.ctx.save();
     this.ctx.font = effectText.size.toString() + 'px Lucida Console';
     this.ctx.shadowColor = `rgba(255,0,0,${effectText.shadowColor.toString()})`;
@@ -124,11 +127,10 @@ export class AppComponent implements OnInit {
    * fade
    */
   public fade(): void {
-
     // console.log('fading...');
     const show = this.randomNumber(2, 1);
 
-    console.log(show);
+    // console.log(this.letter);
     for (const item of this.letter) {
       if (show === 2) {
         if (this.letter) {
@@ -138,20 +140,28 @@ export class AppComponent implements OnInit {
       if (this.letter) {
         item.y -= item.descendValue;
       }
-      item.shadowColor >= 0 ? item.shadowColor -= 0.01 : this.letters.splice(this.letters.indexOf(item.text), 1);
-
-      this.animate();
-      // window.requestAnimationFrame(this.fade);
+      item.shadowColor >= 0
+        ? (item.shadowColor -= 0.01)
+        : this.letter.splice(this.letters.indexOf(item.text), 1);
     }
+
+    this.animate();
+
+    window.requestAnimationFrame(this.fade.bind(this));
   }
 
   /**
    * animate
    */
   public animate(): void {
-
-    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
-
+    console.log('animate ...');
+    this.ctx.clearRect(
+      0,
+      0,
+      this.canvasRef.nativeElement.width,
+      this.canvasRef.nativeElement.height
+    );
+    console.log(this.letter);
     for (const item of this.letter) {
       this.drawText(item);
       const rectangleHeight = this.randomNumber(540, 10);
@@ -162,20 +172,21 @@ export class AppComponent implements OnInit {
         animatedectangle.y = item.y - shadowHeight;
         animatedectangle.width = item.size / 1.5;
         animatedectangle.height = rectangleHeight;
-        animatedectangle.color = 'rgba(255, 0,0,0.05)';
+        animatedectangle.color = 'rgba(255, 0, 0, 0.05)';
         this.drawRectangle(animatedectangle);
       }
-      const hintText = {} as EffectText;
-      hintText.x = this.canvasWidth / 2;
-      hintText.y = this.canvasHeight / 2;
-      hintText.text = 'Move your mouse.';
-      hintText.size = 28;
-      hintText.shadowColor = 0.5;
-      this.drawText(hintText);
     }
+    const hintText = {} as EffectText;
+    hintText.x = this.canvasRef.nativeElement.width / 2;
+    hintText.y = this.canvasRef.nativeElement.height / 2;
+    hintText.text = 'Aquarius.';
+    hintText.size = 28;
+    hintText.shadowColor = 0.5;
+    this.drawText(hintText);
   }
 
   ngOnInit(): void {
+    // this.fade();
     // console.log('app inited...');
     // this.canvasRef.nativeElement.width = this.app?.clientWidth;
     // this.canvasRef.nativeElement.height = this.app?.clientHeight;
@@ -183,4 +194,15 @@ export class AppComponent implements OnInit {
     // this.canvasRef.nativeElement.width = '100%';
     // this.canvasRef.nativeElement.height = '100%';
   }
+
+  ngAfterViewInit(): void {
+    this.canvasRef.nativeElement.width = this.appRef.nativeElement.clientWidth;
+    this.canvasRef.nativeElement.height = this.appRef.nativeElement.clientHeight;
+    this.ctx = this.canvasRef.nativeElement.getContext('2d');
+
+    // console.log(this.canvasRef.nativeElement.width, this.canvasRef.nativeElement.height);
+    // setInterval(this.fade, 100);
+    this.fade();
+  }
+
 }
