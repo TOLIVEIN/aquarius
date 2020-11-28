@@ -1,3 +1,12 @@
 <div id="header-container">
-    <h1>{{ title }}</h1>
-  </div>
+  <h1>{{ title }}</h1>
+  <!-- <button [routerLink]="['/', { outlets: { main: ['read'] } }]">
+    Overview
+  </button>
+  <button [routerLink]="['/', { outlets: { main: ['write'] } }]">
+    Inspiration
+  </button> -->
+
+  <button [routerLink]="['/read']">Overview</button>
+  <button [routerLink]="['/write']">Inspiration</button>
+</div>
