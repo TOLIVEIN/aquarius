@@ -1,16 +1,19 @@
-<div #app id="app-container" (window:resize)="resize()" (mousemove)="mouseMove($event)">
-  <canvas #backgroundCanvas  class="background-canvas"></canvas>
+<div
+  #app
+  id="app-container"
+  (window:resize)="resize()"
+  (mousemove)="mouseMove($event)"
+>
+  <canvas #backgroundCanvas class="background-canvas"></canvas>
   <header>
-    <div id="header-container">
-      <h1>{{ title }}</h1>
-    </div>
+    <app-header></app-header>
   </header>
   <main>
-      <app-main></app-main>
-      <!-- <div>Tag</div> -->
-
+    <app-main></app-main>
   </main>
   <!-- <aside></aside> -->
-  <footer id="footer-container"></footer>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
   <router-outlet></router-outlet>
 </div>
