@@ -64,7 +64,7 @@ export class AppComponent implements OnInit, AfterViewInit {
    */
   public drawText(effectText: EffectText): void {
     this.ctx.save();
-    this.ctx.font = effectText.size.toString() + 'px Lucida Console';
+    this.ctx.font = `${effectText.size.toString()}px Lucida Console`;
     this.ctx.shadowColor = `rgba(255,0,0,${effectText.shadowColor.toString()})`;
     this.ctx.shadowBlur = effectText.shadowColor / 2;
     this.ctx.fillStyle = `rgba(255,0,0,${effectText.shadowColor})`;
@@ -97,7 +97,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   /**
    * fade
    */
-  public fade(): void {
+  public fade = () => {
     const show = this.randomNumber(2, 1);
     for (const item of this.letter) {
       if (show === 2) {
@@ -115,7 +115,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.animate();
 
-    window.requestAnimationFrame(this.fade.bind(this));
+    window.requestAnimationFrame(this.fade);
   }
 
   /**
