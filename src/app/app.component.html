@@ -1,4 +1,4 @@
-<div #app id="app-container">
+<div #app id="app-container" (window:resize)="resize()">
   <canvas #backgroundCanvas  class="background-canvas" (mousemove)="mouseMove($event)"></canvas>
   <header>
     <div class="header-container">

@@ -14,7 +14,6 @@ import {
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'aquarius';
 
-  // private app = document.getElementById('app-container');
 
   @ViewChild('app')
   appRef!: ElementRef;
@@ -22,8 +21,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('backgroundCanvas')
   canvasRef!: ElementRef;
 
-  // canvasWidth = 0;
-  // canvasHeight = 0;
 
   coordinates = {} as Coordinates;
   letter = [] as Letter[];
@@ -33,51 +30,26 @@ export class AppComponent implements OnInit, AfterViewInit {
     ''
   );
 
-  public canvasClick = (event: MouseEvent) => {
-    // console.log('canvas clicked', event);
-    // const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
-    // ctx.fillStyle = '#fff';
-    // // ctx.fillRect(event.x, event.y, 5, 5);
-    // ctx.fillText('A', event.x, event.y, 5);
-  }
+  public mouseMove(event: MouseEvent): void {
 
-  public mouseMove = (event: MouseEvent) => {
-    // console.log(this.appRef.nativeElement.wi)
-
-    // console.log(this.canvasRef);
-    // console.log(event.x, event.y);
     [this.coordinates.x, this.coordinates.y] = [event.x, event.y];
 
     const oneLetter: Letter = {} as Letter;
     oneLetter.x = this.coordinates.x - 10 + this.randomNumber(20, 0);
     oneLetter.y = this.coordinates.y + this.randomNumber(20, 0);
     oneLetter.text = this.letters[this.randomNumber(this.letters.length, 0)];
-    oneLetter.size = this.randomNumber(10, 8);
+    oneLetter.size = this.randomNumber(20, 8);
     oneLetter.shadowColor = 1;
     oneLetter.descendValue = this.randomNumber(6, 1);
     oneLetter.seven = this.randomNumber(20, 0);
     this.letter.push(oneLetter);
 
-    // this.fade();
+  }
 
-    // console.log(this.letter);
-
-    // // console.log(this.canvasRef);
-    // // console.log(event);
-    // this.ctx.fillStyle = '#ff0000';
-    // this.ctx.font = '20px sans-serif';
-    // // this.canvasRef.nativeElement.height = 500;
-    // // this.canvasRef.nativeElement.width = 500;
-
-    // // ctx.fillRect(event.x, event.y, 5, 5);
-    // this.ctx.fillText(
-    //   this.letters[
-    //     Math.floor((Math.random() * event.x + event.y) % this.letters.length)
-    //   ],
-    //   event.x,
-    //   event.y,
-    //   50
-    // );
+  public resize(): void {
+    // console.log('resize...');
+    this.canvasRef.nativeElement.width = this.appRef.nativeElement.offsetWidth;
+    this.canvasRef.nativeElement.height = this.appRef.nativeElement.offsetHeight;
   }
 
   /**
@@ -91,7 +63,6 @@ export class AppComponent implements OnInit, AfterViewInit {
    * drawText
    */
   public drawText(effectText: EffectText): void {
-    // console.log(effectText);
     this.ctx.save();
     this.ctx.font = effectText.size.toString() + 'px Lucida Console';
     this.ctx.shadowColor = `rgba(255,0,0,${effectText.shadowColor.toString()})`;
@@ -127,10 +98,7 @@ export class AppComponent implements OnInit, AfterViewInit {
    * fade
    */
   public fade(): void {
-    // console.log('fading...');
     const show = this.randomNumber(2, 1);
-
-    // console.log(this.letter);
     for (const item of this.letter) {
       if (show === 2) {
         if (this.letter) {
@@ -154,14 +122,14 @@ export class AppComponent implements OnInit, AfterViewInit {
    * animate
    */
   public animate(): void {
-    console.log('animate ...');
+    // console.log('animate ...');
     this.ctx.clearRect(
       0,
       0,
       this.canvasRef.nativeElement.width,
       this.canvasRef.nativeElement.height
     );
-    console.log(this.letter);
+    // console.log(this.letter);
     for (const item of this.letter) {
       this.drawText(item);
       const rectangleHeight = this.randomNumber(540, 10);
@@ -186,22 +154,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    // this.fade();
-    // console.log('app inited...');
-    // this.canvasRef.nativeElement.width = this.app?.clientWidth;
-    // this.canvasRef.nativeElement.height = this.app?.clientHeight;
-    // console.log(this.canvasRef);
-    // this.canvasRef.nativeElement.width = '100%';
-    // this.canvasRef.nativeElement.height = '100%';
   }
 
   ngAfterViewInit(): void {
-    this.canvasRef.nativeElement.width = this.appRef.nativeElement.clientWidth;
-    this.canvasRef.nativeElement.height = this.appRef.nativeElement.clientHeight;
+    this.canvasRef.nativeElement.width = this.appRef.nativeElement.offsetWidth;
+    this.canvasRef.nativeElement.height = this.appRef.nativeElement.offsetHeight;
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
 
-    // console.log(this.canvasRef.nativeElement.width, this.canvasRef.nativeElement.height);
-    // setInterval(this.fade, 100);
     this.fade();
   }
 
