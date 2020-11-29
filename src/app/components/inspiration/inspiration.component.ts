@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Editor from 'wangeditor';
-
+import * as hljs from 'highlight.js';
 @Component({
   selector: 'app-inspiration',
   templateUrl: './inspiration.component.html',
@@ -11,7 +11,15 @@ export class InspirationComponent implements OnInit {
 
   ngOnInit(): void {
     const editor = new Editor('#editorMenu', '#editor');
-    // 或者 const editor = new E( document.getElementById('div1') )
+    // const editor = new Eeditor(
+    //   document.getElementById('editorMenu'),
+    //   document.getElementById('editor')
+    // );
+
+    editor.config.height = 500;
+    editor.highlight = hljs;
+
+    editor.config.placeholder = '输入文章内容';
     editor.create();
   }
 }
