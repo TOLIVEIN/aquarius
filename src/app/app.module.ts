@@ -10,6 +10,7 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MainComponent } from './layout/main/main.component';
     DetailComponent,
     CardComponent,
     InspirationComponent,
+    CategoryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, EditorModule],
   providers: [],
