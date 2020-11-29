@@ -16,7 +16,7 @@ export class InspirationComponent implements OnInit {
     //   document.getElementById('editor')
     // );
 
-    editor.config.height = 500;
+    // editor.config.height = 1000;
     editor.highlight = hljs;
 
     editor.config.placeholder = '输入文章内容';

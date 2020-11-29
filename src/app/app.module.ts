@@ -11,6 +11,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
 import { CategoryComponent } from './components/category/category.component';
+// import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,20 @@ import { CategoryComponent } from './components/category/category.component';
     InspirationComponent,
     CategoryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, EditorModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    EditorModule,
+    //  HighlightModule
+  ],
+  providers: [
+    // {
+    //   provide: HIGHLIGHT_OPTIONS,
+    //   useValue: {
+    //     fullLibraryLoader: () => import('highlight.js'),
+    //   },
+    // },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
