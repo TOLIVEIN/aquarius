@@ -12,6 +12,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
 import { CategoryComponent } from './components/category/category.component';
 // import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CategoryComponent } from './components/category/category.component';
     BrowserModule,
     AppRoutingModule,
     EditorModule,
+    HttpClientModule,
     //  HighlightModule
   ],
   providers: [
