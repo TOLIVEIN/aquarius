@@ -6,7 +6,8 @@
   <button [routerLink]="['/', { outlets: { main: ['write'] } }]">
     Inspiration
   </button> -->
-
+  
   <button [routerLink]="'/read'">Overview</button>
   <button [routerLink]="['/write']">Inspiration</button>
+  <button (click)="login()">登录</button>
 </div>

@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.less']
+  styleUrls: ['./header.component.less'],
 })
 export class HeaderComponent implements OnInit {
-
   title = 'Aquarius';
-  constructor() { }
+  constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  login(): void {
+    this.dataService.getAuth().subscribe((data) => {
+      console.log(data);
+    });
   }
-
 }
