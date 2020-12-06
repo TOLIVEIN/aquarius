@@ -10,12 +10,21 @@ export class DataService {
   url = 'http://localhost:8000';
   constructor(private http: HttpClient) { }
 
-  getAuth(): Observable<object> {
+  getAuth(): Observable<ResponseData<AuthData>> {
     const api = '/auth';
     const body = {
       username: 'aries',
       password: '123456'
     };
-    return this.http.post(`${this.url}${api}`, body);
+    return this.http.post<ResponseData<AuthData>>(`${this.url}${api}`, body);
+  }
+
+  getTags(): Observable<ResponseData<TagData>> {
+    const api = '/api/tags';
+    // const body = {
+    //   username: 'aries',
+    //   password: '123456'
+    // };
+    return this.http.get<ResponseData<TagData>>(`${this.url}${api}`);
   }
 }
