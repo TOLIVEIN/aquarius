@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   token!: string;
 
   tags!: TagData;
+  articles!: ArticleData;
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {}
@@ -25,6 +26,10 @@ export class HeaderComponent implements OnInit {
     this.dataService.getTags().subscribe((tags) => {
       this.tags = tags.data;
       console.log(this.tags);
+    });
+    this.dataService.getArticles().subscribe((articles) => {
+      this.articles = articles.data;
+      console.log(this.articles);
     });
   }
 }
