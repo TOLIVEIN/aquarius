@@ -13,6 +13,11 @@ import { MainComponent } from './layout/main/main.component';
 import { CategoryComponent } from './components/category/category.component';
 // import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt/lib/angular-jwt.module';
+
+export function tokenGetter() {
+    return localStorage.getItem('access_token');
+  }
 
 @NgModule({
   declarations: [
@@ -32,6 +37,13 @@ import { HttpClientModule } from '@angular/common/http';
     EditorModule,
     HttpClientModule,
     //  HighlightModule
+    JwtModule.forRoot({
+        config: {
+          tokenGetter: tokenGetter,
+          allowedDomains: ['localhost:4000'],
+          disallowedRoutes: ['localhost:4000/api/auth']
+        }
+      })
   ],
   providers: [
     // {
