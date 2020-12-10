@@ -23,13 +23,13 @@ export class HeaderComponent implements OnInit {
       console.log(this.token);
     });
 
-    this.dataService.getTags().subscribe((tags) => {
-      this.tags = tags.data;
-      console.log(this.tags);
-    });
-    this.dataService.getArticles().subscribe((articles) => {
-      this.articles = articles.data;
-      console.log(this.articles);
-    });
+    // this.dataService.getTags().subscribe((tags) => {
+    //   this.tags = tags.data;
+    //   console.log(this.tags);
+    // });
+    // this.dataService.getArticles().subscribe((articles) => {
+    //   this.articles = articles.data;
+    //   console.log(this.articles);
+    // });
   }
 }

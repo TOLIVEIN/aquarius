@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  url = 'http://localhost:8000';
+  url = 'http://tolivein.cn:8080';
   constructor(private http: HttpClient) { }
 
   getAuth(): Observable<ResponseData<AuthData>> {

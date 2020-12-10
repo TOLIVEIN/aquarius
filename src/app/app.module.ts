@@ -13,7 +13,7 @@ import { MainComponent } from './layout/main/main.component';
 import { CategoryComponent } from './components/category/category.component';
 // import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HttpClientModule } from '@angular/common/http';
-import { JwtModule } from '@auth0/angular-jwt/lib/angular-jwt.module';
+import { JwtModule } from "@auth0/angular-jwt";
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
