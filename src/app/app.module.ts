@@ -14,6 +14,7 @@ import { CategoryComponent } from './components/category/category.component';
 // import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
+import { LoginComponent } from './components/login/login.component';
 
 export function tokenGetter() {
     return localStorage.getItem('access_token');
@@ -30,6 +31,7 @@ export function tokenGetter() {
     CardComponent,
     InspirationComponent,
     CategoryComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
