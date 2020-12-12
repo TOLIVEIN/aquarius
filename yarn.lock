@@ -10,6 +10,14 @@
     "@angular-devkit/core" "11.0.2"
     rxjs "6.6.3"
 
+"@angular-devkit/architect@0.1100.3":
+  version "0.1100.3"
+  resolved "https://registry.npm.taobao.org/@angular-devkit/architect/download/@angular-devkit/architect-0.1100.3.tgz#5b92c04a2c77698fc7f3fe69410aa86939d151cb"
+  integrity sha1-W5LASix3aY/H8/5pQQqoaTnRUcs=
+  dependencies:
+    "@angular-devkit/core" "11.0.3"
+    rxjs "6.6.3"
+
 "@angular-devkit/build-angular@~0.1100.1":
   version "0.1100.2"
   resolved "https://registry.npm.taobao.org/@angular-devkit/build-angular/download/@angular-devkit/build-angular-0.1100.2.tgz?cache=0&sync_timestamp=1605727034295&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40angular-devkit%2Fbuild-angular%2Fdownload%2F%40angular-devkit%2Fbuild-angular-0.1100.2.tgz#afbeef979df4dbafeed3ff3de438dc9f35e2d148"
@@ -116,12 +124,23 @@
     rxjs "6.6.3"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@11.0.2":
-  version "11.0.2"
-  resolved "https://registry.npm.taobao.org/@angular-devkit/schematics/download/@angular-devkit/schematics-11.0.2.tgz#b5aa914d7e91d92b4eeadb7aed3b5228497abbf3"
-  integrity sha1-taqRTX6R2StO6tt67TtSKEl6u/M=
+"@angular-devkit/core@11.0.3":
+  version "11.0.3"
+  resolved "https://registry.npm.taobao.org/@angular-devkit/core/download/@angular-devkit/core-11.0.3.tgz#2acc7c90f1597b87455e0a5f93ebb1cd01b873aa"
+  integrity sha1-Ksx8kPFZe4dFXgpfk+uxzQG4c6o=
   dependencies:
-    "@angular-devkit/core" "11.0.2"
+    ajv "6.12.6"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.3"
+    source-map "0.7.3"
+
+"@angular-devkit/schematics@11.0.3":
+  version "11.0.3"
+  resolved "https://registry.npm.taobao.org/@angular-devkit/schematics/download/@angular-devkit/schematics-11.0.3.tgz#fc7fb9432d9e2678162794afdaf4fd338e731509"
+  integrity sha1-/H+5Qy2eJngWJ5Sv2vT9M45zFQk=
+  dependencies:
+    "@angular-devkit/core" "11.0.3"
     ora "5.1.0"
     rxjs "6.6.3"
 
@@ -132,16 +151,16 @@
   dependencies:
     tslib "^2.0.0"
 
-"@angular/cli@~11.0.1":
-  version "11.0.2"
-  resolved "https://registry.npm.taobao.org/@angular/cli/download/@angular/cli-11.0.2.tgz#15ee1732258deec8ecb93f6ccac52d95230074d8"
-  integrity sha1-Fe4XMiWN7sjsuT9sysUtlSMAdNg=
+"@angular/cli@^11.0.3":
+  version "11.0.3"
+  resolved "https://registry.npm.taobao.org/@angular/cli/download/@angular/cli-11.0.3.tgz#58c48b7976289a6fbd2eeb8464ae5dbe0468e306"
+  integrity sha1-WMSLeXYomm+9LuuEZK5dvgRo4wY=
   dependencies:
-    "@angular-devkit/architect" "0.1100.2"
-    "@angular-devkit/core" "11.0.2"
-    "@angular-devkit/schematics" "11.0.2"
-    "@schematics/angular" "11.0.2"
-    "@schematics/update" "0.1100.2"
+    "@angular-devkit/architect" "0.1100.3"
+    "@angular-devkit/core" "11.0.3"
+    "@angular-devkit/schematics" "11.0.3"
+    "@schematics/angular" "11.0.3"
+    "@schematics/update" "0.1100.3"
     "@yarnpkg/lockfile" "1.1.0"
     ansi-colors "4.1.1"
     debug "4.2.0"
@@ -1176,22 +1195,22 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@schematics/angular@11.0.2":
-  version "11.0.2"
-  resolved "https://registry.npm.taobao.org/@schematics/angular/download/@schematics/angular-11.0.2.tgz#63041d1931fe2d56135d730a6e43937a3eef4bab"
-  integrity sha1-YwQdGTH+LVYTXXMKbkOTej7vS6s=
+"@schematics/angular@11.0.3":
+  version "11.0.3"
+  resolved "https://registry.npm.taobao.org/@schematics/angular/download/@schematics/angular-11.0.3.tgz#ebeecc02edc71e6e22538e90ae1dff5bc44e56b4"
+  integrity sha1-6+7MAu3HHm4iU46Qrh3/W8ROVrQ=
   dependencies:
-    "@angular-devkit/core" "11.0.2"
-    "@angular-devkit/schematics" "11.0.2"
+    "@angular-devkit/core" "11.0.3"
+    "@angular-devkit/schematics" "11.0.3"
     jsonc-parser "2.3.1"
 
-"@schematics/update@0.1100.2":
-  version "0.1100.2"
-  resolved "https://registry.npm.taobao.org/@schematics/update/download/@schematics/update-0.1100.2.tgz#d3a5c726d434d6c8ff04db8836f829299ca7108a"
-  integrity sha1-06XHJtQ01sj/BNuINvgpKZynEIo=
+"@schematics/update@0.1100.3":
+  version "0.1100.3"
+  resolved "https://registry.npm.taobao.org/@schematics/update/download/@schematics/update-0.1100.3.tgz#d5359f81ebaa6b98e2911d73b5958ac05bbab907"
+  integrity sha1-1TWfgeuqa5jikR1ztZWKwFu6uQc=
   dependencies:
-    "@angular-devkit/core" "11.0.2"
-    "@angular-devkit/schematics" "11.0.2"
+    "@angular-devkit/core" "11.0.3"
+    "@angular-devkit/schematics" "11.0.3"
     "@yarnpkg/lockfile" "1.1.0"
     ini "1.3.5"
     npm-package-arg "^8.0.0"

@@ -39,7 +39,7 @@ type Create = {
 type User = Create & {
   username: string;
   password: string;
-  email: string;
+  email?: string;
 };
 
 type Tag = Create & {
