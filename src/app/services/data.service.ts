@@ -1,39 +1,40 @@
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ConfigService } from './config.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-
-  url = 'http://42.192.102.206:8080';
-  constructor(private http: HttpClient) { }
-
-  getAuth(): Observable<ResponseData<AuthData>> {
-    const api = '/auth';
-    const body = {
-      username: 'aries',
-      password: '123456'
-    };
-    return this.http.post<ResponseData<AuthData>>(`${this.url}${api}`, body);
-  }
+  constructor(
+    private http: HttpClient,
+    private configService: ConfigService,
+    // private authService: AuthService
+  ) {}
 
   getTags(): Observable<ResponseData<TagData>> {
     const api = '/api/tags';
-    return this.http.get<ResponseData<TagData>>(`${this.url}${api}`);
+    return this.http.get<ResponseData<TagData>>(
+      `${this.configService.requestUrl}${api}`
+    );
   }
   getArticles(): Observable<ResponseData<ArticleData>> {
     const api = '/api/articles';
-    return this.http.get<ResponseData<ArticleData>>(`${this.url}${api}`);
+    return this.http.get<ResponseData<ArticleData>>(
+      `${this.configService.requestUrl}${api}`
+    );
   }
   addTag(): Observable<ResponseData<TagData>> {
     const api = '/api/tags';
     const tag = {
       name: 'gin',
-      createdBy: 'aries'
+      createdBy: 'aries',
     };
-    return this.http.post<ResponseData<TagData>>(`${this.url}${api}`, tag);
+    return this.http.post<ResponseData<TagData>>(
+      `${this.configService.requestUrl}${api}`,
+      tag
+    );
   }
   addArticle(): Observable<ResponseData<ArticleData>> {
     const api = '/api/articles';
@@ -42,8 +43,11 @@ export class DataService {
       description: 'desc',
       content: 'content',
       createdBy: 'aries',
-      coverImageURL: '/a/b/c.jpg'
+      coverImageURL: '/a/b/c.jpg',
     };
-    return this.http.post<ResponseData<ArticleData>>(`${this.url}${api}`, article);
+    return this.http.post<ResponseData<ArticleData>>(
+      `${this.configService.requestUrl}${api}`,
+      article
+    );
   }
 }

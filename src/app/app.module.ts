@@ -13,11 +13,11 @@ import { MainComponent } from './layout/main/main.component';
 import { CategoryComponent } from './components/category/category.component';
 // import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HttpClientModule } from '@angular/common/http';
-import { JwtModule } from "@auth0/angular-jwt";
+import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-export function tokenGetter() {
+export function tokenGetter(): string | null {
     return localStorage.getItem('access_token');
   }
 
@@ -44,7 +44,7 @@ export function tokenGetter() {
     //  HighlightModule
     JwtModule.forRoot({
         config: {
-          tokenGetter: tokenGetter,
+          tokenGetter,
           allowedDomains: ['localhost:4000'],
           disallowedRoutes: ['localhost:4000/api/auth']
         }
