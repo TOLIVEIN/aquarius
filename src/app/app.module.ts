@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 export function tokenGetter(): string | null {
     return localStorage.getItem('access_token');
@@ -33,6 +34,7 @@ export function tokenGetter(): string | null {
     InspirationComponent,
     CategoryComponent,
     LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
