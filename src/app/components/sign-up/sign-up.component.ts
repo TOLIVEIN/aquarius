@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,18 +9,25 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sign-up.component.less'],
 })
 export class SignUpComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {}
 
   onSubmit(formData: FormGroup): void {
     this.signUp();
-    this.authService.signUpForm.reset();
+    this.dataService.signUpForm.reset();
     // console.log(formData)
   }
 
-  signUp(): void {}
+  signUp(): void {
+    this.dataService.addUser().subscribe((res) => {
+      // console.log(data);
+      // this.token = res.data.token;
+      console.log(res);
+    });
+
+  }
   get signUpForm(): FormGroup {
-    return this.authService.loginForm;
+    return this.dataService.signUpForm;
   }
 }

@@ -9,7 +9,7 @@ import { ConfigService } from './config.service';
 })
 export class AuthService {
   loginForm: FormGroup;
-  signUpForm: FormGroup;
+
 
 
   constructor(private http: HttpClient, private configService: ConfigService, private formBuilder: FormBuilder) {
@@ -18,13 +18,7 @@ export class AuthService {
       password: '',
     });
 
-    this.signUpForm = this.formBuilder.group({
-      username: '',
-      password: '',
-      rePassword: '',
-      email: '',
 
-    });
    }
 
    getAuth(): Observable<ResponseData<AuthData>> {

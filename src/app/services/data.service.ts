@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ConfigService } from './config.service';
 
@@ -7,11 +8,22 @@ import { ConfigService } from './config.service';
   providedIn: 'root',
 })
 export class DataService {
+
+  signUpForm: FormGroup;
+
   constructor(
     private http: HttpClient,
     private configService: ConfigService,
+    private formBuilder: FormBuilder
     // private authService: AuthService
-  ) {}
+  ) {
+    this.signUpForm = this.formBuilder.group({
+      username: '',
+      password: '',
+      passwordConfirm: '',
+      email: '',
+    });
+  }
 
   getTags(): Observable<ResponseData<TagData>> {
     const api = '/api/tags';
@@ -23,6 +35,15 @@ export class DataService {
     const api = '/api/articles';
     return this.http.get<ResponseData<ArticleData>>(
       `${this.configService.requestUrl}${api}`
+    );
+  }
+  addUser(): Observable<object> {
+    const api = '/api/users';
+    const user = this.signUpForm.value;
+    console.log(user);
+    return this.http.post<object>(
+      `${this.configService.requestUrl}${api}`,
+      user
     );
   }
   addTag(): Observable<ResponseData<TagData>> {

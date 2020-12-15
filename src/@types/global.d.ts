@@ -39,6 +39,7 @@ type Create = {
 type User = Create & {
   username: string;
   password: string;
+  passwordConfirm?: string;
   email?: string;
 };
 
