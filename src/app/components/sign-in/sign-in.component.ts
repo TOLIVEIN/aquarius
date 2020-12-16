@@ -4,16 +4,16 @@ import { FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less'],
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.less'],
 })
-export class LoginComponent implements OnInit {
+export class SignInComponent implements OnInit {
   token!: string;
 
   tags!: TagData;
   articles!: ArticleData;
-  // loginForm: FormGroup;
+  // SignInForm: FormGroup;
   constructor(
     private dataService: DataService,
     private authService: AuthService
@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(formData: FormGroup): void {
-    this.login();
-    this.authService.loginForm.reset();
+    this.signIn();
+    this.authService.signInForm.reset();
     // console.log(formData)
   }
 
-  login(): void {
+  signIn(): void {
     this.authService.getAuth().subscribe((res) => {
       // console.log(data);
       this.token = res.data.token;
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     // });
   }
 
-  get loginForm(): FormGroup {
-    return this.authService.loginForm;
+  get signInForm(): FormGroup {
+    return this.authService.signInForm;
   }
 }

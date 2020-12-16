@@ -14,7 +14,7 @@ import { CategoryComponent } from './components/category/category.component';
 // import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { LoginComponent } from './components/login/login.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 
@@ -33,7 +33,7 @@ export function tokenGetter(): string | null {
     CardComponent,
     InspirationComponent,
     CategoryComponent,
-    LoginComponent,
+    SignInComponent,
     SignUpComponent,
   ],
   imports: [

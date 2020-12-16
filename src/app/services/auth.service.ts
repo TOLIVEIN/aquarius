@@ -8,12 +8,12 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class AuthService {
-  loginForm: FormGroup;
+  signInForm: FormGroup;
 
 
 
   constructor(private http: HttpClient, private configService: ConfigService, private formBuilder: FormBuilder) {
-    this.loginForm = this.formBuilder.group({
+    this.signInForm = this.formBuilder.group({
       username: '',
       password: '',
     });
@@ -23,7 +23,7 @@ export class AuthService {
 
    getAuth(): Observable<ResponseData<AuthData>> {
     const api = '/auth';
-    const body = this.loginForm.value;
+    const body = this.signInForm.value;
     // console.log(body);
     return this.http.post<ResponseData<AuthData>>(`${this.configService.requestUrl}${api}`, body);
   }
