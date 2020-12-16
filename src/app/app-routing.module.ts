@@ -4,6 +4,7 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { InspirationComponent } from './components/inspiration/inspiration.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { BaseGuard } from './guards/base.guard';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'write',
     component: InspirationComponent,
+    canActivate: [BaseGuard],
+    data: {
+      permission: ['admi']
+    }
     // outlet: 'main',
   },
   {

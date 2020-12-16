@@ -17,6 +17,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { BaseGuard } from './guards/base.guard';
 
 export function tokenGetter(): string | null {
     return localStorage.getItem('access_token');
@@ -53,6 +54,7 @@ export function tokenGetter(): string | null {
       })
   ],
   providers: [
+    // BaseGuard
     // {
     //   provide: HIGHLIGHT_OPTIONS,
     //   useValue: {
