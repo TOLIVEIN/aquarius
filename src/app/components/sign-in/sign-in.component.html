@@ -7,23 +7,25 @@
         <label for="password">密码</label>
         <input id="password"/>
 </div> -->
+<div id="sign-in-container">
 
-<form [formGroup]="signInForm" (ngSubmit)="onSubmit(signInForm.value)">
-
-    <div>
-      <label for="name">
-        Usernanme
-      </label>
-      <input autocomplete="off" id="username" type="text" formControlName="username">
-    </div>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit(signInForm.value)">
   
-    <div>
-      <label for="password">
-        Password
-      </label>
-      <input id="password" type="password" formControlName="password">
-    </div>
-  
-    <button class="button" type="submit">SignIn</button>
-  
-  </form>
+      <div>
+        <label for="name">
+          Usernanme
+        </label>
+        <input autocomplete="off" id="username" type="text" formControlName="username">
+      </div>
+    
+      <div>
+        <label for="password">
+          Password
+        </label>
+        <input id="password" type="password" formControlName="password">
+      </div>
+    
+      <button class="button" type="submit">SignIn</button>
+    
+    </form>
+</div>

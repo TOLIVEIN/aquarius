@@ -17,7 +17,7 @@ const routes: Routes = [
     component: InspirationComponent,
     canActivate: [BaseGuard],
     data: {
-      permission: ['admi']
+      permission: ['admin']
     }
     // outlet: 'main',
   },
