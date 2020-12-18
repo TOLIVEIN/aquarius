@@ -32,7 +32,8 @@ export class SignInComponent implements OnInit {
     this.authService.getAuth().subscribe((res) => {
       // console.log(data);
       this.token = res.data.token;
-      console.log(this.token);
+      localStorage.setItem('token', this.token);
+      console.log(localStorage);
     });
 
     // this.dataService.getTags().subscribe((tags) => {
