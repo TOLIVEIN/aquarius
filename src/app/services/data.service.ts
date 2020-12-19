@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -35,6 +35,16 @@ export class DataService {
     const api = '/api/articles';
     return this.http.get<ResponseData<ArticleData>>(
       `${this.configService.requestUrl}${api}`
+    );
+  }
+  getUsers(): Observable<ResponseData<UserData>> {
+    const api = '/api/users';
+    const options = {headers: new HttpHeaders({
+      // 'Content-Type':  'application/json',
+      Token: localStorage.getItem('token') ?? ''
+  })};
+    return this.http.get<ResponseData<UserData>>(
+      `${this.configService.requestUrl}${api}`, options
     );
   }
   addUser(): Observable<object> {
