@@ -8,21 +8,30 @@ import { ConfigService } from './config.service';
   providedIn: 'root',
 })
 export class DataService {
-
   signUpForm: FormGroup;
+  tag: Tag;
+
+  authOptions = {
+    headers: new HttpHeaders({
+      Token: localStorage.getItem('token') ?? '',
+    }),
+  };
 
   constructor(
     private http: HttpClient,
     private configService: ConfigService,
     private formBuilder: FormBuilder
-    // private authService: AuthService
-  ) {
+  ) // private authService: AuthService
+  {
+    // this.signUpForm = {} as FormGroup;
     this.signUpForm = this.formBuilder.group({
       username: '',
       password: '',
       passwordConfirm: '',
       email: '',
     });
+
+    this.tag = {} as Tag;
   }
 
   getTags(): Observable<ResponseData<TagData>> {
@@ -39,12 +48,9 @@ export class DataService {
   }
   getUsers(): Observable<ResponseData<UserData>> {
     const api = '/api/users';
-    const options = {headers: new HttpHeaders({
-      // 'Content-Type':  'application/json',
-      Token: localStorage.getItem('token') ?? ''
-  })};
     return this.http.get<ResponseData<UserData>>(
-      `${this.configService.requestUrl}${api}`, options
+      `${this.configService.requestUrl}${api}`,
+      this.authOptions
     );
   }
   addUser(): Observable<object> {
@@ -58,13 +64,12 @@ export class DataService {
   }
   addTag(): Observable<ResponseData<TagData>> {
     const api = '/api/tags';
-    const tag = {
-      name: 'gin',
-      createdBy: 'aries',
-    };
+    console.log(this.authOptions);
+
     return this.http.post<ResponseData<TagData>>(
       `${this.configService.requestUrl}${api}`,
-      tag
+      this.tag,
+      this.authOptions
     );
   }
   addArticle(): Observable<ResponseData<ArticleData>> {

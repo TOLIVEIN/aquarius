@@ -23,6 +23,7 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(formData: FormGroup): void {
+    // console.log('sign in', this.authService.signInForm);
     this.signIn();
     this.authService.signInForm.reset();
     // console.log(formData)
@@ -35,9 +36,9 @@ export class SignInComponent implements OnInit {
       localStorage.setItem('token', this.token);
       console.log(localStorage);
 
-      this.dataService.getUsers().subscribe(r => {
-        console.log(r);
-      });
+      // this.dataService.getUsers().subscribe(r => {
+      //   console.log(r);
+      // });
     });
 
     // this.dataService.getTags().subscribe((tags) => {

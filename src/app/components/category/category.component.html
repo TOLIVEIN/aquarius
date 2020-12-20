@@ -1,1 +1,5 @@
-<p>category works!</p>
+<div id="category-container">
+    <label for="add-tag">Tag</label>
+    <input type="text" id="add-tag" #tag>
+    <button (click)="addTag(tag.value)">Add</button>
+</div>
