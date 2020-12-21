@@ -86,4 +86,13 @@ export class DataService {
       article
     );
   }
+  deleteTag(): Observable<ResponseData<TagData>> {
+    const api = '/api/tags/4';
+    console.log(this.authOptions);
+
+    return this.http.delete<ResponseData<TagData>>(
+      `${this.configService.requestUrl}${api}`,
+      this.authOptions
+    );
+  }
 }

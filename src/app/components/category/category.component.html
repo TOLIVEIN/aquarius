@@ -1,5 +1,15 @@
 <div id="category-container">
+  <div id="add-tag-container">
     <label for="add-tag">Tag</label>
-    <input type="text" id="add-tag" #tag>
+    <input type="text" id="add-tag" #tag />
     <button (click)="addTag(tag.value)">Add</button>
+  </div>
+
+  <div id="get-tag-container">
+    <ul>
+      <li *ngFor="let tag of tags">
+        {{ tag.id }} {{ tag.name }} {{ tag.createdAt }}
+      </li>
+    </ul>
+  </div>
 </div>
