@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -15,21 +15,22 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    // this.getTags();
-  }
-
-  ngAfterViewInit(): void {
     this.getTags();
   }
 
+  ngAfterViewInit(): void {
+    // this.getTags();
+  }
+
   addTag(tagName: string): void {
-    this.dataService.tag.name = tagName;
-    this.dataService.tag.updatedBy = 'aries';
-    this.dataService.tag.createdBy = 'aries';
+    this.dataService.tag.Name = tagName;
+    this.dataService.tag.UpdatedBy = 'aries';
+    this.dataService.tag.CreatedBy = 'aries';
     console.log(this.dataService.tag);
 
     this.authService.getAuth().subscribe(res => {
-      console.log(res);
+      localStorage.setItem('token', res.data.token);
+      // console.log(res);
     });
 
     this.dataService.addTag().subscribe(res => {
