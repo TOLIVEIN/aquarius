@@ -7,6 +7,11 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BaseGuard } from './guards/base.guard';
 
 const routes: Routes = [
+//   {
+//     path: ' ',
+//     redirectTo: 'signIn',
+//     // component: SignInComponent,
+//   },
   {
     path: 'read',
     component: OverviewComponent,
@@ -17,8 +22,8 @@ const routes: Routes = [
     component: InspirationComponent,
     canActivate: [BaseGuard],
     data: {
-      permission: ['admin']
-    }
+      permission: ['admin'],
+    },
     // outlet: 'main',
   },
   {

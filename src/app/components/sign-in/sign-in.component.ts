@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
@@ -25,6 +26,7 @@ export class SignInComponent implements OnInit {
   onSubmit(formData: FormGroup): void {
     // console.log('sign in', this.authService.signInForm);
     this.signIn();
+    this.saveCookie()
     this.authService.signInForm.reset();
     // console.log(formData)
   }
@@ -49,6 +51,13 @@ export class SignInComponent implements OnInit {
     //   this.articles = articles.data;
     //   console.log(this.articles);
     // });
+  }
+
+  saveCookie():void {
+    // console.log(data)
+    const expires = new Date();
+	expires.setTime(expires.getTime() + 10 * 3600000 * 24);
+    document.cookie = `username=${this.authService.signInForm.value.username}; password=${this.authService.signInForm.value.password}; expires=${expires}`
   }
 
   get signInForm(): FormGroup {
