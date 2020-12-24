@@ -18,15 +18,14 @@ export class SignInComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private authService: AuthService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {}
 
   onSubmit(formData: FormGroup): void {
     // console.log('sign in', this.authService.signInForm);
     this.signIn();
-    this.saveCookie()
+    this.saveCookie();
     this.authService.signInForm.reset();
     // console.log(formData)
   }
@@ -53,11 +52,16 @@ export class SignInComponent implements OnInit {
     // });
   }
 
-  saveCookie():void {
+  saveCookie(): void {
     // console.log(data)
     const expires = new Date();
-	expires.setTime(expires.getTime() + 10 * 3600000 * 24);
-    document.cookie = `username=${this.authService.signInForm.value.username}; password=${this.authService.signInForm.value.password}; expires=${expires}`
+    expires.setTime(expires.getTime() + 10 * 3600000 * 24);
+    // console.log(`username=${this.authService.signInForm.value.username}; password=${this.authService.signInForm.value.password}; expires=${expires}`)
+    Object.entries(this.authService.signInForm.value).forEach(
+      ([key, value]) => {
+        document.cookie = `${key}=${value}; expires=${expires}`;
+      }
+    );
   }
 
   get signInForm(): FormGroup {

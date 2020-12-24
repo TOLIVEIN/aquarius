@@ -13,9 +13,15 @@ export class AuthService {
 
 
   constructor(private http: HttpClient, private configService: ConfigService, private formBuilder: FormBuilder) {
+      const cookies = new Map<string, string>();
+      document.cookie.split('; ').forEach(item => {
+          cookies.set(item.split('=')[0], item.split('=')[1])
+        })
+
+      
     this.signInForm = this.formBuilder.group({
-      username: '',
-      password: '',
+      username: cookies.get('username') ?? '',
+      password: cookies.get('password') ?? '',
     });
 
 
