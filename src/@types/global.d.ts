@@ -67,6 +67,7 @@ interface ResponseData<T> {
 
 interface AuthData {
   token: string;
+  permissions?: string;
 }
 interface UserData {
   users: User[];

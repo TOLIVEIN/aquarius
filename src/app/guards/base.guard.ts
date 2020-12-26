@@ -6,11 +6,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BaseGuard implements CanActivate {
+  constructor(private authService: AuthService) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -19,8 +21,9 @@ export class BaseGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      const permissionList = route.data.permission;
-      const canActivate = (permissionList as string[]).includes('admin');
-      return canActivate;
+    // const permissionList = route.data.permission;
+    const permissionList = this.authService.permissions;
+    const canActivate = permissionList.includes('user');
+    return canActivate;
   }
 }

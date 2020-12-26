@@ -21,9 +21,9 @@ const routes: Routes = [
     path: 'write',
     component: InspirationComponent,
     canActivate: [BaseGuard],
-    data: {
-      permission: ['admin'],
-    },
+    // data: {
+    //   permission: ['admin'],
+    // },
     // outlet: 'main',
   },
   {

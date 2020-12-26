@@ -10,7 +10,8 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./sign-in.component.less'],
 })
 export class SignInComponent implements OnInit {
-  token!: string;
+  // token!: string;
+  // role!: string;
 
   tags!: TagData;
   articles!: ArticleData;
@@ -29,8 +30,12 @@ export class SignInComponent implements OnInit {
 
   signIn(): void {
     this.authService.getAuth().subscribe((res) => {
-      this.token = res.data.token;
-      localStorage.setItem('token', this.token);
+      this.authService.token = res.data.token;
+      res.data.permissions?.split(',').forEach(permission => {
+        this.authService.permissions.push(permission);
+      });
+      localStorage.setItem('token', this.authService.token);
+      localStorage.setItem('permissions', res.data.permissions ?? '');
       console.log(localStorage);
     });
   }

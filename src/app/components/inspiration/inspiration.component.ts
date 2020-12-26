@@ -26,7 +26,7 @@ export class InspirationComponent implements OnInit {
     this.editor.create();
 
     this.config.getConfig().subscribe(data => {
-      console.log(data);
+      // console.log(data);
     });
 
   }
