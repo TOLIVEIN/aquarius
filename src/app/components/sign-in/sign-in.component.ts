@@ -38,7 +38,8 @@ export class SignInComponent implements OnInit {
   saveCookie(): void {
     const expires = new Date();
     expires.setTime(expires.getTime() + 10 * 3600000 * 24);
-    // console.log(`username=${this.authService.signInForm.value.username}; password=${this.authService.signInForm.value.password}; expires=${expires}`)
+    // console.log(`username=${this.authService.signInForm.value.username};
+    // password=${this.authService.signInForm.value.password}; expires=${expires}`)
     Object.entries(this.authService.signInForm.value).forEach(
       ([key, value]) => {
         document.cookie = `${key}=${value}; expires=${expires}`;

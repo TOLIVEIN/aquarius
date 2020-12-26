@@ -18,10 +18,12 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BaseGuard } from './guards/base.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatChipsModule } from '@angular/material/chips';
 
 export function tokenGetter(): string | null {
-    return localStorage.getItem('access_token');
-  }
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -44,14 +46,16 @@ export function tokenGetter(): string | null {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatChipsModule,
     //  HighlightModule
     JwtModule.forRoot({
-        config: {
-          tokenGetter,
-          allowedDomains: ['localhost:4000'],
-          disallowedRoutes: ['localhost:4000/api/auth']
-        }
-      })
+      config: {
+        tokenGetter,
+        allowedDomains: ['localhost:4000'],
+        disallowedRoutes: ['localhost:4000/api/auth'],
+      },
+    }),
   ],
   providers: [
     // BaseGuard

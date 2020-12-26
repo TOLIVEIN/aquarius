@@ -6,12 +6,17 @@
   </div>
 
   <div id="get-tag-container">
-    <ul>
+    <mat-chip-list class="mat-chip-list-stacked" aria-orientation="vertical">
+      <mat-chip color="primary" *ngFor="let tag of tags">
+        {{ tag.Name }}
+      </mat-chip>
+    </mat-chip-list>
+    <!-- <ul>
       <li *ngFor="let tag of tags">
         {{ tag.ID }}
         {{ tag.Name }}
         {{ tag.CreatedBy }} 
       </li>
-    </ul>
+    </ul> -->
   </div>
 </div>

@@ -144,12 +144,21 @@
     ora "5.1.0"
     rxjs "6.6.3"
 
-"@angular/animations@~11.0.0":
-  version "11.0.2"
-  resolved "https://registry.npm.taobao.org/@angular/animations/download/@angular/animations-11.0.2.tgz#c095ab0aed4491732c81a894987bcab1a854ab15"
-  integrity sha1-wJWrCu1EkXMsgaiUmHvKsahUqxU=
+"@angular/animations@^11.0.5":
+  version "11.0.5"
+  resolved "https://registry.npm.taobao.org/@angular/animations/download/@angular/animations-11.0.5.tgz?cache=0&sync_timestamp=1608166061556&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40angular%2Fanimations%2Fdownload%2F%40angular%2Fanimations-11.0.5.tgz#44157c8bbb3f20ce1d3d6386eae956659cefd9d7"
+  integrity sha1-RBV8i7s/IM4dPWOG6ulWZZzv2dc=
   dependencies:
     tslib "^2.0.0"
+
+"@angular/cdk@^11.0.3":
+  version "11.0.3"
+  resolved "https://registry.npm.taobao.org/@angular/cdk/download/@angular/cdk-11.0.3.tgz#f5a119e28b4ba21a6f013dfd4de41b16083bd25a"
+  integrity sha1-9aEZ4otLohpvAT39TeQbFgg70lo=
+  dependencies:
+    tslib "^2.0.0"
+  optionalDependencies:
+    parse5 "^5.0.0"
 
 "@angular/cli@^11.0.3":
   version "11.0.3"
@@ -233,6 +242,13 @@
   version "11.0.2"
   resolved "https://registry.npm.taobao.org/@angular/forms/download/@angular/forms-11.0.2.tgz#68de53edfd504b570bfcd23f371a2f21fbec5c49"
   integrity sha1-aN5T7f1QS1cL/NI/NxovIfvsXEk=
+  dependencies:
+    tslib "^2.0.0"
+
+"@angular/material@^11.0.3":
+  version "11.0.3"
+  resolved "https://registry.npm.taobao.org/@angular/material/download/@angular/material-11.0.3.tgz#dd848f1804b07c9654b095d5b1accb13083e91e5"
+  integrity sha1-3YSPGASwfJZUsJXVsazLEwg+keU=
   dependencies:
     tslib "^2.0.0"
 
@@ -6265,6 +6281,11 @@ parse5-sax-parser@^6.0.1:
   integrity sha1-mLTTZrWyZqfNkLS1iQZmeviC2ro=
   dependencies:
     parse5 "^6.0.1"
+
+parse5@^5.0.0:
+  version "5.1.1"
+  resolved "https://registry.npm.taobao.org/parse5/download/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
+  integrity sha1-9o5OW6GFKsLK3AD0VV//bCq7YXg=
 
 parse5@^6.0.1:
   version "6.0.1"
