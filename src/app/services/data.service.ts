@@ -64,7 +64,7 @@ export class DataService {
   }
   addTag(): Observable<ResponseData<TagData>> {
     const api = '/api/tags';
-    console.log(this.authOptions);
+    // console.log(this.authOptions);
 
     return this.http.post<ResponseData<TagData>>(
       `${this.configService.requestUrl}${api}`,
