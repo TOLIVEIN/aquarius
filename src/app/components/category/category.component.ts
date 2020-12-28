@@ -10,6 +10,8 @@ import { AuthService } from '../../services/auth.service';
 export class CategoryComponent implements OnInit, AfterViewInit {
   tags!: Tag[];
 
+  removable = true;
+
   constructor(
     private authService: AuthService,
     private dataService: DataService
@@ -62,10 +64,10 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     });
   }
 
-  deleteTag(tagID: string): void {
-    this.authService.getAuth().subscribe((res) => {
-      console.log(res);
-    });
+  deleteTag(tag: Tag): void {
+    // this.authService.getAuth().subscribe((res) => {
+    //   console.log(res);
+    // });
 
     this.dataService.deleteTag().subscribe((res) => {
       console.log(res);

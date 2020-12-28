@@ -7,8 +7,9 @@
 
   <div id="get-tag-container">
     <mat-chip-list class="mat-chip-list-stacked" aria-orientation="vertical">
-      <mat-chip color="primary" *ngFor="let tag of tags">
+      <mat-chip color="primary" *ngFor="let tag of tags" [removable]="removable" (removed)="deleteTag(tag)">
         {{ tag.Name }}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
     </mat-chip-list>
     <!-- <ul>

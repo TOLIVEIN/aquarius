@@ -20,6 +20,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BaseGuard } from './guards/base.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
 
 export function tokenGetter(): string | null {
   return localStorage.getItem('access_token');
@@ -48,6 +49,7 @@ export function tokenGetter(): string | null {
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatChipsModule,
+    MatIconModule,
     //  HighlightModule
     JwtModule.forRoot({
       config: {
