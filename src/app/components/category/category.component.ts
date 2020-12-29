@@ -68,8 +68,9 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     // this.authService.getAuth().subscribe((res) => {
     //   console.log(res);
     // });
+    // console.log(tag)
 
-    this.dataService.deleteTag().subscribe((res) => {
+    this.dataService.deleteTag(tag).subscribe((res) => {
       console.log(res);
     });
   }
