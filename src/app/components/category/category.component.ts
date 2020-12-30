@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-category',
@@ -38,23 +38,26 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     //   // console.log(res);
     // });
 
-    this.dataService.addTag().subscribe((res) => {
-      console.log(res);
-      // if (res.code !== 200) {
-      //   this.authService.getAuth().subscribe((r) => {
-      //     localStorage.setItem('token', r.data.token);
-      //   });
-      //   // console.log(res);
-      // }
-    }, (error) => {
-      if (error.error.code !== 200) {
-        // console.log(error);
-        this.authService.getAuth().subscribe((r) => {
-          localStorage.setItem('token', r.data.token);
-        });
-        // console.log(res);
+    this.dataService.addTag().subscribe(
+      (res) => {
+        console.log(res);
+        // if (res.code !== 200) {
+        //   this.authService.getAuth().subscribe((r) => {
+        //     localStorage.setItem('token', r.data.token);
+        //   });
+        //   // console.log(res);
+        // }
+      },
+      (error) => {
+        if (error.error.code !== 200) {
+          // console.log(error);
+          this.authService.getAuth().subscribe((r) => {
+            localStorage.setItem('token', r.data.token);
+          });
+          // console.log(res);
+        }
       }
-    });
+    );
   }
 
   getTags(): void {
@@ -69,6 +72,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     //   console.log(res);
     // });
     // console.log(tag)
+    this.tags.splice(this.tags.indexOf(tag), 1);
 
     this.dataService.deleteTag(tag).subscribe((res) => {
       console.log(res);
