@@ -33,28 +33,18 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     this.dataService.tag.CreatedBy = 'aries';
     console.log(this.dataService.tag);
 
-    // this.authService.getAuth().subscribe(res => {
-    //   localStorage.setItem('token', res.data.token);
-    //   // console.log(res);
-    // });
+    // const tag = this.dataService.tag;
 
     this.dataService.addTag().subscribe(
       (res) => {
+        this.tags.push(...res.data);
         console.log(res);
-        // if (res.code !== 200) {
-        //   this.authService.getAuth().subscribe((r) => {
-        //     localStorage.setItem('token', r.data.token);
-        //   });
-        //   // console.log(res);
-        // }
       },
       (error) => {
         if (error.error.code !== 200) {
-          // console.log(error);
           this.authService.getAuth().subscribe((r) => {
             localStorage.setItem('token', r.data.token);
           });
-          // console.log(res);
         }
       }
     );
@@ -68,14 +58,18 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   }
 
   deleteTag(tag: Tag): void {
-    // this.authService.getAuth().subscribe((res) => {
-    //   console.log(res);
-    // });
-    // console.log(tag)
-    this.tags.splice(this.tags.indexOf(tag), 1);
-
-    this.dataService.deleteTag(tag).subscribe((res) => {
-      console.log(res);
-    });
+    this.dataService.deleteTag(tag).subscribe(
+      (res) => {
+        this.tags.splice(this.tags.indexOf(tag), 1);
+        console.log(res);
+      },
+      (error) => {
+        if (error.error.code !== 200) {
+          this.authService.getAuth().subscribe((r) => {
+            localStorage.setItem('token', r.data.token);
+          });
+        }
+      }
+    );
   }
 }

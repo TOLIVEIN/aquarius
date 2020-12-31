@@ -13,16 +13,15 @@ export class DataService {
 
   authOptions = {
     headers: new HttpHeaders({
-      Token: localStorage.getItem('token') ?? '',
+      token: localStorage.getItem('token') ?? '',
     }),
   };
 
   constructor(
     private http: HttpClient,
     private configService: ConfigService,
-    private formBuilder: FormBuilder
-  ) // private authService: AuthService
-  {
+    private formBuilder: FormBuilder // private authService: AuthService
+  ) {
     // this.signUpForm = {} as FormGroup;
     this.signUpForm = this.formBuilder.group({
       username: '',
@@ -53,20 +52,20 @@ export class DataService {
       this.authOptions
     );
   }
-  addUser(): Observable<object> {
+  addUser(): Observable<Record<string, unknown>> {
     const api = '/api/users';
     const user = this.signUpForm.value;
     console.log(user);
-    return this.http.post<object>(
+    return this.http.post<Record<string, unknown>>(
       `${this.configService.requestUrl}${api}`,
       user
     );
   }
-  addTag(): Observable<ResponseData<TagData>> {
+  addTag(): Observable<ResponseData<Tag[]>> {
     const api = '/api/tags';
     // console.log(this.authOptions);
 
-    return this.http.post<ResponseData<TagData>>(
+    return this.http.post<ResponseData<Tag[]>>(
       `${this.configService.requestUrl}${api}`,
       this.tag,
       this.authOptions
