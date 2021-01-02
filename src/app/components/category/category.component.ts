@@ -28,9 +28,9 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   }
 
   addTag(tagName: string): void {
-    this.dataService.tag.Name = tagName;
-    this.dataService.tag.UpdatedBy = 'aries';
-    this.dataService.tag.CreatedBy = 'aries';
+    this.dataService.tag.name = tagName;
+    this.dataService.tag.updatedBy = 'aries';
+    this.dataService.tag.createdBy = 'aries';
     console.log(this.dataService.tag);
 
     // const tag = this.dataService.tag;
@@ -53,7 +53,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   getTags(): void {
     this.dataService.getTags().subscribe((res) => {
       this.tags = res.data.tags;
-      // console.log(this.tags);
+      console.log(this.tags);
     });
   }
 

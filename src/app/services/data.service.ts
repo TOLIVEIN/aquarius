@@ -86,7 +86,7 @@ export class DataService {
     );
   }
   deleteTag(tag: Tag): Observable<ResponseData<TagData>> {
-    const api = `/api/tags/${tag.ID}`;
+    const api = `/api/tags/${tag.id}`;
     console.log(this.authOptions);
 
     return this.http.delete<ResponseData<TagData>>(

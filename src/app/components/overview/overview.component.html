@@ -1,14 +1,14 @@
 <div id="overview-container">
-  <span *ngFor="let index of [0, 1, 2, 3, 4]">
+  <span *ngFor="let article of articles">
     <mat-card class="card">
       <mat-card-header>
         <div mat-card-avatar class="header-image"></div>
-        <mat-card-title>Test</mat-card-title>
+        <mat-card-title>{{ article.title }}</mat-card-title>
         <mat-card-subtitle>test</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image src="../../../assets/deno.png" alt="Photo of deno" />
       <mat-card-content>
-        <p>test</p>
+        <p>{{ article.content }}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>LIKE</button>

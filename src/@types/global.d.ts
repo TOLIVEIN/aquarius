@@ -30,10 +30,10 @@ interface EffectRectangle {
 }
 
 type Create = {
-  ID?: number;
-  CreatedAt?: string;
-  UpdatedAt?: string;
-  DeletedAt?: string;
+  id?: number;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
 };
 
 type User = Create & {
@@ -44,10 +44,10 @@ type User = Create & {
 };
 
 type Tag = Create & {
-  Name: string;
-  CreatedBy: string;
-  UpdatedBy: string;
-  Articles?: Article[];
+  name: string;
+  createdBy: string;
+  updatedBy: string;
+  articles?: Article[];
 };
 
 type Article = Create & {
