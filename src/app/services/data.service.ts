@@ -10,6 +10,7 @@ import { ConfigService } from './config.service';
 export class DataService {
   signUpForm: FormGroup;
   tag: Tag;
+  article: Article;
 
   authOptions = {
     headers: new HttpHeaders({
@@ -31,6 +32,7 @@ export class DataService {
     });
 
     this.tag = {} as Tag;
+    this.article = {} as Article;
   }
 
   getTags(): Observable<ResponseData<TagData>> {
@@ -73,16 +75,16 @@ export class DataService {
   }
   addArticle(): Observable<ResponseData<ArticleData>> {
     const api = '/api/articles';
-    const article = {
-      title: 'first',
-      description: 'desc',
-      content: 'content',
-      createdBy: 'aries',
-      coverImageURL: '/a/b/c.jpg',
-    };
+    // const article = {
+    //   title: 'first',
+    //   description: 'desc',
+    //   content: 'content',
+    //   createdBy: 'aries',
+    //   coverImageURL: '/a/b/c.jpg',
+    // };
     return this.http.post<ResponseData<ArticleData>>(
       `${this.configService.requestUrl}${api}`,
-      article
+      this.article
     );
   }
   deleteTag(tag: Tag): Observable<ResponseData<TagData>> {
