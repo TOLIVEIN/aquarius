@@ -33,6 +33,8 @@ export class DataService {
 
     this.tag = {} as Tag;
     this.article = {} as Article;
+    this.article.coverImageURL = 'a/b/c';
+    // console.log(this.authOptions);
   }
 
   getTags(): Observable<ResponseData<TagData>> {
@@ -84,7 +86,8 @@ export class DataService {
     // };
     return this.http.post<ResponseData<ArticleData>>(
       `${this.configService.requestUrl}${api}`,
-      this.article
+      this.article,
+      this.authOptions
     );
   }
   deleteTag(tag: Tag): Observable<ResponseData<TagData>> {
