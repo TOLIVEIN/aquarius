@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
 
@@ -14,7 +15,8 @@ export class CategoryComponent implements OnInit, AfterViewInit {
 
     constructor(
         private authService: AuthService,
-        private dataService: DataService
+        private dataService: DataService,
+        private router: Router
     ) {
         // this.tags = [] as Tag[];
     }
@@ -37,9 +39,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
             },
             (error) => {
                 if (error.error.code !== 200) {
-                    this.authService.getAuth().subscribe((r) => {
-                        localStorage.setItem('token', r.data.token);
-                    });
+                    this.router.navigate(['signIn'])
                 }
             }
         );
@@ -60,9 +60,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
             },
             (error) => {
                 if (error.error.code !== 200) {
-                    this.authService.getAuth().subscribe((r) => {
-                        localStorage.setItem('token', r.data.token);
-                    });
+                    this.router.navigate(['signIn'])
                 }
             }
         );

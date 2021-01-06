@@ -1,12 +1,12 @@
 <div id="overview-container">
   <span *ngFor="let article of articles">
-    <mat-card class="card">
+    <mat-card>
       <mat-card-header>
-        <div mat-card-avatar class="header-image"></div>
+        <div mat-card-avatar></div>
         <mat-card-title>{{ article.title }}</mat-card-title>
         <mat-card-subtitle>test</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="../../../assets/deno.png" alt="Photo of deno" />
+      <!-- <img mat-card-image src="../../../assets/deno.png" alt="Photo of deno" /> -->
       <mat-card-content>
         <p>{{ article.content }}</p>
       </mat-card-content>
