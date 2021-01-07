@@ -2,6 +2,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,12 +17,14 @@ import { CategoryComponent } from './components/category/category.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { InspirationComponent } from './components/inspiration/inspiration.component';
 import { OverviewComponent } from './components/overview/overview.component';
+import { SelectTagComponent } from './components/select-tag/select-tag.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
 
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function tokenGetter(): string | null {
     return localStorage.getItem('access_token');
 }
@@ -38,6 +41,7 @@ export function tokenGetter(): string | null {
         CategoryComponent,
         SignInComponent,
         SignUpComponent,
+        SelectTagComponent,
     ],
     imports: [
         BrowserModule,
@@ -51,6 +55,7 @@ export function tokenGetter(): string | null {
         MatIconModule,
         MatCardModule,
         MatFormFieldModule,
+        MatAutocompleteModule,
         //  HighlightModule
         JwtModule.forRoot({
             config: {
@@ -71,4 +76,4 @@ export function tokenGetter(): string | null {
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

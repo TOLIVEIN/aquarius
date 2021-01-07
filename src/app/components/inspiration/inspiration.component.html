@@ -15,15 +15,18 @@
   }"
 ></editor> -->
 <div id="inspiration-container">
-  <div id="title">
-    <input
-      type="text"
-      placeholder="input article title"
-      #title
-      (keyup)="onKey(title.value)"
-    />
-  </div>
-  <div id="editorMenu"></div>
-  <div id="editor"></div>
-  <button (click)="addArticle()">Add Article</button>
+    <div id="title">
+        <input
+            type="text"
+            placeholder="input article title"
+            #title
+            (keyup)="onKey(title.value)"
+        />
+    </div>
+    <div id="select-tag">
+        <app-select-tag></app-select-tag>
+    </div>
+    <div id="editorMenu"></div>
+    <div id="editor"></div>
+    <button (click)="addArticle()">Add Article</button>
 </div>
