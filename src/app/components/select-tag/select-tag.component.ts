@@ -37,8 +37,7 @@ export class SelectTagComponent implements OnInit {
         this.filteredTags = this.tagCtrl.valueChanges.pipe(
             startWith(null),
             map((tag: string | null) =>
-                // eslint-disable-next-line no-underscore-dangle
-                tag ? this._filter(tag) : this.allTags.slice()
+                tag ? this.filterTag(tag) : this.allTags.slice()
             )
         );
     }
@@ -81,7 +80,7 @@ export class SelectTagComponent implements OnInit {
         this.tagCtrl.setValue(null);
     }
 
-    private _filter(value: string): string[] {
+    private filterTag(value: string): string[] {
         const filterValue = value.toLowerCase();
 
         return this.allTags.filter(
