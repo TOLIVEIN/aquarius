@@ -39,7 +39,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
             },
             (error) => {
                 if (error.error.code !== 200) {
-                    this.router.navigate(['signIn'])
+                    this.router.navigate(['signIn']);
                 }
             }
         );
@@ -60,7 +60,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
             },
             (error) => {
                 if (error.error.code !== 200) {
-                    this.router.navigate(['signIn'])
+                    this.router.navigate(['signIn']);
                 }
             }
         );

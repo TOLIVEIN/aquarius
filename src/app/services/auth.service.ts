@@ -28,7 +28,8 @@ export class AuthService {
         });
 
         this.token = localStorage.getItem('token') ?? '';
-        this.permissions = localStorage.getItem('permissions')?.split(',') ?? [];
+        this.permissions =
+            localStorage.getItem('permissions')?.split(',') ?? [];
     }
 
     getAuth(): Observable<ResponseData<AuthData>> {

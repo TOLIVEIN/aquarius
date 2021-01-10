@@ -34,15 +34,22 @@ export class DataService {
         });
 
         this.tag = {} as Tag;
-        this.tag.createdBy = this.authService.cookies.get('username') ?? ''
-        this.tag.updatedBy = this.authService.cookies.get('username') ?? ''
-
+        this.tag.createdBy = this.authService.cookies.get('username') ?? '';
+        this.tag.updatedBy = this.authService.cookies.get('username') ?? '';
 
         this.article = {} as Article;
         this.article.coverImageURL = 'a/b/c';
-        this.article.createdBy = this.authService.cookies.get('username') ?? ''
-        this.article.updatedBy = this.authService.cookies.get('username') ?? ''
+        this.article.createdBy = this.authService.cookies.get('username') ?? '';
+        this.article.updatedBy = this.authService.cookies.get('username') ?? '';
         // console.log(this.authOptions);
+    }
+
+    checkToken(): Observable<ResponseData<any>> {
+        const api = '/index';
+        return this.http.get<ResponseData<any>>(
+            `${this.configService.requestUrl}${api}`,
+            this.authOptions
+        );
     }
 
     getTags(): Observable<ResponseData<TagData>> {

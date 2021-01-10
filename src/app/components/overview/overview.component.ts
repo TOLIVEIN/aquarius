@@ -3,25 +3,40 @@ import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'app-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.less'],
+    selector: 'app-overview',
+    templateUrl: './overview.component.html',
+    styleUrls: ['./overview.component.less'],
 })
 export class OverviewComponent implements OnInit {
-  nums = 5;
-  articles!: Article[];
-  constructor(
-    private authService: AuthService,
-    private dataService: DataService
-  ) {}
+    nums = 5;
+    articles!: Article[];
+    constructor(
+        private authService: AuthService,
+        private dataService: DataService
+    ) {}
 
-  ngOnInit(): void {
-    this.getArticles();
-  }
-  getArticles(): void {
-    this.dataService.getArticles().subscribe((res) => {
-      this.articles = res.data.articles;
-      console.log(res);
-    });
-  }
+    ngOnInit(): void {
+        this.checkToken();
+        this.getArticles();
+    }
+    getArticles(): void {
+        this.dataService.getArticles().subscribe((res) => {
+            this.articles = res.data.articles;
+            console.log(res);
+        });
+    }
+    checkToken(): void {
+        this.dataService.checkToken().subscribe(
+            (res) => {
+                // this.tags.push(...res.data);
+                console.log(res);
+            },
+            (error) => {
+                if (error.error.code !== 200) {
+                    // this.router.navigate(['signIn']);
+                    localStorage.removeItem('permissions');
+                }
+            }
+        );
+    }
 }
