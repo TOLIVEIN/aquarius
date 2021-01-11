@@ -25,28 +25,28 @@ export class SelectTagComponent implements OnInit {
     removable = true;
     separatorKeysCodes: number[] = [ENTER, COMMA];
     tagCtrl = new FormControl();
-    filteredTags: Observable<string[]>;
+    filteredTags!: Observable<string[]>;
     tags: string[] = [];
     allTags: string[] = [];
 
     constructor(private dataService: DataService) {
+        this.dataService.getTags().subscribe((res) => {
+            this.allTags = res.data.tags.map((tag) => tag.name);
+            console.log(this.allTags);
+            this.filteredTags = this.tagCtrl.valueChanges.pipe(
+                startWith(null),
+                map((tag: string | null) =>
+                    tag ? this.filterTag(tag) : this.allTags.slice()
+                )
+            );
+        });
+    }
+    ngOnInit(): void {
+        // throw new Error('Method not implemented.');
         // this.dataService.getTags().subscribe((res) => {
         //     this.allTags = res.data.tags.map((tag) => tag.name);
         //     console.log(this.allTags);
         // });
-        this.filteredTags = this.tagCtrl.valueChanges.pipe(
-            startWith(null),
-            map((tag: string | null) =>
-                tag ? this.filterTag(tag) : this.allTags.slice()
-            )
-        );
-    }
-    ngOnInit(): void {
-        // throw new Error('Method not implemented.');
-        this.dataService.getTags().subscribe((res) => {
-            this.allTags = res.data.tags.map((tag) => tag.name);
-            console.log(this.allTags);
-        });
     }
 
     add(event: MatChipInputEvent): void {
@@ -75,6 +75,7 @@ export class SelectTagComponent implements OnInit {
     }
 
     selected(event: MatAutocompleteSelectedEvent): void {
+        // console.log(event.option.viewValue);
         this.tags.push(event.option.viewValue);
         this.tagInput.nativeElement.value = '';
         this.tagCtrl.setValue(null);
