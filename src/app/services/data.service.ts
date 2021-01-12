@@ -12,6 +12,7 @@ export class DataService {
     signUpForm: FormGroup;
     tag: Tag;
     article: Article;
+    selectedTags: string[];
 
     authOptions = {
         headers: new HttpHeaders({
@@ -42,6 +43,8 @@ export class DataService {
         this.article.createdBy = this.authService.cookies.get('username') ?? '';
         this.article.updatedBy = this.authService.cookies.get('username') ?? '';
         // console.log(this.authOptions);
+
+        this.selectedTags = [] as string[]
     }
 
     checkToken(): Observable<ResponseData<any>> {

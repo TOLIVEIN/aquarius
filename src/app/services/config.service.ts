@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class ConfigService {
     configUrl = 'assets/config.json';
-    requestUrl = 'http://localhost:8000';
-    // requestUrl = 'http://42.192.102.206:8080';
+    // requestUrl = 'http://localhost:8000';
+    requestUrl = 'http://42.192.102.206:8080';
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     // eslint-disable-next-line @typescript-eslint/ban-types
     getConfig(): Observable<object> {
