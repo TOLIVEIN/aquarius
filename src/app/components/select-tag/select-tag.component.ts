@@ -77,6 +77,7 @@ export class SelectTagComponent implements OnInit {
     selected(event: MatAutocompleteSelectedEvent): void {
         // console.log(event.option.viewValue);
         this.tags.push(event.option.viewValue);
+        this.dataService.selectedTags = this.tags;
         this.tagInput.nativeElement.value = '';
         this.tagCtrl.setValue(null);
     }

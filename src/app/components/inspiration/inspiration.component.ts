@@ -13,7 +13,7 @@ export class InspirationComponent implements OnInit {
     constructor(
         private config: ConfigService,
         private dataService: DataService
-    ) { }
+    ) {}
 
     ngOnInit(): void {
         this.editor = new Editor('#editorMenu', '#editor');
@@ -40,6 +40,11 @@ export class InspirationComponent implements OnInit {
     addArticle(): void {
         const html = this.editor.txt.html() || '';
         console.log(html);
+        this.dataService
+            .getTagsByName(this.dataService.selectedTags)
+            .subscribe((res) => {
+                console.log(res);
+            });
         this.dataService.article.content = html;
         this.dataService.addArticle().subscribe((res) => {
             console.log(res.data);

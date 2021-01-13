@@ -44,7 +44,7 @@ export class DataService {
         this.article.updatedBy = this.authService.cookies.get('username') ?? '';
         // console.log(this.authOptions);
 
-        this.selectedTags = [] as string[]
+        this.selectedTags = [] as string[];
     }
 
     checkToken(): Observable<ResponseData<any>> {
@@ -57,6 +57,13 @@ export class DataService {
 
     getTags(): Observable<ResponseData<TagData>> {
         const api = '/api/tags';
+        return this.http.get<ResponseData<TagData>>(
+            `${this.configService.requestUrl}${api}`
+        );
+    }
+
+    getTagsByName(tagNames: string[]): Observable<ResponseData<TagData>> {
+        const api = `/api/tags?tagNames=${tagNames.join(',')}`;
         return this.http.get<ResponseData<TagData>>(
             `${this.configService.requestUrl}${api}`
         );
