@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
     MatAutocomplete,
-    MatAutocompleteSelectedEvent,
+    MatAutocompleteSelectedEvent
 } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
@@ -77,7 +77,7 @@ export class SelectTagComponent implements OnInit {
     selected(event: MatAutocompleteSelectedEvent): void {
         // console.log(event.option.viewValue);
         this.tags.push(event.option.viewValue);
-        this.dataService.article.tagNames = this.tags.join(',');
+        this.dataService.selectedTags = this.tags.join(',');
         this.tagInput.nativeElement.value = '';
         this.tagCtrl.setValue(null);
     }

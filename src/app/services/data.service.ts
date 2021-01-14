@@ -12,7 +12,7 @@ export class DataService {
     signUpForm: FormGroup;
     tag: Tag;
     article: Article;
-    // selectedTags: string[];
+    selectedTags: string;
 
     authOptions = {
         headers: new HttpHeaders({
@@ -44,7 +44,7 @@ export class DataService {
         this.article.updatedBy = this.authService.cookies.get('username') ?? '';
         // console.log(this.authOptions);
 
-        // this.selectedTags = [] as string[];
+        this.selectedTags = '';
     }
 
     checkToken(): Observable<ResponseData<any>> {
@@ -101,7 +101,7 @@ export class DataService {
         );
     }
     addArticle(): Observable<ResponseData<ArticleData>> {
-        const api = '/api/articles';
+        const api = `/api/articles?tags=${this.selectedTags}`;
         return this.http.post<ResponseData<ArticleData>>(
             `${this.configService.requestUrl}${api}`,
             this.article,
