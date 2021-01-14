@@ -58,6 +58,7 @@ type Article = Create & {
     coverImageURL: string;
     content: string;
     tags?: Tag[];
+    tagNames?: string;
 };
 interface ResponseData<T> {
     code: number;
