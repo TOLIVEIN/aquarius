@@ -48,6 +48,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     getTags(): void {
         this.dataService.getTags().subscribe((res) => {
             this.tags = res.data.tags;
+            this.dataService.tags = this.tags;
             console.log(this.tags);
         });
     }

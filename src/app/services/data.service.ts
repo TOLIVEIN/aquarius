@@ -11,8 +11,9 @@ import { ConfigService } from './config.service';
 export class DataService {
     signUpForm: FormGroup;
     tag: Tag;
+    tags: Tag[];
     article: Article;
-    selectedTags: string;
+    selectedTagIDs: string;
 
     authOptions = {
         headers: new HttpHeaders({
@@ -35,6 +36,7 @@ export class DataService {
         });
 
         this.tag = {} as Tag;
+        this.tags = [] as Tag[];
         this.tag.createdBy = this.authService.cookies.get('username') ?? '';
         this.tag.updatedBy = this.authService.cookies.get('username') ?? '';
 
@@ -44,7 +46,7 @@ export class DataService {
         this.article.updatedBy = this.authService.cookies.get('username') ?? '';
         // console.log(this.authOptions);
 
-        this.selectedTags = '';
+        this.selectedTagIDs = '';
     }
 
     checkToken(): Observable<ResponseData<any>> {
@@ -101,7 +103,7 @@ export class DataService {
         );
     }
     addArticle(): Observable<ResponseData<ArticleData>> {
-        const api = `/api/articles?tags=${this.selectedTags}`;
+        const api = `/api/articles?tags=${this.selectedTagIDs}`;
         return this.http.post<ResponseData<ArticleData>>(
             `${this.configService.requestUrl}${api}`,
             this.article,
