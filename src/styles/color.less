@@ -22,15 +22,15 @@
 @color-asberstos: #7f8c8d;
 
 @colors: @color-turquoise, @color-emerald, @color-peter-river, @color-amethyst,
-  @color-wet-asphalt, @color-green-sea, @color-nephritis, @color-belize-hole,
-  @color-wisteria, @color-midnight-blue, @color-sun-flower, @color-carrot,
-  @color-alizarin, @color-clouds, @color-concrete, @color-orange, @color-pumpkin,
-  @color-pomeganate, @color-silver, @color-asberstos;
+    @color-wet-asphalt, @color-green-sea, @color-nephritis, @color-belize-hole,
+    @color-wisteria, @color-midnight-blue, @color-sun-flower, @color-carrot,
+    @color-alizarin, @color-clouds, @color-concrete, @color-orange,
+    @color-pumpkin, @color-pomeganate, @color-silver, @color-asberstos;
 
 @length: length(@colors);
 
 body {
-  --color: extract(@colors, ~`Math.floor(Math.random() * 20) `);
+    --color: extract(@colors, ~`Math.floor(Math.random() * 20) `);
 }
 
 @color-black: black;

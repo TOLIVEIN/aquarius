@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.less'],
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.less'],
 })
 export class HeaderComponent implements OnInit {
-  title = 'Aquarius';
+    title = 'Aquarius';
 
-  constructor(private dataService: DataService) {}
+    constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {}
-
-
+    ngOnInit(): void {}
 }

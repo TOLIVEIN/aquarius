@@ -1,38 +1,38 @@
 <div id="sign-up-container">
-  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
-    <div>
-      <label for="name"> Usernanme </label>
-      <input
-        autocomplete="off"
-        id="username"
-        type="text"
-        formControlName="username"
-      />
-    </div>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
+        <div>
+            <label for="name"> Usernanme </label>
+            <input
+                autocomplete="off"
+                id="username"
+                type="text"
+                formControlName="username"
+            />
+        </div>
 
-    <div>
-      <label for="password"> Password </label>
-      <input id="password" type="password" formControlName="password" />
-    </div>
+        <div>
+            <label for="password"> Password </label>
+            <input id="password" type="password" formControlName="password" />
+        </div>
 
-    <div>
-      <label for="passwordConfirm"> Password </label>
-      <input
-        id="passwordConfirm"
-        type="password"
-        formControlName="passwordConfirm"
-      />
-    </div>
-    <div>
-      <label for="email"> Email </label>
-      <input
-        autocomplete="off"
-        id="email"
-        type="text"
-        formControlName="email"
-      />
-    </div>
+        <div>
+            <label for="passwordConfirm"> Password </label>
+            <input
+                id="passwordConfirm"
+                type="password"
+                formControlName="passwordConfirm"
+            />
+        </div>
+        <div>
+            <label for="email"> Email </label>
+            <input
+                autocomplete="off"
+                id="email"
+                type="text"
+                formControlName="email"
+            />
+        </div>
 
-    <button class="button" type="submit">SignUp</button>
-  </form>
+        <button class="button" type="submit">SignUp</button>
+    </form>
 </div>

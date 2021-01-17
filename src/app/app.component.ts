@@ -3,7 +3,7 @@ import {
     Component,
     ElementRef,
     OnInit,
-    ViewChild
+    ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -29,19 +29,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
 
     public mouseMove(event: MouseEvent): void {
-
         [this.coordinates.x, this.coordinates.y] = [event.x, event.y];
 
         const oneLetter: Letter = {} as Letter;
         oneLetter.x = this.coordinates.x - 10 + this.randomNumber(20, 0);
         oneLetter.y = this.coordinates.y + this.randomNumber(20, 0);
-        oneLetter.text = this.letters[this.randomNumber(this.letters.length, 0)];
+        oneLetter.text = this.letters[
+            this.randomNumber(this.letters.length, 0)
+        ];
         oneLetter.size = this.randomNumber(20, 8);
         oneLetter.shadowColor = 1;
         oneLetter.descendValue = this.randomNumber(6, 1);
         oneLetter.seven = this.randomNumber(20, 0);
         this.letter.push(oneLetter);
-
     }
 
     public resize(): void {
@@ -100,7 +100,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         for (const item of this.letter) {
             if (show === 2) {
                 if (this.letter) {
-                    item.text = this.letters[this.randomNumber(this.letters.length, 0)];
+                    item.text = this.letters[
+                        this.randomNumber(this.letters.length, 0)
+                    ];
                 }
             }
             if (this.letter) {
@@ -154,8 +156,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.drawText(hintText);
     }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     ngAfterViewInit(): void {
         this.canvasRef.nativeElement.width = this.appRef.nativeElement.offsetWidth;
@@ -164,5 +165,4 @@ export class AppComponent implements OnInit, AfterViewInit {
 
         this.fade();
     }
-
 }
