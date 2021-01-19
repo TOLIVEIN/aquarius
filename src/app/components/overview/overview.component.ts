@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -12,7 +13,8 @@ export class OverviewComponent implements OnInit {
     articles!: Article[];
     constructor(
         private authService: AuthService,
-        private dataService: DataService
+        private dataService: DataService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -33,8 +35,8 @@ export class OverviewComponent implements OnInit {
             },
             (error) => {
                 if (error.error.code !== 200) {
-                    // this.router.navigate(['signIn']);
                     localStorage.removeItem('permissions');
+                    // this.router.navigate(['signIn']);
                 }
             }
         );

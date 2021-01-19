@@ -15,6 +15,8 @@ export class DataService {
     article: Article;
     selectedTagIDs: string;
 
+    beforeSignInUrl: string;
+
     authOptions = {
         headers: new HttpHeaders({
             token: localStorage.getItem('token') ?? '',
@@ -47,6 +49,8 @@ export class DataService {
         // console.log(this.authOptions);
 
         this.selectedTagIDs = '';
+
+        this.beforeSignInUrl = '/read';
     }
 
     checkToken(): Observable<ResponseData<any>> {

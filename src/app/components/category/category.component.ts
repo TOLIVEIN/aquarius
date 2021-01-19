@@ -39,6 +39,8 @@ export class CategoryComponent implements OnInit, AfterViewInit {
             },
             (error) => {
                 if (error.error.code !== 200) {
+                    // console.log(this.router.url);
+                    this.dataService.beforeSignInUrl = this.router.url;
                     this.router.navigate(['signIn']);
                 }
             }
@@ -61,6 +63,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
             },
             (error) => {
                 if (error.error.code !== 200) {
+                    this.dataService.beforeSignInUrl = this.router.url;
                     this.router.navigate(['signIn']);
                 }
             }

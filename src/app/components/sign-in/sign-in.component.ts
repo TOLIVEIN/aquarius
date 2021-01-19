@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -17,7 +18,8 @@ export class SignInComponent implements OnInit {
     articles!: ArticleData;
     constructor(
         private dataService: DataService,
-        private authService: AuthService
+        private authService: AuthService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {}
@@ -42,6 +44,8 @@ export class SignInComponent implements OnInit {
                 }),
             };
             console.log(localStorage);
+
+            this.router.navigate([this.dataService.beforeSignInUrl]);
         });
     }
 
