@@ -5,6 +5,7 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BaseGuard } from './guards/base.guard';
+import { SignInGuard } from './guards/sign-in.guard';
 
 const routes: Routes = [
     {
@@ -24,6 +25,7 @@ const routes: Routes = [
     {
         path: 'signIn',
         component: SignInComponent,
+        canActivate: [SignInGuard],
     },
     {
         path: 'signUp',
