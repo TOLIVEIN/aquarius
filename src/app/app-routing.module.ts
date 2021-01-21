@@ -11,16 +11,11 @@ const routes: Routes = [
     {
         path: 'read',
         component: OverviewComponent,
-        // outlet: 'main',
     },
     {
         path: 'write',
         component: InspirationComponent,
         canActivate: [BaseGuard],
-        // data: {
-        //   permission: ['admin'],
-        // },
-        // outlet: 'main',
     },
     {
         path: 'signIn',

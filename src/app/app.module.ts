@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -24,7 +25,6 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
-
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function tokenGetter(): string | null {
     return localStorage.getItem('access_token');
@@ -58,6 +58,7 @@ export function tokenGetter(): string | null {
         MatCardModule,
         MatFormFieldModule,
         MatAutocompleteModule,
+        MatInputModule,
 
         //  HighlightModule
         JwtModule.forRoot({
