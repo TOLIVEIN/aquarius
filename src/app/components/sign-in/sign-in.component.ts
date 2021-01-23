@@ -45,6 +45,8 @@ export class SignInComponent implements OnInit {
             };
             console.log(localStorage);
 
+            this.authService.isSignIn.next(true);
+
             this.router.navigate([this.dataService.beforeSignInUrl]);
         });
     }

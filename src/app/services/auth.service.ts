@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ConfigService } from './config.service';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class AuthService {
     token: string;
     permissions: string[];
     cookies: Map<string, string> = new Map<string, string>();
+    isSignIn = new BehaviorSubject<boolean>(this.hasToken());
 
     constructor(
         private http: HttpClient,
@@ -40,5 +41,13 @@ export class AuthService {
             `${this.configService.requestUrl}${api}`,
             body
         );
+    }
+    signOut(): void {
+        localStorage.removeItem('token');
+        localStorage.removeItem('permissions');
+        this.isSignIn.next(false);
+    }
+    private hasToken(): boolean {
+        return !!localStorage.getItem('token');
     }
 }

@@ -17,7 +17,16 @@
         </button>
     </div>
     <div id="user">
-        <button mat-stroked-button [routerLink]="['/signIn']">SignIn</button>
+        <button mat-stroked-button *ngIf="!isSignIn" [routerLink]="['/signIn']">
+            SignIn
+        </button>
+        <button
+            mat-stroked-button
+            *ngIf="isSignIn"
+            (click)="authService.signOut()"
+        >
+            SignOut
+        </button>
         <button mat-stroked-button [routerLink]="['/signUp']">SignUp</button>
     </div>
     <!-- <div id="test">
