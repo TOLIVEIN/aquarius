@@ -33,7 +33,7 @@ export class AuthService {
             localStorage.getItem('permissions')?.split(',') ?? [];
     }
 
-    getAuth(): Observable<ResponseData<AuthData>> {
+    signIn(): Observable<ResponseData<AuthData>> {
         const api = '/auth';
         const body = this.signInForm.value;
         // console.log(body);
