@@ -20,11 +20,7 @@
         <button mat-stroked-button *ngIf="!isSignIn" [routerLink]="['/signIn']">
             SignIn
         </button>
-        <button
-            mat-stroked-button
-            *ngIf="isSignIn"
-            (click)="authService.signOut()"
-        >
+        <button mat-stroked-button *ngIf="isSignIn" (click)="signOut()">
             SignOut
         </button>
         <button mat-stroked-button *ngIf="!isSignIn" [routerLink]="['/signUp']">
