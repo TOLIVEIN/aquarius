@@ -23,8 +23,6 @@
         <button mat-button id="add-tag-button" (click)="addTag(tag.value)">
             Add
         </button>
-
-        <!-- <button (click)="addTag(tag.value)">Add</button> -->
     </div>
 
     <div id="get-tag-container">
@@ -42,12 +40,5 @@
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
         </mat-chip-list>
-        <!-- <ul>
-      <li *ngFor="let tag of tags">
-        {{ tag.ID }}
-        {{ tag.Name }}
-        {{ tag.CreatedBy }} 
-      </li>
-    </ul> -->
     </div>
 </div>
