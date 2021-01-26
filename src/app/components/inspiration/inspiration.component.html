@@ -15,18 +15,41 @@
   }"
 ></editor> -->
 <div id="inspiration-container">
-    <div id="title">
+    <!-- <div id="inspiration-title">
         <input
+            id="inspiration-title-input"
             type="text"
             placeholder="input article title"
             #title
             (keyup)="onKey(title.value)"
         />
-    </div>
-    <div id="select-tag">
+    </div> -->
+    <mat-form-field id="inspiration-title-form-field">
+        <mat-label id="inspiration-title-label">Add title</mat-label>
+        <input
+            id="inspiration-title-input"
+            matInput
+            type="text"
+            [(ngModel)]="title.value"
+            #title
+        />
+        <button
+            mat-button
+            *ngIf="title.value"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="title.value = ''"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <div id="inspiration-select-tag">
         <app-select-tag></app-select-tag>
     </div>
     <div id="editorMenu"></div>
     <div id="editor"></div>
-    <button (click)="addArticle()">Add Article</button>
+    <button id="inspiration-add-article" (click)="addArticle()">
+        Add Article
+    </button>
 </div>

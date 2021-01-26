@@ -27,11 +27,11 @@ export class SignInComponent implements OnInit {
     onSubmit(): void {
         this.signIn();
         this.saveCookie();
-        this.authService.signInForm.reset();
+        // this.authService.signInForm.reset();
     }
 
     signIn(): void {
-        this.authService.getAuth().subscribe((res) => {
+        this.authService.signIn().subscribe((res) => {
             this.authService.token = res.data.token;
             res.data.permissions?.split(',').forEach((permission) => {
                 this.authService.permissions.push(permission);
@@ -44,6 +44,8 @@ export class SignInComponent implements OnInit {
                 }),
             };
             console.log(localStorage);
+
+            this.authService.isSignIn.next(true);
 
             this.router.navigate([this.dataService.beforeSignInUrl]);
         });
