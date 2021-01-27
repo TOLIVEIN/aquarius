@@ -17,15 +17,24 @@
         </button>
     </div>
     <div id="user">
-        <button mat-stroked-button *ngIf="!isSignIn" [routerLink]="['/signIn']">
+        <mat-icon id="user-action" [matMenuTriggerFor]="signInMenu"
+            >face</mat-icon
+        >
+        <!-- <button mat-button [matMenuTriggerFor]="signInMenu">Menu</button> -->
+        <mat-menu #signInMenu="matMenu">
+            <button mat-menu-item *ngIf="!isSignIn" [routerLink]="['/signIn']">
+                SignIn
+            </button>
+            <button mat-menu-item *ngIf="isSignIn" (click)="signOut()">
+                SignOut
+            </button>
+            <button mat-menu-item *ngIf="!isSignIn" [routerLink]="['/signUp']">
+                SignUp
+            </button>
+        </mat-menu>
+        <!-- <button mat-stroked-button *ngIf="!isSignIn" [routerLink]="['/signIn']">
             SignIn
-        </button>
-        <button mat-stroked-button *ngIf="isSignIn" (click)="signOut()">
-            SignOut
-        </button>
-        <button mat-stroked-button *ngIf="!isSignIn" [routerLink]="['/signUp']">
-            SignUp
-        </button>
+        </button> -->
     </div>
     <!-- <div id="test">
         <button mat-button>Basic</button>

@@ -9,6 +9,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -59,7 +60,7 @@ export function tokenGetter(): string | null {
         MatFormFieldModule,
         MatAutocompleteModule,
         MatInputModule,
-
+        MatMenuModule,
         //  HighlightModule
         JwtModule.forRoot({
             config: {
