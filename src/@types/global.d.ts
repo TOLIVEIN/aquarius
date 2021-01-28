@@ -29,28 +29,28 @@ interface EffectRectangle {
     color: string;
 }
 
-type Create = {
+type BaseProperty = {
     id?: number;
     createdAt?: string;
     updatedAt?: string;
     deletedAt?: string;
 };
 
-type User = Create & {
+type User = BaseProperty & {
     username: string;
     password: string;
     passwordConfirm?: string;
     email?: string;
 };
 
-type Tag = Create & {
+type Tag = BaseProperty & {
     name: string;
     createdBy: string;
     updatedBy: string;
     articles?: Article[];
 };
 
-type Article = Create & {
+type Article = BaseProperty & {
     createdBy: string;
     updatedBy: string;
     title: string;
