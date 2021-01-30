@@ -32,6 +32,7 @@
             type="text"
             [(ngModel)]="title.value"
             #title
+            (keyup)="onKey(title.value)"
         />
         <button
             mat-button

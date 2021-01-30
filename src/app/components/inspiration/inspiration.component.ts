@@ -36,6 +36,7 @@ export class InspirationComponent implements OnInit {
 
     onKey(title: string) {
         this.dataService.article.title = title;
+        console.log(title);
     }
     addArticle(): void {
         const html = this.editor.txt.html() || '';

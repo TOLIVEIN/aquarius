@@ -12,6 +12,15 @@
     height: 90%;
 }
 
+.overview-article-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
 :host(app-overview) {
     overflow: auto;
+    opacity: 0.5;
 }
