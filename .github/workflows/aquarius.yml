@@ -74,3 +74,17 @@ jobs:
 
                   docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
                   docker push $IMAGE_ID:$VERSION
+
+    deploy:
+        needs: push
+
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy aquarius
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.KEY }}
+                  port: ${{ secrets.PORT }}
+                  script: docker stop aquarius && docker rm aquarius && docker pull docker.pkg.github.com/tolivein/aquarius/aquarius:latest && docker run --name aquarius -d docker.pkg.github.com/tolivein/aquarius/aquarius
