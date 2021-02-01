@@ -87,4 +87,4 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   key: ${{ secrets.KEY }}
                   port: ${{ secrets.PORT }}
-                  script: docker stop aquarius && docker rm aquarius && docker pull docker.pkg.github.com/tolivein/aquarius/aquarius:latest && docker run --name aquarius -d docker.pkg.github.com/tolivein/aquarius/aquarius
+                  script: docker stop aquarius && docker rm aquarius && docker pull docker.pkg.github.com/tolivein/aquarius/aquarius:latest && docker run --name aquarius -p 80:80 -d docker.pkg.github.com/tolivein/aquarius/aquarius
