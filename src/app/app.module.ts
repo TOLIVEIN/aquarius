@@ -13,7 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
-import { EditorModule } from '@tinymce/tinymce-angular';
+// import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
@@ -48,7 +48,7 @@ export function tokenGetter(): string | null {
     imports: [
         BrowserModule,
         AppRoutingModule,
-        EditorModule,
+        // EditorModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
