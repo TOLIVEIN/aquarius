@@ -13,7 +13,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
-// import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
@@ -26,10 +25,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
-// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-export function tokenGetter(): string | null {
-    return localStorage.getItem('access_token');
-}
+export const tokenGetter = (): string | null =>
+    localStorage.getItem('access_token');
 
 @NgModule({
     declarations: [
@@ -48,7 +45,6 @@ export function tokenGetter(): string | null {
     imports: [
         BrowserModule,
         AppRoutingModule,
-        // EditorModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
