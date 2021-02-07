@@ -32,22 +32,24 @@ export class SignInComponent implements OnInit {
 
     signIn(): void {
         this.authService.signIn().subscribe((res) => {
-            this.authService.token = res.data.token;
-            res.data.permissions?.split(',').forEach((permission) => {
-                this.authService.permissions.push(permission);
-            });
-            localStorage.setItem('token', this.authService.token);
-            localStorage.setItem('permissions', res.data.permissions ?? '');
-            this.dataService.authOptions = {
-                headers: new HttpHeaders({
-                    token: localStorage.getItem('token') ?? '',
-                }),
-            };
-            console.log(localStorage);
+            if (res.data.token) {
+                this.authService.token = res.data.token;
+                res.data.permissions?.split(',').forEach((permission) => {
+                    this.authService.permissions.push(permission);
+                });
+                localStorage.setItem('token', this.authService.token);
+                localStorage.setItem('permissions', res.data.permissions ?? '');
+                this.dataService.authOptions = {
+                    headers: new HttpHeaders({
+                        token: localStorage.getItem('token') ?? '',
+                    }),
+                };
+                console.log(localStorage);
 
-            this.authService.isSignIn.next(true);
+                this.authService.isSignIn.next(true);
 
-            this.router.navigate([this.dataService.beforeSignInUrl]);
+                this.router.navigate([this.dataService.beforeSignInUrl]);
+            }
         });
     }
 
