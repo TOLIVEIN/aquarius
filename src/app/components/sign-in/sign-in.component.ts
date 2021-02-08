@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit {
 
     tags!: TagData;
     articles!: ArticleData;
+    hide = true;
     constructor(
         private dataService: DataService,
         private authService: AuthService,
