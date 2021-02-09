@@ -1,9 +1,9 @@
-<div id="category-container">
-    <div id="add-tag-container">
-        <mat-form-field id="add-tag-form-field">
-            <mat-label id="add-tag-label">Add a tag</mat-label>
+<div class="category-container">
+    <div class="category-add-tag-container">
+        <mat-form-field class="category-add-tag-form-field">
+            <mat-label class="category-add-tag-label">Add a tag</mat-label>
             <input
-                id="add-tag-input"
+                class="category-add-tag-input"
                 matInput
                 type="text"
                 [(ngModel)]="tag.value"
@@ -20,12 +20,16 @@
                 <mat-icon>close</mat-icon>
             </button>
         </mat-form-field>
-        <button mat-button id="add-tag-button" (click)="addTag(tag.value)">
+        <button
+            mat-button
+            class="category-add-tag-button"
+            (click)="addTag(tag.value)"
+        >
             Add
         </button>
     </div>
 
-    <div id="get-tag-container">
+    <div class="category-get-tag-container">
         <mat-chip-list
             class="mat-chip-list-stacked"
             aria-orientation="vertical"

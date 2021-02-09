@@ -1,33 +1,8 @@
-<!-- <h1>TinyMCE 5 Angular Demo</h1>
-<editor
-  [init]="{
-    height: 500,
-    menubar: false,
-    plugins: [
-      'advlist autolink lists link image charmap print preview anchor',
-      'searchreplace visualblocks code fullscreen',
-      'insertdatetime media table paste code help wordcount'
-    ],
-    toolbar:
-      'undo redo | formatselect | bold italic backcolor | \
-      alignleft aligncenter alignright alignjustify | \
-      bullist numlist outdent indent | removeformat | help'
-  }"
-></editor> -->
-<div id="inspiration-container">
-    <!-- <div id="inspiration-title">
+<div class="inspiration-container">
+    <mat-form-field class="inspiration-title-form-field">
+        <mat-label class="inspiration-title-label">Add title</mat-label>
         <input
-            id="inspiration-title-input"
-            type="text"
-            placeholder="input article title"
-            #title
-            (keyup)="onKey(title.value)"
-        />
-    </div> -->
-    <mat-form-field id="inspiration-title-form-field">
-        <mat-label id="inspiration-title-label">Add title</mat-label>
-        <input
-            id="inspiration-title-input"
+            class="inspiration-title-input"
             matInput
             type="text"
             [(ngModel)]="title.value"
@@ -45,12 +20,12 @@
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
-    <div id="inspiration-select-tag">
+    <div class="inspiration-select-tag">
         <app-select-tag></app-select-tag>
     </div>
-    <div id="editorMenu"></div>
-    <div id="editor"></div>
-    <button id="inspiration-add-article" (click)="addArticle()">
+    <div class="inspiration-editor-menu"></div>
+    <div class="inspiration-editor"></div>
+    <button class="inspiration-add-article" (click)="addArticle()">
         Add Article
     </button>
 </div>

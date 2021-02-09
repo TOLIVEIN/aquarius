@@ -1,29 +1,19 @@
 @import "../styles/color.less";
-#app-container {
-    // background-color: black;
+.app-container {
     overflow: hidden;
-    // user-select: none;
     margin: 0;
-
     width: 100%;
     height: 100%;
     color: @color-silver;
-
-    // .background-canvas {
-    //     width: 100%;
-    //     height: 100%;
-    // }
-
-    .background-canvas {
-        // background: black;
-        background: @color-black;
-        position: absolute;
-        z-index: -1;
-        opacity: 0.5;
-    }
+}
+.app-background-canvas {
+    background: @color-black;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.5;
 }
 
-header {
+.app-header-container {
     h1 {
         margin: 0;
     }
@@ -33,15 +23,14 @@ header {
     margin-bottom: 0.5rem;
 }
 
-main {
+.app-main-container {
     height: 87%;
-    // border: 1px solid @color-asberstos;
 }
 
-footer {
+.app-footer-container {
     height: 5%;
 }
 
-app-main {
+.app-main {
     height: 100%;
 }

@@ -13,7 +13,10 @@ export class InspirationComponent implements OnInit {
     constructor(private dataService: DataService) {}
 
     ngOnInit(): void {
-        this.editor = new Editor('#editorMenu', '#editor');
+        this.editor = new Editor(
+            '.inspiration-editor-menu',
+            '.inspiration-editor'
+        );
         // this.editor.highlight = hljs;
 
         this.editor.config.placeholder = '输入文章内容';

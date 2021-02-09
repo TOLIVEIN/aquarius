@@ -1,26 +1,19 @@
-<div id="header-container">
-    <div id="title">
+<div class="header-container">
+    <div class="header-title">
         <h1>{{ title }}</h1>
     </div>
-    <!-- <button [routerLink]="['/', { outlets: { main: ['read'] } }]">
-    Overview
-  </button>
-  <button [routerLink]="['/', { outlets: { main: ['write'] } }]">
-    Inspiration
-  </button> -->
-    <div id="read">
+    <div class="header-read">
         <button mat-stroked-button [routerLink]="['/read']">Overview</button>
     </div>
-    <div id="write">
+    <div class="header-write">
         <button mat-stroked-button [routerLink]="['/write']">
             Inspiration
         </button>
     </div>
-    <div id="user">
-        <mat-icon id="user-action" [matMenuTriggerFor]="signInMenu"
+    <div class="header-user">
+        <mat-icon class="header-user-action" [matMenuTriggerFor]="signInMenu"
             >face</mat-icon
         >
-        <!-- <button mat-button [matMenuTriggerFor]="signInMenu">Menu</button> -->
         <mat-menu #signInMenu="matMenu">
             <button mat-menu-item *ngIf="!isSignIn" [routerLink]="['/signIn']">
                 SignIn
@@ -32,14 +25,5 @@
                 SignUp
             </button>
         </mat-menu>
-        <!-- <button mat-stroked-button *ngIf="!isSignIn" [routerLink]="['/signIn']">
-            SignIn
-        </button> -->
     </div>
-    <!-- <div id="test">
-        <button mat-button>Basic</button>
-        <button mat-button color="primary">Primary</button>
-        <button mat-button color="accent">Accent</button>
-        <button mat-button color="warn">Warn</button>
-    </div> -->
 </div>
