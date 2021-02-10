@@ -2,17 +2,29 @@
     <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
         <div>
             <mat-form-field appearance="outline">
-                <mat-label>Enter your username</mat-label>
-                <input matInput placeholder="Username" />
+                <mat-label class="sign-in-username-label"
+                    >Enter your username</mat-label
+                >
+                <input
+                    matInput
+                    autocomplete="off"
+                    placeholder="Username"
+                    class="sign-in-username-input"
+                />
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Hint</mat-hint>
             </mat-form-field>
         </div>
 
         <div>
             <mat-form-field appearance="outline">
-                <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" />
+                <mat-label class="sign-in-password-label"
+                    >Enter your password</mat-label
+                >
+                <input
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    class="sign-in-password-input"
+                />
                 <button
                     mat-icon-button
                     matSuffix
