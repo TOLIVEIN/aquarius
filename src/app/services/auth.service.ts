@@ -36,7 +36,6 @@ export class AuthService {
     signIn(): Observable<ResponseData<AuthData>> {
         const api = '/auth';
         const body = this.signInForm.value;
-        // console.log(body);
         return this.http.post<ResponseData<AuthData>>(
             `${this.configService.requestUrl}${api}`,
             body

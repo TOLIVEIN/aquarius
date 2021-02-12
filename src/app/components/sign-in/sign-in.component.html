@@ -8,10 +8,12 @@
                 <input
                     matInput
                     autocomplete="off"
-                    placeholder="Username"
                     class="sign-in-username-input"
+                    formControlName="username"
                 />
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-icon matSuffix class="sign-in-username-icon"
+                    >sentiment_very_satisfied</mat-icon
+                >
             </mat-form-field>
         </div>
 
@@ -24,18 +26,16 @@
                     matInput
                     [type]="hide ? 'password' : 'text'"
                     class="sign-in-password-input"
+                    formControlName="password"
                 />
-                <button
-                    mat-icon-button
+                <mat-icon
                     matSuffix
+                    class="sign-in-password-icon"
                     (click)="hide = !hide"
                     [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide"
+                    >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
                 >
-                    <mat-icon>{{
-                        hide ? "visibility_off" : "visibility"
-                    }}</mat-icon>
-                </button>
             </mat-form-field>
         </div>
 

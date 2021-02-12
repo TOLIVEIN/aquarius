@@ -22,12 +22,13 @@ export class BaseGuard implements CanActivate {
         | Promise<boolean | UrlTree>
         | boolean
         | UrlTree {
-        // const permissionList = route.data.permission;
         const permissionList = this.authService.permissions;
-        const canActivate = permissionList.includes('user');
-        // if (!canActivate) {
-        //     this.router.navigate(['singIn']);
-        // }
+        let canActivate = permissionList.includes('user');
+        this.authService.isSignIn.subscribe(() => {
+            canActivate = (
+                localStorage.getItem('permissions')?.split(',') ?? []
+            ).includes('user');
+        });
         return canActivate;
     }
 }
