@@ -1,5 +1,5 @@
-<div id="sign-in-container">
-    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+<div class="sign-in-container">
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="sign-in-form">
         <div>
             <mat-form-field appearance="outline">
                 <mat-label class="sign-in-username-label"
@@ -39,6 +39,9 @@
             </mat-form-field>
         </div>
 
-        <button class="button" type="submit">SignIn</button>
+        <!-- <button class="button" type="submit">SignIn</button> -->
+        <button mat-button class="sign-in-submit-button" type="submit">
+            SignIn
+        </button>
     </form>
 </div>
