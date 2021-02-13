@@ -8,9 +8,28 @@ import { DataService } from '../../services/data.service';
     styleUrls: ['./sign-up.component.less'],
 })
 export class SignUpComponent implements OnInit {
-    constructor(private dataService: DataService) {}
+    hide = true;
+    // email = new FormControl('', [Validators.required, Validators.email]);
+    // email;
+    // signUpForm;
+    constructor(private dataService: DataService) {
+        // this.email =
+        //     this.dataService.signUpForm.get('email') ??
+        //     new FormControl('', [Validators.required, Validators.email]);
+        // this.signUpForm = this.dataService.signUpForm;
+    }
 
     ngOnInit(): void {}
+
+    getErrorMessage() {
+        if (this.signUpForm.get('email')?.hasError('required')) {
+            return 'You must enter a value';
+        }
+
+        return this.signUpForm.get('email')?.get('email')?.hasError('email')
+            ? 'Not a valid email'
+            : '';
+    }
 
     onSubmit(formData: FormGroup): void {
         this.signUp();

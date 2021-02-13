@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ConfigService } from './config.service';
@@ -31,10 +31,19 @@ export class DataService {
     ) {
         // this.signUpForm = {} as FormGroup;
         this.signUpForm = this.formBuilder.group({
-            username: '',
-            password: '',
-            passwordConfirm: '',
-            email: '',
+            username: [
+                '',
+                [
+                    Validators.required,
+                    Validators.pattern('^[a-zA-Z0-9_\u4e00-\u9fa5]+$'),
+                ],
+            ],
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            passwordConfirm: [
+                '',
+                [Validators.required, Validators.minLength(6)],
+            ],
+            email: ['', [Validators.required, Validators.email]],
         });
 
         this.tag = {} as Tag;
