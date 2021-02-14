@@ -9,17 +9,12 @@ import { environment } from '../../environments/environment';
 export class ConfigService {
     configUrl = 'assets/config.json';
     requestUrl = environment.baseUrl;
-    // requestUrl = 'http://localhost:8000';
-    // requestUrl = 'http://42.192.102.206:8080';
+    letters =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*~`/.,<>?|]}{[';
 
     constructor(private http: HttpClient) {}
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    getConfig(): Observable<object> {
+    getConfig(): Observable<unknown> {
         return this.http.get(this.configUrl);
     }
-
-    // postHtml(): void {
-
-    // }
 }

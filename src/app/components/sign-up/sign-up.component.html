@@ -15,6 +15,12 @@
                 <mat-icon matSuffix class="sign-up-username-icon">
                     account_circle</mat-icon
                 >
+                <mat-error
+                    *ngIf="signUpForm.get('username')?.invalid"
+                    class="sign-up-username-error"
+                >
+                    {{ getUsernameErrorMessage() }}
+                </mat-error>
             </mat-form-field>
         </div>
         <div>
@@ -25,7 +31,7 @@
                 <input
                     matInput
                     autocomplete="off"
-                    [type]="hide ? 'password' : 'text'"
+                    [type]="hidePassword ? 'password' : 'text'"
                     class="sign-up-password-input"
                     formControlName="password"
                     required
@@ -33,11 +39,19 @@
                 <mat-icon
                     matSuffix
                     class="sign-up-password-icon"
-                    (click)="hide = !hide"
+                    (click)="hidePassword = !hidePassword"
                     [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide"
-                    >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+                    [attr.aria-pressed]="hidePassword"
+                    >{{
+                        hidePassword ? "visibility_off" : "visibility"
+                    }}</mat-icon
                 >
+                <mat-error
+                    *ngIf="signUpForm.get('password')?.invalid"
+                    class="sign-up-password-error"
+                >
+                    {{ getPasswordErrorMessage() }}
+                </mat-error>
             </mat-form-field>
         </div>
         <div>
@@ -48,7 +62,7 @@
                 <input
                     matInput
                     autocomplete="off"
-                    [type]="hide ? 'password' : 'text'"
+                    [type]="hidePasswordConfirm ? 'password' : 'text'"
                     class="sign-up-password-confirm-input"
                     formControlName="passwordConfirm"
                     required
@@ -56,11 +70,19 @@
                 <mat-icon
                     matSuffix
                     class="sign-up-password-confirm-icon"
-                    (click)="hide = !hide"
+                    (click)="hidePasswordConfirm = !hidePasswordConfirm"
                     [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide"
-                    >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+                    [attr.aria-pressed]="hidePasswordConfirm"
+                    >{{
+                        hidePasswordConfirm ? "visibility_off" : "visibility"
+                    }}</mat-icon
                 >
+                <mat-error
+                    *ngIf="signUpForm.get('passwordConfirm')?.invalid"
+                    class="sign-up-password-confirm-error"
+                >
+                    {{ getPasswordConfirmErrorMessage() }}
+                </mat-error>
             </mat-form-field>
         </div>
         <div>
@@ -80,7 +102,7 @@
                 <mat-error
                     *ngIf="signUpForm.get('email')?.invalid"
                     class="sign-up-email-error"
-                    >{{ getErrorMessage() }}</mat-error
+                    >{{ getEmailErrorMessage() }}</mat-error
                 >
             </mat-form-field>
         </div>

@@ -5,6 +5,7 @@ import {
     OnInit,
     ViewChild,
 } from '@angular/core';
+import { ConfigService } from './services/config.service';
 
 @Component({
     selector: 'app-root',
@@ -24,9 +25,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     letter = [] as Letter[];
     ctx = {} as CanvasRenderingContext2D;
 
-    private letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*~`/.,<>?|]}{['.split(
-        ''
-    );
+    private letters;
+    constructor(private configService: ConfigService) {
+        this.letters = this.configService.letters.split('');
+    }
 
     public mouseMove(event: MouseEvent): void {
         [this.coordinates.x, this.coordinates.y] = [event.x, event.y];

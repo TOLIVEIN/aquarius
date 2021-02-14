@@ -29,22 +29,21 @@ export class DataService {
         private formBuilder: FormBuilder,
         private authService: AuthService
     ) {
-        // this.signUpForm = {} as FormGroup;
-        this.signUpForm = this.formBuilder.group({
-            username: [
-                '',
-                [
-                    Validators.required,
-                    Validators.pattern('^[a-zA-Z0-9_\u4e00-\u9fa5]+$'),
+        this.signUpForm = this.formBuilder.group(
+            {
+                username: [
+                    '',
+                    [
+                        Validators.required,
+                        Validators.pattern('^[a-zA-Z0-9_\u4e00-\u9fa5]+$'),
+                    ],
                 ],
-            ],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-            passwordConfirm: [
-                '',
-                [Validators.required, Validators.minLength(6)],
-            ],
-            email: ['', [Validators.required, Validators.email]],
-        });
+                password: ['', [Validators.required, Validators.minLength(6)]],
+                passwordConfirm: ['', [Validators.required]],
+                email: ['', [Validators.required, Validators.email]],
+            },
+            { validators: this.mustMatch('password', 'passwordConfirm') }
+        );
 
         this.tag = {} as Tag;
         this.tags = [] as Tag[];
@@ -60,6 +59,34 @@ export class DataService {
         this.selectedTagIDs = '';
 
         this.beforeSignInUrl = '/read';
+    }
+
+    // checkPasswords(group: FormGroup) {
+    //     const password = group.get('password')?.value;
+    //     const passwordConfirm = group.get('passwordConfirm')?.value;
+
+    //     const state = password === passwordConfirm ? null : { notSame: true };
+
+    //     console.log(state);
+
+    //     return password === passwordConfirm ? null : { notSame: true };
+    // }
+
+    mustMatch(controlName: string, matchingControlName: string) {
+        return (formGroup: FormGroup) => {
+            const control = formGroup.controls[controlName];
+            const matchingControl = formGroup.controls[matchingControlName];
+
+            if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+                return;
+            }
+
+            if (control.value !== matchingControl.value) {
+                matchingControl.setErrors({ mustMatch: true });
+            } else {
+                matchingControl.setErrors(null);
+            }
+        };
     }
 
     checkToken(): Observable<ResponseData<any>> {

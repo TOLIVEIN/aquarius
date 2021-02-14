@@ -8,25 +8,49 @@ import { DataService } from '../../services/data.service';
     styleUrls: ['./sign-up.component.less'],
 })
 export class SignUpComponent implements OnInit {
-    hide = true;
-    // email = new FormControl('', [Validators.required, Validators.email]);
-    // email;
-    // signUpForm;
-    constructor(private dataService: DataService) {
-        // this.email =
-        //     this.dataService.signUpForm.get('email') ??
-        //     new FormControl('', [Validators.required, Validators.email]);
-        // this.signUpForm = this.dataService.signUpForm;
-    }
+    hidePassword = true;
+    hidePasswordConfirm = true;
+
+    constructor(private dataService: DataService) {}
 
     ngOnInit(): void {}
 
-    getErrorMessage() {
+    getUsernameErrorMessage() {
+        if (this.signUpForm.get('username')?.hasError('required')) {
+            return 'You must enter a value';
+        }
+
+        return this.signUpForm.get('username')?.hasError('pattern')
+            ? 'Username format error'
+            : '';
+    }
+
+    getPasswordErrorMessage() {
+        if (this.signUpForm.get('password')?.hasError('required')) {
+            return 'You must enter a value';
+        }
+
+        return this.signUpForm.get('password')?.hasError('minlength')
+            ? 'Password need to be 6 or more'
+            : '';
+    }
+
+    getPasswordConfirmErrorMessage() {
+        if (this.signUpForm.get('passwordConfirm')?.hasError('required')) {
+            return 'You must enter a value';
+        }
+
+        return this.signUpForm.get('passwordConfirm')?.hasError('mustMatch')
+            ? 'Password do not match'
+            : '';
+    }
+
+    getEmailErrorMessage() {
         if (this.signUpForm.get('email')?.hasError('required')) {
             return 'You must enter a value';
         }
 
-        return this.signUpForm.get('email')?.get('email')?.hasError('email')
+        return this.signUpForm.get('email')?.hasError('email')
             ? 'Not a valid email'
             : '';
     }
@@ -34,13 +58,10 @@ export class SignUpComponent implements OnInit {
     onSubmit(formData: FormGroup): void {
         this.signUp();
         this.dataService.signUpForm.reset();
-        // console.log(formData)
     }
 
     signUp(): void {
         this.dataService.addUser().subscribe((res) => {
-            // console.log(data);
-            // this.token = res.data.token;
             console.log(res);
         });
     }
