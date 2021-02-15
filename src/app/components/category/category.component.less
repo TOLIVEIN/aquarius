@@ -2,29 +2,39 @@
 li {
     list-style: none;
 }
-mat-chip {
+.mat-chip {
     width: fit-content !important;
     height: 100%;
     line-height: 100%;
 }
 
-.category-add-tag-label {
-    // color: #3f51b5;
-    color: @color-wisteria;
-}
+// .category-add-tag-label {
+//     color: @color-wisteria;
+// }
 
-.category-add-tag-input {
-    color: @color-wisteria;
-}
+// .category-add-tag-input {
+//     color: @color-wisteria;
+// }
 
 .category-add-tag-button {
     width: fit-content;
-    color: @color-wisteria;
+    // color: @color-wisteria;
 }
 
 .category-container {
     height: 100%;
     display: grid;
     grid-template-rows: 1fr 4fr;
+}
+
+.category-add-tag-container {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
+    justify-content: center;
+}
+
+.category-get-tag-container {
+    margin: 1rem;
 }
