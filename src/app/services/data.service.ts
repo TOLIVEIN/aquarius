@@ -61,17 +61,6 @@ export class DataService {
         this.beforeSignInUrl = '/read';
     }
 
-    // checkPasswords(group: FormGroup) {
-    //     const password = group.get('password')?.value;
-    //     const passwordConfirm = group.get('passwordConfirm')?.value;
-
-    //     const state = password === passwordConfirm ? null : { notSame: true };
-
-    //     console.log(state);
-
-    //     return password === passwordConfirm ? null : { notSame: true };
-    // }
-
     mustMatch(controlName: string, matchingControlName: string) {
         return (formGroup: FormGroup) => {
             const control = formGroup.controls[controlName];

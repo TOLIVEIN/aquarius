@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ConfigService } from './config.service';
 
@@ -24,8 +24,17 @@ export class AuthService {
             this.cookies.set(item.split('=')[0], item.split('=')[1]);
         });
         this.signInForm = this.formBuilder.group({
-            username: this.cookies.get('username') ?? '',
-            password: this.cookies.get('password') ?? '',
+            username: [
+                this.cookies.get('username') ?? '',
+                [
+                    Validators.required,
+                    Validators.pattern('^[a-zA-Z0-9_\u4e00-\u9fa5]+$'),
+                ],
+            ],
+            password: [
+                this.cookies.get('password') ?? '',
+                [Validators.required, Validators.minLength(6)],
+            ],
         });
 
         this.token = localStorage.getItem('token') ?? '';

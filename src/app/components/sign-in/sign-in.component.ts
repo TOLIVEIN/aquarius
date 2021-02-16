@@ -25,6 +25,26 @@ export class SignInComponent implements OnInit {
 
     ngOnInit(): void {}
 
+    getUsernameErrorMessage() {
+        if (this.signInForm.get('username')?.hasError('required')) {
+            return 'You must enter a value';
+        }
+
+        return this.signInForm.get('username')?.hasError('pattern')
+            ? 'Username format error'
+            : '';
+    }
+
+    getPasswordErrorMessage() {
+        if (this.signInForm.get('password')?.hasError('required')) {
+            return 'You must enter a value';
+        }
+
+        return this.signInForm.get('password')?.hasError('minlength')
+            ? 'Password need to be 6 or more'
+            : '';
+    }
+
     onSubmit(): void {
         this.signIn();
         this.saveCookie();

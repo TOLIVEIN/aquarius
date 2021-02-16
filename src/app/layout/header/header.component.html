@@ -16,13 +16,13 @@
         >
         <mat-menu #signInMenu="matMenu">
             <button mat-menu-item *ngIf="!isSignIn" [routerLink]="['/signIn']">
-                SignIn
+                Sign In
             </button>
             <button mat-menu-item *ngIf="isSignIn" (click)="signOut()">
-                SignOut
+                Sign Out
             </button>
             <button mat-menu-item *ngIf="!isSignIn" [routerLink]="['/signUp']">
-                SignUp
+                Sign Up
             </button>
         </mat-menu>
     </div>
