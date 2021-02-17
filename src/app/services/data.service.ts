@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ConfigService } from './config.service';
@@ -9,7 +9,6 @@ import { ConfigService } from './config.service';
     providedIn: 'root',
 })
 export class DataService {
-    signUpForm: FormGroup;
     tag: Tag;
     tags: Tag[];
     article: Article;
@@ -29,22 +28,6 @@ export class DataService {
         private formBuilder: FormBuilder,
         private authService: AuthService
     ) {
-        this.signUpForm = this.formBuilder.group(
-            {
-                username: [
-                    '',
-                    [
-                        Validators.required,
-                        Validators.pattern('^[a-zA-Z0-9_\u4e00-\u9fa5]+$'),
-                    ],
-                ],
-                password: ['', [Validators.required, Validators.minLength(6)]],
-                passwordConfirm: ['', [Validators.required]],
-                email: ['', [Validators.required, Validators.email]],
-            },
-            { validators: this.mustMatch('password', 'passwordConfirm') }
-        );
-
         this.tag = {} as Tag;
         this.tags = [] as Tag[];
         this.tag.createdBy = this.authService.cookies.get('username') ?? '';
@@ -59,23 +42,6 @@ export class DataService {
         this.selectedTagIDs = '';
 
         this.beforeSignInUrl = '/read';
-    }
-
-    mustMatch(controlName: string, matchingControlName: string) {
-        return (formGroup: FormGroup) => {
-            const control = formGroup.controls[controlName];
-            const matchingControl = formGroup.controls[matchingControlName];
-
-            if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-                return;
-            }
-
-            if (control.value !== matchingControl.value) {
-                matchingControl.setErrors({ mustMatch: true });
-            } else {
-                matchingControl.setErrors(null);
-            }
-        };
     }
 
     checkToken(): Observable<ResponseData<any>> {
@@ -114,7 +80,7 @@ export class DataService {
     }
     addUser(): Observable<Record<string, unknown>> {
         const api = '/api/users';
-        const user = this.signUpForm.value;
+        const user = this.authService.signUpForm.value;
         console.log(user);
         return this.http.post<Record<string, unknown>>(
             `${this.configService.requestUrl}${api}`,

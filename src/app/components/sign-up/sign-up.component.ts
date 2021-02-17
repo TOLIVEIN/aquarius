@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class SignUpComponent implements OnInit {
     hidePassword = true;
     hidePasswordConfirm = true;
 
-    constructor(private dataService: DataService) {}
+    constructor(
+        private authService: AuthService,
+        private dataService: DataService
+    ) {}
 
     ngOnInit(): void {}
 
@@ -57,7 +61,7 @@ export class SignUpComponent implements OnInit {
 
     onSubmit(formData: FormGroup): void {
         this.signUp();
-        this.dataService.signUpForm.reset();
+        this.authService.signUpForm.reset();
     }
 
     signUp(): void {
@@ -66,6 +70,6 @@ export class SignUpComponent implements OnInit {
         });
     }
     get signUpForm(): FormGroup {
-        return this.dataService.signUpForm;
+        return this.authService.signUpForm;
     }
 }

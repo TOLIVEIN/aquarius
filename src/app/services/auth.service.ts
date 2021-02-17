@@ -9,6 +9,7 @@ import { ConfigService } from './config.service';
 })
 export class AuthService {
     signInForm: FormGroup;
+    signUpForm: FormGroup;
     token: string;
     permissions: string[];
     cookies: Map<string, string> = new Map<string, string>();
@@ -37,6 +38,22 @@ export class AuthService {
             ],
         });
 
+        this.signUpForm = this.formBuilder.group(
+            {
+                username: [
+                    '',
+                    [
+                        Validators.required,
+                        Validators.pattern('^[a-zA-Z0-9_\u4e00-\u9fa5]+$'),
+                    ],
+                ],
+                password: ['', [Validators.required, Validators.minLength(6)]],
+                passwordConfirm: ['', [Validators.required]],
+                email: ['', [Validators.required, Validators.email]],
+            },
+            { validators: this.mustMatch('password', 'passwordConfirm') }
+        );
+
         this.token = localStorage.getItem('token') ?? '';
         this.permissions =
             localStorage.getItem('permissions')?.split(',') ?? [];
@@ -57,5 +74,22 @@ export class AuthService {
     }
     private hasToken(): boolean {
         return !!localStorage.getItem('token');
+    }
+
+    private mustMatch(controlName: string, matchingControlName: string) {
+        return (formGroup: FormGroup) => {
+            const control = formGroup.controls[controlName];
+            const matchingControl = formGroup.controls[matchingControlName];
+
+            if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+                return;
+            }
+
+            if (control.value !== matchingControl.value) {
+                matchingControl.setErrors({ mustMatch: true });
+            } else {
+                matchingControl.setErrors(null);
+            }
+        };
     }
 }
