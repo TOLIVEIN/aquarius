@@ -37,16 +37,15 @@ export class DataService {
         this.article.coverImageURL = 'a/b/c';
         this.article.createdBy = this.authService.cookies.get('username') ?? '';
         this.article.updatedBy = this.authService.cookies.get('username') ?? '';
-        // console.log(this.authOptions);
 
         this.selectedTagIDs = '';
 
         this.beforeSignInUrl = '/read';
     }
 
-    checkToken(): Observable<ResponseData<any>> {
+    checkToken(): Observable<ResponseData<unknown>> {
         const api = '/index';
-        return this.http.get<ResponseData<any>>(
+        return this.http.get<ResponseData<unknown>>(
             `${this.configService.requestUrl}${api}`,
             this.authOptions
         );
@@ -89,7 +88,6 @@ export class DataService {
     }
     addTag(): Observable<ResponseData<Tag[]>> {
         const api = '/api/tags';
-        // console.log(this.authOptions);
 
         return this.http.post<ResponseData<Tag[]>>(
             `${this.configService.requestUrl}${api}`,
@@ -107,7 +105,6 @@ export class DataService {
     }
     deleteTag(tag: Tag): Observable<ResponseData<TagData>> {
         const api = `/api/tags/${tag.id}`;
-        // console.log(this.authOptions);
 
         return this.http.delete<ResponseData<TagData>>(
             `${this.configService.requestUrl}${api}`,
