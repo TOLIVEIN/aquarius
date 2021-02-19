@@ -20,7 +20,6 @@ export class AuthService {
         private configService: ConfigService,
         private formBuilder: FormBuilder
     ) {
-        // const cookies = new Map<string, string>();
         document.cookie.split('; ').forEach((item) => {
             this.cookies.set(item.split('=')[0], item.split('=')[1]);
         });

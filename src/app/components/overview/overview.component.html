@@ -1,22 +1,22 @@
 <div class="overview-container">
-    <span *ngFor="let article of articles" class="overview-article">
-        <mat-card>
-            <mat-card-header>
+    <span *ngFor="let article of articles" class="overview-card-container">
+        <mat-card class="overview-card">
+            <mat-card-header class="overview-card-header">
                 <div mat-card-avatar></div>
                 <mat-card-title>{{ article.title }}</mat-card-title>
                 <mat-card-subtitle>test</mat-card-subtitle>
             </mat-card-header>
             <!-- <img mat-card-image src="../../../assets/deno.png" alt="Photo of deno" /> -->
-            <mat-card-content>
+            <mat-card-content class="overview-card-content">
                 <p
                     [innerHTML]="article.content"
-                    class="overview-article-content"
+                    class="overview-card-content-article"
                 ></p>
             </mat-card-content>
-            <mat-card-actions>
+            <!-- <mat-card-actions>
                 <button mat-button>LIKE</button>
                 <button mat-button>SHARE</button>
-            </mat-card-actions>
+            </mat-card-actions> -->
         </mat-card>
     </span>
 </div>

@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ConfigService } from './config.service';
@@ -25,7 +24,6 @@ export class DataService {
     constructor(
         private http: HttpClient,
         private configService: ConfigService,
-        private formBuilder: FormBuilder,
         private authService: AuthService
     ) {
         this.tag = {} as Tag;
