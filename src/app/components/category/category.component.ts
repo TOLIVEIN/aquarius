@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    OnInit,
+    ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
@@ -9,6 +15,9 @@ import { DataService } from '../../services/data.service';
     styleUrls: ['./category.component.less'],
 })
 export class CategoryComponent implements OnInit, AfterViewInit {
+    @ViewChild('tag')
+    tagRef!: ElementRef;
+
     tags!: Tag[];
 
     removable = true;
@@ -45,6 +54,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
                 }
             }
         );
+        this.tagRef.nativeElement.value = '';
     }
 
     getTags(): void {
