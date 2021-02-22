@@ -1,5 +1,10 @@
 <div class="overview-container">
-    <span *ngFor="let article of articles" class="overview-card-container">
+    <span
+        *ngFor="let article of articles"
+        class="overview-card-container"
+        routerLink="/detail"
+        routerLinkActive="active"
+    >
         <mat-card class="overview-card">
             <mat-card-header class="overview-card-header">
                 <div mat-card-avatar></div>
