@@ -68,6 +68,13 @@ export class DataService {
             `${this.configService.requestUrl}${api}`
         );
     }
+
+    getArticle(id: string): Observable<ResponseData<Article>> {
+        const api = '/api/articles/' + id;
+        return this.http.get<ResponseData<Article>>(
+            `${this.configService.requestUrl}${api}`
+        );
+    }
     getUsers(): Observable<ResponseData<UserData>> {
         const api = '/api/users';
         return this.http.get<ResponseData<UserData>>(

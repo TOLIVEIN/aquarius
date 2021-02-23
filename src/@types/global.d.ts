@@ -56,7 +56,7 @@ type Article = BaseProperty & {
     title: string;
     description: string;
     coverImageURL: string;
-    content: string;
+    content?: string;
     tags?: Tag[];
     tagNames?: string;
 };

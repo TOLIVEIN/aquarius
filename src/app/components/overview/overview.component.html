@@ -2,7 +2,7 @@
     <span
         *ngFor="let article of articles"
         class="overview-card-container"
-        routerLink="/detail"
+        [routerLink]="['/article', article.id]"
         routerLinkActive="active"
     >
         <mat-card class="overview-card">
@@ -14,7 +14,7 @@
             <!-- <img mat-card-image src="../../../assets/deno.png" alt="Photo of deno" /> -->
             <mat-card-content class="overview-card-content">
                 <p
-                    [innerHTML]="article.content"
+                    [innerHTML]="article.description"
                     class="overview-card-content-article"
                 ></p>
             </mat-card-content>
