@@ -15,13 +15,28 @@
             >face</mat-icon
         >
         <mat-menu #signInMenu="matMenu">
-            <button mat-menu-item *ngIf="!isSignIn" [routerLink]="['/signIn']">
+            <button
+                mat-menu-item
+                class="header-user-sign-in"
+                *ngIf="!isSignIn"
+                [routerLink]="['/signIn']"
+            >
                 Sign In
             </button>
-            <button mat-menu-item *ngIf="isSignIn" (click)="signOut()">
+            <button
+                mat-menu-item
+                class="header-user-sign-out"
+                *ngIf="isSignIn"
+                (click)="signOut()"
+            >
                 Sign Out
             </button>
-            <button mat-menu-item *ngIf="!isSignIn" [routerLink]="['/signUp']">
+            <button
+                mat-menu-item
+                class="header-user-sign-up"
+                *ngIf="!isSignIn"
+                [routerLink]="['/signUp']"
+            >
                 Sign Up
             </button>
         </mat-menu>
