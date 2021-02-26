@@ -15,7 +15,7 @@ export class InspirationComponent implements OnInit {
     ngOnInit(): void {
         this.editor = new Editor(
             '.inspiration-editor-menu',
-            '.inspiration-editor'
+            '.inspiration-editor-body'
         );
         // this.editor.highlight = hljs;
 
