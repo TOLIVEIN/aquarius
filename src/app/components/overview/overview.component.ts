@@ -37,6 +37,7 @@ export class OverviewComponent implements OnInit {
                 if (error.error.code !== 200) {
                     localStorage.removeItem('token');
                     localStorage.removeItem('permissions');
+                    this.authService.isSignIn.next(false);
                     // this.router.navigate(['signIn']);
                 }
             }
