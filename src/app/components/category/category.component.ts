@@ -20,14 +20,19 @@ export class CategoryComponent implements OnInit, AfterViewInit {
 
     tags!: Tag[];
 
-    removable = true;
+    removable: boolean;
 
     constructor(
         private authService: AuthService,
         private dataService: DataService,
         private router: Router
     ) {
-        // this.tags = [] as Tag[];
+        this.removable = this.authService.permissions.includes('admin');
+        this.authService.isSignIn.subscribe(() => {
+            this.removable = (
+                localStorage.getItem('permissions')?.split(',') ?? []
+            ).includes('admin');
+        });
     }
 
     ngOnInit(): void {
