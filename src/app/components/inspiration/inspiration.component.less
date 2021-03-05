@@ -6,8 +6,11 @@
     background: @color-white;
     width: 100%;
     border-radius: 0.5rem;
-    box-shadow: 0 6px 1rem -6px @color-alizarin;
+    box-shadow: 0 6px 1rem -6px fade(@color-alizarin, 50%);
     margin: 0.5rem 0;
+    &:hover {
+        box-shadow: 0 10px 1.5rem -10px fade(@color-alizarin, 80%);
+    }
 }
 .inspiration-editor-menu {
     min-width: 32rem;
