@@ -3,10 +3,12 @@
 .header-container {
     color: @color-silver;
     height: 100%;
+    width: 60%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     align-items: center;
     justify-items: center;
+    margin: 0 auto;
 }
 
 .header-user-action {
@@ -24,3 +26,7 @@
         color: @color-purple;
     }
 }
+
+// :host(app-header) {
+//     margin: 0 auto;
+// }
