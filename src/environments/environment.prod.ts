@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    baseUrl: 'https://www.tolivein.cn:8080',
+    baseUrl: 'https://tolivein.cn:8080',
 };
