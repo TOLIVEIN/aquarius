@@ -91,4 +91,4 @@ jobs:
                       docker stop aquarius
                       docker rm aquarius
                       docker pull docker.pkg.github.com/tolivein/aquarius/aquarius:latest
-                      docker run --name aquarius --restart=always -v aquarius-ssl:/usr/local/nginx/ssl -p 80:80 -d docker.pkg.github.com/tolivein/aquarius/aquarius
+                      docker run --name aquarius --restart=always -v aquarius-ssl:/usr/local/nginx/ssl -p 443:443 -d docker.pkg.github.com/tolivein/aquarius/aquarius
