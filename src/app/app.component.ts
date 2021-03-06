@@ -48,8 +48,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     public resize(): void {
         // console.log('resize...');
-        this.canvasRef.nativeElement.width = this.appRef.nativeElement.offsetWidth;
-        this.canvasRef.nativeElement.height = this.appRef.nativeElement.offsetHeight;
+        // this.canvasRef.nativeElement.width = this.appRef.nativeElement.offsetWidth;
+        // this.canvasRef.nativeElement.height = this.appRef.nativeElement.offsetHeight;
+
+        this.canvasRef.nativeElement.width = window.innerWidth;
+        this.canvasRef.nativeElement.height = window.innerHeight;
     }
 
     /**
@@ -161,8 +164,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {}
 
     ngAfterViewInit(): void {
-        this.canvasRef.nativeElement.width = this.appRef.nativeElement.offsetWidth;
-        this.canvasRef.nativeElement.height = this.appRef.nativeElement.offsetHeight;
+        // this.canvasRef.nativeElement.width = this.appRef.nativeElement.offsetWidth;
+        // this.canvasRef.nativeElement.height = this.appRef.nativeElement.offsetHeight;
+        this.canvasRef.nativeElement.width = window.innerWidth;
+        this.canvasRef.nativeElement.height = window.innerHeight;
         this.ctx = this.canvasRef.nativeElement.getContext('2d');
 
         this.fade();
