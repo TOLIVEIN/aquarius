@@ -42,4 +42,20 @@
             </button>
         </mat-menu>
     </div>
+    <div class="header-theme">
+        <mat-icon class="header-user-action" [matMenuTriggerFor]="themeMenu"
+            >color_lens</mat-icon
+        >
+        <mat-menu #themeMenu="matMenu">
+            <button
+                mat-menu-item
+                class="header-theme-item"
+                [ngStyle]="{ color: 'var(--color-' + theme + ')' }"
+                *ngFor="let theme of themes"
+                (click)="changeTheme(theme)"
+            >
+                {{ theme }}
+            </button>
+        </mat-menu>
+    </div>
 </div>

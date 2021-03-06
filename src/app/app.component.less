@@ -4,7 +4,7 @@
     margin: 0;
     width: 100%;
     height: 100%;
-    color: @color-silver;
+    color: var(--font-color);
 }
 .app-background-canvas {
     position: absolute;
@@ -17,10 +17,10 @@
         margin: 0;
     }
     height: 6rem;
-    box-shadow: 0 3px 0.5rem -3px fade(@color-alizarin, 20%);
+    box-shadow: 0 3px 0.5rem -3px rgba(var(--theme-rgb), 0.2);
     margin-bottom: 1rem;
     &:hover {
-        box-shadow: 0 3px 0.5rem -3px fade(@color-alizarin, 80%);
+        box-shadow: 0 3px 0.5rem -3px rgba(var(--theme-rgb), 0.8);
     }
 }
 

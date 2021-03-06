@@ -29,11 +29,60 @@
 
 @length: length(@colors);
 
-body {
-    --color: extract(@colors, ~`Math.floor(Math.random() * 20) `);
-}
-
 @color-black: black;
 @color-grey: grey;
 @color-white: white;
 @color-purple: #673ab7;
+
+// @theme-color: @color-emerald;
+// @font-color: @color-silver;
+
+body {
+    --color: extract(@colors, ~`Math.floor(Math.random() * 20) `);
+    --rgb-turquoise: 26, 188, 156;
+    --rgb-emerald: 46, 204, 113;
+    --rgb-peter-river: 52, 152, 219;
+    --rgb-amethyst: 155, 89, 182;
+    --rgb-wet-asphalt: 52, 73, 94;
+    --rgb-green-sea: 22, 160, 133;
+    --rgb-nephritis: 39, 174, 96;
+    --rgb-belize-hole: 41, 128, 185;
+    --rgb-wisteria: 142, 68, 173;
+    --rgb-midnight-blue: 44, 62, 80;
+    --rgb-sun-flower: 241, 196, 15;
+    --rgb-carrot: 230, 126, 34;
+    --rgb-alizarin: 231, 76, 60;
+    --rgb-clouds: 236, 240, 241;
+    --rgb-concrete: 149, 165, 166;
+    --rgb-orange: 243, 156, 18;
+    --rgb-pumpkin: 211, 84, 0;
+    --rgb-pomeganate: 192, 57, 43;
+    --rgb-silver: 189, 195, 199;
+    --rgb-asberstos: 127, 140, 141;
+
+    --color-turquoise: #1abc9c;
+    --color-emerald: #2ecc71;
+    --color-peter-river: #3498db;
+    --color-amethyst: #9b59b6;
+    --color-wet-asphalt: #34495e;
+    --color-green-sea: #16a085;
+    --color-nephritis: #27ae60;
+    --color-belize-hole: #2980b9;
+    --color-wisteria: #8e44ad;
+    --color-midnight-blue: #2c3e50;
+    --color-sun-flower: #f1c40f;
+    --color-carrot: #e67e22;
+    --color-alizarin: #e74c3c;
+    --color-clouds: #ecf0f1;
+    --color-concrete: #95a5a6;
+    --color-orange: #f39c12;
+    --color-pumpkin: #d35400;
+    --color-pomeganate: #c0392b;
+    --color-silver: #bdc3c7;
+    --color-asberstos: #7f8c8d;
+
+    --theme-rgb: var(--rgb-wisteria);
+    --font-rgb: var(--rgb-silver);
+    --theme-color: var(--color-wisteria);
+    --font-color: var(--color-silver);
+}
