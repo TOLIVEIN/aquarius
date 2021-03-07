@@ -85,7 +85,7 @@ export class DataService {
     addUser(): Observable<Record<string, unknown>> {
         const api = '/api/users';
         const user = this.authService.signUpForm.value;
-        console.log(user);
+        // console.log(user);
         return this.http.post<Record<string, unknown>>(
             `${this.configService.requestUrl}${api}`,
             user

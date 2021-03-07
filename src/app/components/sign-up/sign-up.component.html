@@ -1,5 +1,9 @@
 <div class="sign-up-container">
-    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
+    <form
+        [formGroup]="signUpForm"
+        (ngSubmit)="onSubmit(signUpForm.value, formDirective)"
+        #formDirective="ngForm"
+    >
         <div>
             <mat-form-field appearance="outline">
                 <mat-label class="sign-up-username-label"

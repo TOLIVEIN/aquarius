@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { AuthService } from '../../services/auth.service';
+import { UtilService } from '../../services/util.service';
 
 @Component({
     selector: 'app-sign-in',
@@ -20,7 +21,8 @@ export class SignInComponent implements OnInit {
     constructor(
         private dataService: DataService,
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private utilService: UtilService
     ) {}
 
     ngOnInit(): void {}
@@ -71,6 +73,7 @@ export class SignInComponent implements OnInit {
 
                 this.router.navigate([this.dataService.beforeSignInUrl]);
             }
+            this.utilService.openSnackBar(res.message, 'OK');
         });
     }
 

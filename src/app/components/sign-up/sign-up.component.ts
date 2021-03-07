@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
+import { UtilService } from '../../services/util.service';
 
 @Component({
     selector: 'app-sign-up',
@@ -14,7 +16,9 @@ export class SignUpComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private dataService: DataService
+        private dataService: DataService,
+        private router: Router,
+        private utilService: UtilService
     ) {}
 
     ngOnInit(): void {}
@@ -59,14 +63,22 @@ export class SignUpComponent implements OnInit {
             : '';
     }
 
-    onSubmit(formData: FormGroup): void {
+    onSubmit(formData: FormGroup, formDirective: FormGroupDirective): void {
         this.signUp();
         this.authService.signUpForm.reset();
+        formDirective.resetForm();
     }
 
     signUp(): void {
         this.dataService.addUser().subscribe((res) => {
-            console.log(res);
+            if (res.code === 200) {
+                this.router.navigate(['signIn']);
+            }
+            const message = res.message as string;
+            this.utilService.openSnackBar(
+                message === 'ok' ? '注册成功' : message,
+                'OK'
+            );
         });
     }
     get signUpForm(): FormGroup {
