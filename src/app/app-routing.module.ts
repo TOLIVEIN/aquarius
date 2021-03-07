@@ -5,7 +5,8 @@ import { InspirationComponent } from './components/inspiration/inspiration.compo
 import { OverviewComponent } from './components/overview/overview.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { BaseGuard } from './guards/base.guard';
+import { UserGuard } from './guards/user.guard';
+import { VisitorGuard } from './guards/visitor.guard';
 
 const routes: Routes = [
     {
@@ -15,15 +16,17 @@ const routes: Routes = [
     {
         path: 'write',
         component: InspirationComponent,
-        canActivate: [BaseGuard],
+        canActivate: [UserGuard],
     },
     {
         path: 'signIn',
         component: SignInComponent,
+        canActivate: [VisitorGuard],
     },
     {
         path: 'signUp',
         component: SignUpComponent,
+        canActivate: [VisitorGuard],
     },
     {
         path: 'article/:id',

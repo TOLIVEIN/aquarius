@@ -73,7 +73,10 @@ export class SignInComponent implements OnInit {
 
                 this.router.navigate([this.dataService.beforeSignInUrl]);
             }
-            this.utilService.openSnackBar(res.message, 'OK');
+            this.utilService.openSnackBar(
+                res.message === 'ok' ? '登录成功！' : res.message,
+                'OK'
+            );
         });
     }
 
