@@ -3,15 +3,17 @@ FROM node:alpine as builder
 
 WORKDIR /aquarius
 
+RUN curl -L https://pnpm.js.org/pnpm.js | node - add --global pnpm
+
 COPY ./package.json /aquarius
 
 RUN --mount=type=cache,target=/aquarius/node_modules,id=aquarius_node_modules,sharing=locked \
-        yarn
+        pnpm i
 
 COPY ./ /aquarius
 
 RUN --mount=type=cache,target=/aquarius/node_modules,id=aquarius_node_modules,sharing=locked \
-        yarn build
+        pnpm run build
 
 
 FROM nginx:alpine
