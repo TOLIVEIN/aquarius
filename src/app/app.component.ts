@@ -6,6 +6,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ConfigService } from './services/config.service';
+import { UtilService } from './services/util.service';
 
 @Component({
     selector: 'app-root',
@@ -25,9 +26,18 @@ export class AppComponent implements OnInit, AfterViewInit {
     letter = [] as Letter[];
     ctx = {} as CanvasRenderingContext2D;
 
+    color = '';
+
     private letters;
-    constructor(private configService: ConfigService) {
+    constructor(
+        private configService: ConfigService,
+        private utilService: UtilService
+    ) {
         this.letters = this.configService.letters.split('');
+        this.utilService.themeColor$.subscribe((colorRGB) => {
+            // console.log(color);
+            this.color = colorRGB;
+        });
     }
 
     public mouseMove(event: MouseEvent): void {
@@ -68,9 +78,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     public drawText(effectText: EffectText): void {
         this.ctx.save();
         this.ctx.font = `${effectText.size.toString()}px Lucida Console`;
-        this.ctx.shadowColor = `rgba(255,0,0,${effectText.shadowColor.toString()})`;
+        // this.ctx.shadowColor = `rgba(255,0,0,${effectText.shadowColor.toString()})`;
+        this.ctx.shadowColor = `rgba(${
+            this.color
+        },${effectText.shadowColor.toString()})`;
+
         this.ctx.shadowBlur = effectText.shadowColor / 2;
-        this.ctx.fillStyle = `rgba(255,0,0,${effectText.shadowColor})`;
+        this.ctx.fillStyle = `rgba(${this.color},${effectText.shadowColor})`;
         const textWidth = this.ctx.measureText(effectText.text).width;
         this.ctx.fillText(
             effectText.text,
@@ -148,7 +162,7 @@ export class AppComponent implements OnInit, AfterViewInit {
                 animatedectangle.y = item.y - shadowHeight;
                 animatedectangle.width = item.size / 1.5;
                 animatedectangle.height = rectangleHeight;
-                animatedectangle.color = 'rgba(255, 0, 0, 0.05)';
+                animatedectangle.color = `rgba(${this.color}, 0.05)`;
                 this.drawRectangle(animatedectangle);
             }
         }

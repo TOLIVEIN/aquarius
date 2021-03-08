@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Themes } from '../../../assets/theme';
 import { DataService } from '../../services/data.service';
+import { UtilService } from '../../services/util.service';
 
 @Component({
     selector: 'app-header',
@@ -12,6 +14,8 @@ export class HeaderComponent implements OnInit {
     title = 'Aquarius';
 
     isSignIn: boolean;
+
+    // themes = keyof typeof Themes;
 
     themes = [
         'turquoise',
@@ -39,7 +43,8 @@ export class HeaderComponent implements OnInit {
     constructor(
         private dataService: DataService,
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private utilService: UtilService
     ) {
         this.isSignIn = authService.isSignIn.value;
         this.authService.isSignIn.subscribe((data) => (this.isSignIn = data));
@@ -60,5 +65,7 @@ export class HeaderComponent implements OnInit {
             '--theme-rgb',
             `var(--rgb-${themeColor})`
         );
+
+        this.utilService.changeThemeColor(themeColor as keyof typeof Themes);
     }
 }
