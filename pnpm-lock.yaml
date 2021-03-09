@@ -34,6 +34,7 @@ devDependencies:
   eslint-plugin-import: 2.22.1_eslint@7.21.0
   eslint-plugin-jsdoc: 32.2.0_eslint@7.21.0
   eslint-plugin-prefer-arrow: 1.2.3_eslint@7.21.0
+  husky: 5.1.3
   jasmine-core: 3.6.0
   jasmine-spec-reporter: 6.0.0
   karma: 6.1.1
@@ -5450,6 +5451,13 @@ packages:
     dev: true
     resolution:
       integrity: sha1-xG4xWaKT9riW2ikxbYtv6Lt5u+0=
+  /husky/5.1.3:
+    dev: true
+    engines:
+      node: '>= 10'
+    hasBin: true
+    resolution:
+      integrity: sha512-fbNJ+Gz5wx2LIBtMweJNY1D7Uc8p1XERi5KNRMccwfQA+rXlxWNSdUxswo0gT8XqxywTIw7Ywm/F4v/O35RdMg==
   /iconv-lite/0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -10825,6 +10833,7 @@ specifiers:
   eslint-plugin-jsdoc: 32.2.0
   eslint-plugin-prefer-arrow: 1.2.3
   highlight.js: ^10.6.0
+  husky: ^5.1.3
   jasmine-core: ~3.6.0
   jasmine-spec-reporter: ~6.0.0
   karma: ~6.1.1
