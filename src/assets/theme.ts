@@ -19,4 +19,5 @@ export enum Themes {
     pomeganate = '192, 57, 43',
     silver = '189, 195, 199',
     asberstos = '127, 140, 141',
+    cerulean = '66, 255, 246',
 }

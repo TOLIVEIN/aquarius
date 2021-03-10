@@ -1,4 +1,6 @@
 @import "/src/styles/color.less";
+@import url("https://fonts.googleapis.com/css2?family=Warnes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 
 .header-container {
     // color: var(--font-color);
@@ -15,7 +17,6 @@
     cursor: pointer;
 }
 
-.header-title,
 .header-read,
 .header-write,
 .header-user-action,
@@ -24,5 +25,66 @@
 .header-user-sign-up {
     &:hover {
         color: var(--theme-color);
+    }
+}
+
+.header-title {
+    background: none;
+    font-family: "Dancing Script", "Warnes", cursive;
+    font-size: 5rem;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    &:hover {
+        .letter {
+            animation: flicker 1s linear forwards;
+            &-two {
+                animation-delay: 0.2s;
+            }
+
+            &-three {
+                animation-delay: 0.5s;
+            }
+
+            &-four {
+                animation-delay: 0.6s;
+            }
+
+            &-five {
+                animation-delay: 0.7s;
+            }
+
+            &-six {
+                animation-delay: 0.8s;
+            }
+
+            &-seven {
+                animation-delay: 0.9s;
+            }
+
+            &-eight {
+                animation-delay: 1s;
+            }
+        }
+    }
+}
+
+@keyframes flicker {
+    0% {
+        color: @color-grey;
+    }
+    5%,
+    15%,
+    25%,
+    30%,
+    100% {
+        color: @color-white;
+        text-shadow: 0px 0px 5px var(--theme-color),
+            0px 0px 10px var(--theme-color), 0px 0px 20px var(--theme-color),
+            0px 0px 50px var(--theme-color);
+    }
+    10%,
+    20% {
+        color: @color-grey;
+        text-shadow: none;
     }
 }

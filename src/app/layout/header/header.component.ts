@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
         'pomeganate',
         'silver',
         'asberstos',
+        'cerulean',
     ];
 
     constructor(
