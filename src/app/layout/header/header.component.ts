@@ -13,6 +13,8 @@ import { UtilService } from '../../services/util.service';
 export class HeaderComponent implements OnInit {
     title = 'Aquarius';
 
+    activeIndex = Infinity;
+
     isSignIn: boolean;
 
     // themes = keyof typeof Themes;
@@ -68,5 +70,13 @@ export class HeaderComponent implements OnInit {
         );
 
         this.utilService.changeThemeColor(themeColor as keyof typeof Themes);
+    }
+
+    activateItem(index: number): void {
+        this.activeIndex = index;
+    }
+
+    inactivateItem(): void {
+        this.activeIndex = Infinity;
     }
 }

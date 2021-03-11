@@ -54,14 +54,24 @@
             >color_lens</mat-icon
         >
         <mat-menu #themeMenu="matMenu">
-            <!-- background: 'rgba(var(--rgb-' + theme + '), 0.5)' -->
             <button
                 mat-menu-item
                 class="header-theme-item"
                 [ngStyle]="{
-                    color: 'var(--color-' + theme + ')'
+                    color:
+                        activeIndex === i
+                            ? 'white'
+                            : 'var(--color-' + theme + ')',
+                    background:
+                        activeIndex === i ? 'var(--color-' + theme + ')' : '',
+                    'box-shadow':
+                        activeIndex === i
+                            ? '0 0 2px 2px rgba(var(--rgb-' + theme + '), 0.5)'
+                            : ''
                 }"
-                *ngFor="let theme of themes"
+                *ngFor="let theme of themes; index as i"
+                (mouseenter)="activateItem(i)"
+                (mouseleave)="inactivateItem()"
                 (click)="changeTheme(theme)"
             >
                 {{ theme }}
