@@ -54,10 +54,13 @@
             >color_lens</mat-icon
         >
         <mat-menu #themeMenu="matMenu">
+            <!-- background: 'rgba(var(--rgb-' + theme + '), 0.5)' -->
             <button
                 mat-menu-item
                 class="header-theme-item"
-                [ngStyle]="{ color: 'var(--color-' + theme + ')' }"
+                [ngStyle]="{
+                    color: 'var(--color-' + theme + ')'
+                }"
                 *ngFor="let theme of themes"
                 (click)="changeTheme(theme)"
             >

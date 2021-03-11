@@ -28,11 +28,18 @@
     }
 }
 
+.header-theme-item {
+    &:hover {
+        color: @color-white !important;
+        background: var(--theme-color);
+    }
+}
+
 .header-title {
     background: none;
     font-family: "Dancing Script", "Warnes", cursive;
     font-size: 5rem;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0;
     cursor: pointer;
     &:hover {
         .letter {
