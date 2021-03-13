@@ -4,7 +4,6 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    color: var(--theme-color);
 }
 
 .sign-in-container {
@@ -16,6 +15,10 @@
     background: @color-white;
     border-radius: 0.5rem;
     opacity: 0.7;
+    box-shadow: 0 0 0.2rem 0.2rem rgba(var(--rgb-clouds, 0.5));
+    &:focus-within {
+        box-shadow: 0 0 0.3rem 0.3rem var(--theme-color);
+    }
 }
 
 .sign-in-form {
