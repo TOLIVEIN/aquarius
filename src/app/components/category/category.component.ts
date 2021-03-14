@@ -22,16 +22,23 @@ export class CategoryComponent implements OnInit, AfterViewInit {
 
     removable: boolean;
 
+    addable: boolean;
+
     constructor(
         private authService: AuthService,
         private dataService: DataService,
         private router: Router
     ) {
         this.removable = this.authService.permissions.includes('admin');
+        this.addable = this.authService.permissions.includes('user');
+
         this.authService.isSignIn.subscribe(() => {
             this.removable = (
                 localStorage.getItem('permissions')?.split(',') ?? []
             ).includes('admin');
+            this.addable = (
+                localStorage.getItem('permissions')?.split(',') ?? []
+            ).includes('user');
         });
     }
 
