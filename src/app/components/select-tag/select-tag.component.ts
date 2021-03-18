@@ -9,6 +9,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { DataService } from '../../services/data.service';
+import { UtilService } from '../../services/util.service';
 
 @Component({
     selector: 'app-select-tag',
@@ -29,7 +30,10 @@ export class SelectTagComponent implements OnInit {
     tags: string[] = [];
     allTags: string[] = [];
 
-    constructor(private dataService: DataService) {
+    constructor(
+        private dataService: DataService,
+        private utilService: UtilService
+    ) {
         this.dataService.getTags().subscribe((res) => {
             this.allTags = res.data.tags.map((tag) => tag.name);
             console.log(this.allTags);
@@ -40,6 +44,9 @@ export class SelectTagComponent implements OnInit {
                 )
             );
         });
+        this.utilService.inspirationTag$.subscribe(
+            (tags) => (this.tags = tags)
+        );
     }
     ngOnInit(): void {
         // throw new Error('Method not implemented.');

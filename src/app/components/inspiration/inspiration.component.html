@@ -16,7 +16,7 @@
             matSuffix
             mat-icon-button
             aria-label="Clear"
-            (click)="title.value = ''"
+            (click)="clearTitle(title)"
         >
             <mat-icon>close</mat-icon>
         </button>
@@ -31,7 +31,7 @@
     <button
         mat-button
         class="category-add-article-button"
-        (click)="addArticle()"
+        (click)="addArticle(title)"
     >
         Add Article
     </button>

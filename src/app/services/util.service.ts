@@ -8,6 +8,7 @@ import { Themes } from 'src/assets/theme';
 })
 export class UtilService {
     themeColor$ = new BehaviorSubject<Themes>(Themes.wisteria);
+    inspirationTag$ = new BehaviorSubject<string[]>([]);
 
     constructor(private snackBar: MatSnackBar) {}
 
@@ -20,5 +21,9 @@ export class UtilService {
     }
     changeThemeColor(themeColor: keyof typeof Themes) {
         this.themeColor$.next(Themes[themeColor]);
+    }
+
+    clearInspirationTags() {
+        this.inspirationTag$.next([]);
     }
 }

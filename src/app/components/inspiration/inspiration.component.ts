@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // import hljs from 'highlight.js';
 import Editor from 'wangeditor';
 import { DataService } from '../../services/data.service';
+import { UtilService } from '../../services/util.service';
 @Component({
     selector: 'app-inspiration',
     templateUrl: './inspiration.component.html',
@@ -10,7 +11,10 @@ import { DataService } from '../../services/data.service';
 })
 export class InspirationComponent implements OnInit {
     private editor!: Editor;
-    constructor(private dataService: DataService) {}
+    constructor(
+        private dataService: DataService,
+        private utilService: UtilService
+    ) {}
 
     ngOnInit(): void {
         this.editor = new Editor(
@@ -25,14 +29,21 @@ export class InspirationComponent implements OnInit {
 
     onKey(title: string) {
         this.dataService.article.title = title;
-        console.log(title);
     }
-    addArticle(): void {
+    addArticle(title: { value: string }): void {
         const html = this.editor.txt.html() || '';
-        console.log(html);
         this.dataService.article.content = html;
+        this.clearTitle(title);
+        this.clearTags();
+        this.editor.txt.clear();
         this.dataService.addArticle().subscribe((res) => {
             console.log(res.data);
         });
+    }
+    clearTitle(title: { value: string }): void {
+        title.value = '';
+    }
+    clearTags(): void {
+        this.utilService.clearInspirationTags();
     }
 }
