@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ConfigService } from './config.service';
 
@@ -9,11 +9,11 @@ import { ConfigService } from './config.service';
 })
 export class DataService {
     tag: Tag;
-    tags: Tag[];
     article: Article;
     selectedTagIDs: string;
 
     beforeSignInUrl: string;
+    tags$ = new BehaviorSubject<Tag[]>([] as Tag[]);
 
     authOptions = {
         headers: new HttpHeaders({
@@ -27,7 +27,7 @@ export class DataService {
         private authService: AuthService
     ) {
         this.tag = {} as Tag;
-        this.tags = [] as Tag[];
+        // this.tags = [] as Tag[];
         this.tag.createdBy = this.authService.cookies.get('username') ?? '';
         this.tag.updatedBy = this.authService.cookies.get('username') ?? '';
 

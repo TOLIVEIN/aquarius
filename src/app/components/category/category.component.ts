@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
+import { UtilService } from '../../services/util.service';
 
 @Component({
     selector: 'app-category',
@@ -27,6 +28,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     constructor(
         private authService: AuthService,
         private dataService: DataService,
+        private utilService: UtilService,
         private router: Router
     ) {
         this.removable = this.authService.permissions.includes('admin');
@@ -56,6 +58,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
         this.dataService.addTag().subscribe(
             (res) => {
                 this.tags.push(...res.data);
+                this.dataService.tags$.next(this.tags);
                 console.log(res);
             },
             (error) => {
@@ -72,7 +75,8 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     getTags(): void {
         this.dataService.getTags().subscribe((res) => {
             this.tags = res.data.tags;
-            this.dataService.tags = this.tags;
+            this.dataService.tags$.next(this.tags);
+
             console.log(this.tags);
         });
     }
@@ -81,6 +85,9 @@ export class CategoryComponent implements OnInit, AfterViewInit {
         this.dataService.deleteTag(tag).subscribe(
             (res) => {
                 this.tags.splice(this.tags.indexOf(tag), 1);
+                console.log('category: ', this.tags);
+                this.dataService.tags$.next(this.tags);
+
                 console.log(res);
             },
             (error) => {

@@ -42,8 +42,8 @@ export class SelectTagComponent implements OnInit {
         //         tag ? this.filterTag(tag) : this.allTags.slice()
         //     )
         // );
-        this.dataService.getTags().subscribe((res) => {
-            this.allTags = res.data.tags.map((tag) => tag.name);
+        this.dataService.tags$.subscribe((tags) => {
+            this.allTags = tags.map((tag) => tag.name);
             // console.log(this.allTags);
             this.filteredTags = this.tagControl.valueChanges.pipe(
                 startWith(null),
@@ -52,9 +52,10 @@ export class SelectTagComponent implements OnInit {
                 )
             );
         });
-        this.utilService.inspirationTag$.subscribe(
-            (tags) => (this.tags = tags)
-        );
+        this.utilService.inspirationTag$.subscribe((tags) => {
+            this.allTags = [...this.tags, ...this.allTags];
+            this.tags = tags;
+        });
     }
     ngOnInit(): void {}
 
@@ -76,7 +77,6 @@ export class SelectTagComponent implements OnInit {
         if (index >= 0) {
             this.tags.splice(index, 1);
             this.allTags.push(tag);
-            // console.log(this.allTags);
         }
     }
 
@@ -85,15 +85,21 @@ export class SelectTagComponent implements OnInit {
         this.allTags.splice(this.allTags.indexOf(event.option.viewValue), 1);
         // console.log(this.allTags);
 
-        this.dataService.selectedTagIDs = this.tags
-            .map(
-                (tagName) =>
-                    this.dataService.tags.filter(
-                        (tag) => tag.name === tagName
-                    )[0]
-            )
-            .map((tag) => tag.id)
-            .join(',');
+        // this.dataService.selectedTagIDs = this.tags
+        //     .map(
+        //         (tagName) =>
+        //             this.dataService.tags.filter(
+        //                 (tag) => tag.name === tagName
+        //             )[0]
+        //     )
+        //     .map((tag) => tag.id)
+        //     .join(',');
+        this.dataService.tags$.subscribe((tags) => {
+            this.dataService.selectedTagIDs = this.tags
+                .map((tagName) => tags.filter((tag) => tag.name === tagName)[0])
+                .map((tag) => tag.id)
+                .join(',');
+        });
         this.tagInput.nativeElement.value = '';
         this.tagControl.setValue(null);
     }
