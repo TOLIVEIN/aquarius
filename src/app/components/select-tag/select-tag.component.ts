@@ -25,7 +25,7 @@ export class SelectTagComponent implements OnInit {
     selectable = true;
     removable = true;
     separatorKeysCodes: number[] = [ENTER, COMMA];
-    tagCtrl = new FormControl();
+    tagControl = new FormControl();
     filteredTags!: Observable<string[]>;
     tags: string[] = [];
     allTags: string[] = [];
@@ -34,10 +34,18 @@ export class SelectTagComponent implements OnInit {
         private dataService: DataService,
         private utilService: UtilService
     ) {
+        // this.allTags = this.dataService.tags.map((tag) => tag.name);
+        // console.log(this.allTags);
+        // this.filteredTags = this.tagControl.valueChanges.pipe(
+        //     startWith(null),
+        //     map((tag: string | null) =>
+        //         tag ? this.filterTag(tag) : this.allTags.slice()
+        //     )
+        // );
         this.dataService.getTags().subscribe((res) => {
             this.allTags = res.data.tags.map((tag) => tag.name);
-            console.log(this.allTags);
-            this.filteredTags = this.tagCtrl.valueChanges.pipe(
+            // console.log(this.allTags);
+            this.filteredTags = this.tagControl.valueChanges.pipe(
                 startWith(null),
                 map((tag: string | null) =>
                     tag ? this.filterTag(tag) : this.allTags.slice()
@@ -48,29 +56,18 @@ export class SelectTagComponent implements OnInit {
             (tags) => (this.tags = tags)
         );
     }
-    ngOnInit(): void {
-        // throw new Error('Method not implemented.');
-        // this.dataService.getTags().subscribe((res) => {
-        //     this.allTags = res.data.tags.map((tag) => tag.name);
-        //     console.log(this.allTags);
-        // });
-    }
+    ngOnInit(): void {}
 
     add(event: MatChipInputEvent): void {
         const input = event.input;
         const value = event.value;
-
-        // Add our tag
         if ((value || '').trim()) {
             this.tags.push(value.trim());
         }
-
-        // Reset the input value
         if (input) {
             input.value = '';
         }
-
-        this.tagCtrl.setValue(null);
+        this.tagControl.setValue(null);
     }
 
     remove(tag: string): void {
@@ -78,12 +75,16 @@ export class SelectTagComponent implements OnInit {
 
         if (index >= 0) {
             this.tags.splice(index, 1);
+            this.allTags.push(tag);
+            // console.log(this.allTags);
         }
     }
 
     selected(event: MatAutocompleteSelectedEvent): void {
-        // console.log(event.option.viewValue);
         this.tags.push(event.option.viewValue);
+        this.allTags.splice(this.allTags.indexOf(event.option.viewValue), 1);
+        // console.log(this.allTags);
+
         this.dataService.selectedTagIDs = this.tags
             .map(
                 (tagName) =>
@@ -94,7 +95,7 @@ export class SelectTagComponent implements OnInit {
             .map((tag) => tag.id)
             .join(',');
         this.tagInput.nativeElement.value = '';
-        this.tagCtrl.setValue(null);
+        this.tagControl.setValue(null);
     }
 
     private filterTag(value: string): string[] {
