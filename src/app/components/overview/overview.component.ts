@@ -15,7 +15,11 @@ export class OverviewComponent implements OnInit {
         private authService: AuthService,
         private dataService: DataService,
         private router: Router
-    ) {}
+    ) {
+        // this.dataService.articles$.subscribe((articles) => {
+        //     this.articles = articles;
+        // });
+    }
 
     ngOnInit(): void {
         this.checkToken();
@@ -24,7 +28,9 @@ export class OverviewComponent implements OnInit {
     getArticles(): void {
         this.dataService.getArticles().subscribe((res) => {
             this.articles = res.data.articles;
-            console.log(res);
+            this.dataService.articles = this.articles;
+            // this.dataService.articles$.next(res.data.articles);
+            // console.log(res);
         });
     }
     checkToken(): void {

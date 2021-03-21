@@ -14,6 +14,8 @@ export class DataService {
 
     beforeSignInUrl: string;
     tags$ = new BehaviorSubject<Tag[]>([] as Tag[]);
+    // articles$ = new BehaviorSubject<Article[]>([] as Article[]);
+    articles = [] as Article[];
 
     authOptions = {
         headers: new HttpHeaders({

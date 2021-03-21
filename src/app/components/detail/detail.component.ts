@@ -9,15 +9,16 @@ import { DataService } from '../../services/data.service';
 })
 export class DetailComponent implements OnInit {
     id!: string;
+    article!: Article;
     constructor(
         private router: ActivatedRoute,
         private dataService: DataService
     ) {
         this.router.params.subscribe((params) => {
             this.id = params.id;
-            this.dataService
-                .getArticle(this.id)
-                .subscribe((article) => console.log(article));
+            this.article = this.dataService.articles.filter(
+                (article) => article.id?.toString() === this.id
+            )[0];
         });
     }
 
