@@ -8,11 +8,25 @@
     grid-template-rows: repeat(auto-fill, 15rem);
     // grid-auto-flow: row;
     grid-auto-rows: 15rem;
-    row-gap: 2rem;
+    row-gap: 1rem;
     margin-top: 1rem;
 }
+
 .overview-card-container {
     cursor: pointer;
+    // &:last-child {
+    padding-bottom: 2rem;
+    // }
+}
+
+.overview {
+    &-time,
+    &-author {
+        // text-align: right;
+        // font-size: 12px;
+        // color: @color-black;
+        font-weight: bold;
+    }
 }
 
 .mat-card {
@@ -23,6 +37,7 @@
 
         // transform: scale(1.05);
         box-shadow: 0 6px 20px -6px var(--theme-color);
+        color: var(--theme-color);
     }
 }
 
