@@ -7,6 +7,7 @@ import { Themes } from 'src/assets/theme';
     providedIn: 'root',
 })
 export class UtilService {
+    originalThemeColor = 'wisteria';
     themeColor$ = new BehaviorSubject<Themes>(Themes.wisteria);
     inspirationTag$ = new BehaviorSubject<string[]>([]);
 

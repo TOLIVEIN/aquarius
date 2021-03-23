@@ -19,6 +19,11 @@
     </div>
     <div></div>
     <div class="header-user">
+        <!-- (mouseenter)="userActionTrigger.openMenu()"
+        (mouseleave)="
+            $event.stopPropagation(); userActionTrigger.openMenu()
+        "
+        #userActionTrigger="matMenuTrigger" -->
         <mat-icon class="header-user-action" [matMenuTriggerFor]="signInMenu"
             >face</mat-icon
         >

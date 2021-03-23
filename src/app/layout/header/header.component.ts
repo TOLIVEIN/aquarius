@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
 
     isSignIn: boolean;
 
+    originalThemeColor: string;
+
     // themes = keyof typeof Themes;
 
     themes = [
@@ -51,6 +53,7 @@ export class HeaderComponent implements OnInit {
     ) {
         this.isSignIn = authService.isSignIn.value;
         this.authService.isSignIn.subscribe((data) => (this.isSignIn = data));
+        this.originalThemeColor = this.utilService.originalThemeColor;
     }
 
     ngOnInit(): void {}
@@ -59,7 +62,7 @@ export class HeaderComponent implements OnInit {
         this.authService.signOut();
         this.router.navigate(['overview']);
     }
-    changeTheme(themeColor: string) {
+    changeTheme(themeColor: string, storeOriginal = false) {
         document.body.style.setProperty(
             '--theme-color',
             `var(--color-${themeColor})`
@@ -70,13 +73,22 @@ export class HeaderComponent implements OnInit {
         );
 
         this.utilService.changeThemeColor(themeColor as keyof typeof Themes);
+
+        if (storeOriginal) {
+            this.originalThemeColor = this.utilService.originalThemeColor;
+        } else {
+            this.utilService.originalThemeColor = themeColor;
+            this.originalThemeColor = themeColor;
+        }
     }
 
     activateItem(index: number): void {
         this.activeIndex = index;
+        this.changeTheme(this.themes[index], true);
     }
 
     inactivateItem(): void {
         this.activeIndex = Infinity;
+        this.changeTheme(this.originalThemeColor);
     }
 }
