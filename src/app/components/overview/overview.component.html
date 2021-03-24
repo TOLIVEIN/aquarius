@@ -25,10 +25,14 @@
                     class="overview-card-content-article"
                 ></p>
             </mat-card-content>
-            <!-- <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-            </mat-card-actions> -->
+            <mat-card-actions>
+                <button mat-button (click)="editArticle(article.id)">
+                    Edit
+                </button>
+                <button mat-button (click)="deleteArticle(article.id)">
+                    Delete
+                </button>
+            </mat-card-actions>
         </mat-card>
     </span>
 </div>
