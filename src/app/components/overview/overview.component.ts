@@ -33,11 +33,17 @@ export class OverviewComponent implements OnInit {
             // console.log(res);
         });
     }
-    editArticle(id?: number): void {
+    editArticle(event: Event, id?: number): void {
         console.log('edit: ', id);
     }
-    deleteArticle(id?: number): void {
+    deleteArticle(event: Event, id?: number): void {
+        event.stopPropagation();
         console.log('delete: ', id);
+        this.dataService
+            .deleteArticle(id ? id.toString() : '')
+            .subscribe((res) => {
+                console.log(res);
+            });
     }
     checkToken(): void {
         this.dataService.checkToken().subscribe(
