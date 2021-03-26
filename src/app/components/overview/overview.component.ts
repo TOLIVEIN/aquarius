@@ -36,14 +36,16 @@ export class OverviewComponent implements OnInit {
     editArticle(event: Event, id?: number): void {
         console.log('edit: ', id);
     }
-    deleteArticle(event: Event, id?: number): void {
+    deleteArticle(event: Event, article: Article): void {
         event.stopPropagation();
-        console.log('delete: ', id);
-        this.dataService
-            .deleteArticle(id ? id.toString() : '')
-            .subscribe((res) => {
-                console.log(res);
-            });
+        console.log('delete: ', article);
+        this.dataService.deleteArticle(article).subscribe((res) => {
+            console.log(res);
+            this.articles = this.articles.filter(
+                (tempArticle) => tempArticle.id !== article.id
+            );
+            this.dataService.articles = this.articles;
+        });
     }
     checkToken(): void {
         this.dataService.checkToken().subscribe(
