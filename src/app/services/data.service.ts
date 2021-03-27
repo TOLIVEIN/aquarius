@@ -127,4 +127,12 @@ export class DataService {
             this.authOptions
         );
     }
+
+    editArticle(article: Article): Observable<ResponseData<ArticleData>> {
+        const api = `/api/articles/${article.id}`;
+        return this.http.put<ResponseData<ArticleData>>(
+            `${this.configService.requestUrl}${api}`,
+            this.authOptions
+        );
+    }
 }

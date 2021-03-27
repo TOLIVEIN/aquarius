@@ -21,6 +21,7 @@ export class InspirationComponent implements OnInit, AfterViewInit {
     @ViewChild('title')
     titleRef!: ElementRef;
 
+    isEditing = false;
     private editor!: Editor;
 
     constructor(
@@ -45,7 +46,7 @@ export class InspirationComponent implements OnInit, AfterViewInit {
         this.route.queryParams.subscribe((params) => {
             // this.id= params['id'];
             // console.log(params.id);
-            this.editArticle(params.id);
+            this.initArticle(params.id);
         });
     }
 
@@ -62,6 +63,18 @@ export class InspirationComponent implements OnInit, AfterViewInit {
             console.log(res.data);
         });
     }
+    editArticle(title: { value: string }): void {
+        // const html = this.editor.txt.html() || '';
+        // this.dataService.article.content = html;
+        // this.clearTitle(title);
+        // this.clearTags();
+        // this.editor.txt.clear();
+        // this.dataService.addArticle().subscribe((res) => {
+        //     console.log(res.data);
+        // });
+        // this.dataService.editArticle()
+        console.log('edit: ', title);
+    }
     clearTitle(title: { value: string }): void {
         title.value = '';
     }
@@ -69,16 +82,29 @@ export class InspirationComponent implements OnInit, AfterViewInit {
         this.utilService.clearInspirationTags();
     }
 
-    editArticle(id: string): void {
+    initArticle(id: string): void {
         // console.log(id);
         // console.log(
         //     this.dataService.articles.filter(
         //         (article) => article.id?.toString() === id
         //     )[0]
         // );
-        this.titleRef.nativeElement.value = this.dataService.articles.filter(
+        if (id) {
+            this.isEditing = true;
+        }
+        const article = this.dataService.articles.filter(
             (article) => article.id?.toString() === id
-        )[0].title;
+        )[0];
+        this.titleRef.nativeElement.value = article.title;
+
+        this.dataService.article.title = article.title;
+
+        this.editor.txt.html(article.content);
+        this.dataService.article.content = article.content;
+
+        const tags = article.tags?.map((tag) => tag.name) ?? [];
+        this.utilService.inspirationTag$.next(tags);
+        this.dataService.tags$.next(article.tags ?? []);
         this.cd.detectChanges();
         // console.log(this.titleRef);
     }

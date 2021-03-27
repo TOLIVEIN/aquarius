@@ -17,6 +17,14 @@
                 <mat-card-subtitle class="overview-author">
                     {{ article.createdBy }}</mat-card-subtitle
                 >
+                <mat-card-subtitle class="overview-tags">
+                    <span
+                        *ngFor="let tag of article.tags"
+                        class="overview-tags"
+                        class="overview-tag"
+                        >{{ tag.name }}</span
+                    >
+                </mat-card-subtitle>
             </mat-card-header>
             <!-- <img mat-card-image src="../../../assets/deno.png" alt="Photo of deno" /> -->
             <mat-card-content class="overview-card-content">

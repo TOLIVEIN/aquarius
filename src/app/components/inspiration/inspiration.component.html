@@ -31,8 +31,8 @@
     <button
         mat-button
         class="category-add-article-button"
-        (click)="addArticle(title)"
+        (click)="isEditing ? editArticle(title) : addArticle(title)"
     >
-        Add Article
+        {{ isEditing ? "Update Article" : "Add Article" }}
     </button>
 </div>
