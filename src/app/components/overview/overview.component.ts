@@ -33,8 +33,10 @@ export class OverviewComponent implements OnInit {
             // console.log(res);
         });
     }
-    editArticle(event: Event, id?: number): void {
-        console.log('edit: ', id);
+    editArticle(event: Event, article: Article): void {
+        event.stopPropagation();
+        this.router.navigate(['write'], { queryParams: { id: article.id } });
+        console.log('edit: ', article);
     }
     deleteArticle(event: Event, article: Article): void {
         event.stopPropagation();
