@@ -8,12 +8,17 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { UtilService } from '../services/util.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class UserGuard implements CanActivate {
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(
+        private authService: AuthService,
+        private utilService: UtilService,
+        private router: Router
+    ) {}
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
@@ -29,6 +34,12 @@ export class UserGuard implements CanActivate {
                 localStorage.getItem('permissions')?.split(',') ?? []
             ).includes('user');
         });
+        if (!canActivate) {
+            this.utilService.openSnackBar(
+                'You dont have permission to do this action',
+                'OK'
+            );
+        }
         return canActivate;
     }
 }

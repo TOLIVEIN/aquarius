@@ -8,12 +8,17 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { UtilService } from '../services/util.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(
+        private authService: AuthService,
+        private utilService: UtilService,
+        private router: Router
+    ) {}
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
@@ -29,6 +34,12 @@ export class AdminGuard implements CanActivate {
                 localStorage.getItem('permissions')?.split(',') ?? []
             ).includes('admin');
         });
+        if (!canActivate) {
+            this.utilService.openSnackBar(
+                'You dont have permission to do this action',
+                'OK'
+            );
+        }
         return canActivate;
     }
 }

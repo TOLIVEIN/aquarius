@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
     selector: 'app-overview',
@@ -14,6 +15,7 @@ export class OverviewComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private dataService: DataService,
+        private utilService: UtilService,
         private router: Router
     ) {
         // this.dataService.articles$.subscribe((articles) => {
@@ -40,14 +42,22 @@ export class OverviewComponent implements OnInit {
     }
     deleteArticle(event: Event, article: Article): void {
         event.stopPropagation();
-        console.log('delete: ', article);
-        this.dataService.deleteArticle(article).subscribe((res) => {
-            console.log(res);
-            this.articles = this.articles.filter(
-                (tempArticle) => tempArticle.id !== article.id
-            );
-            this.dataService.articles = this.articles;
-        });
+        this.dataService.deleteArticle(article).subscribe(
+            (res) => {
+                console.log(res);
+
+                this.articles = this.articles.filter(
+                    (tempArticle) => tempArticle.id !== article.id
+                );
+                this.dataService.articles = this.articles;
+            },
+            (err) => {
+                this.utilService.openSnackBar(
+                    'You can not delete this article!',
+                    'OK'
+                );
+            }
+        );
     }
     checkToken(): void {
         this.dataService.checkToken().subscribe(
