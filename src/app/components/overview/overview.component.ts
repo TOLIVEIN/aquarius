@@ -38,7 +38,7 @@ export class OverviewComponent implements OnInit {
     editArticle(event: Event, article: Article): void {
         event.stopPropagation();
         this.router.navigate(['write'], { queryParams: { id: article.id } });
-        console.log('edit: ', article);
+        // console.log('edit: ', article);
     }
     deleteArticle(event: Event, article: Article): void {
         event.stopPropagation();
