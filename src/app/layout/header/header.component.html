@@ -1,5 +1,5 @@
 <div class="header-container">
-    <div class="header-title">
+    <div class="header-title" [routerLink]="['/read']">
         <span class="letter letter-one">A</span>
         <span class="letter letter-two">q</span>
         <span class="letter letter-three">u</span>
@@ -9,14 +9,10 @@
         <span class="letter letter-seven">u</span>
         <span class="letter letter-eight">s</span>
     </div>
-    <div class="header-read">
-        <button mat-stroked-button [routerLink]="['/read']">Overview</button>
-    </div>
-    <div class="header-write">
-        <button mat-stroked-button [routerLink]="['/write']">
-            Inspiration
-        </button>
-    </div>
+    <div class="header-read" [routerLink]="['/read']">Overview</div>
+
+    <div class="header-write" [routerLink]="['/write']">Inspiration</div>
+
     <div></div>
     <div class="header-user">
         <!-- (mouseenter)="userActionTrigger.openMenu()"

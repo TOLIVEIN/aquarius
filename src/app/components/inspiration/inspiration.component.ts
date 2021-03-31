@@ -42,11 +42,10 @@ export class InspirationComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // this.titleRef.nativeElement;
         this.route.queryParams.subscribe((params) => {
-            // this.id= params['id'];
-            // console.log(params.id);
-            this.initArticle(params.id);
+            if (params.id) {
+                this.initArticle(params.id);
+            }
         });
     }
 

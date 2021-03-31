@@ -13,18 +13,23 @@
     margin: 0 auto;
 }
 
-.header-user-action {
-    cursor: pointer;
-}
-
 .header-read,
 .header-write,
 .header-user-action,
 .header-user-sign-in,
 .header-user-sign-out,
 .header-user-sign-up {
+    cursor: pointer;
     &:hover {
         color: var(--theme-color);
+    }
+}
+
+.header {
+    &-read,
+    &-write {
+        font-size: 20px;
+        outline: none;
     }
 }
 
@@ -41,7 +46,10 @@
     font-family: "Dancing Script", "Warnes", cursive;
     font-size: 5rem;
     letter-spacing: 0;
+    height: 100%;
+    line-height: 100%;
     cursor: pointer;
+    outline: none;
     &:hover {
         .letter {
             animation: flicker 1s linear forwards;
@@ -96,3 +104,7 @@
         text-shadow: none;
     }
 }
+
+// .mat-button-wrapper {
+//     font-size: 30px !important;
+// }
