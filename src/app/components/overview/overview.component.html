@@ -7,23 +7,25 @@
     >
         <mat-card class="overview-card">
             <mat-card-header class="overview-card-header">
-                <div mat-card-avatar></div>
+                <!-- <div mat-card-avatar></div> -->
                 <mat-card-title class="overview-title">{{
                     article.title
                 }}</mat-card-title>
-                <mat-card-subtitle class="overview-time">{{
-                    article.createdAt | date: "yyyy-MM-dd HH:mm:ss"
-                }}</mat-card-subtitle>
-                <mat-card-subtitle class="overview-author">
-                    {{ article.createdBy }}</mat-card-subtitle
-                >
-                <mat-card-subtitle class="overview-tags">
-                    <span
-                        *ngFor="let tag of article.tags"
-                        class="overview-tags"
-                        class="overview-tag"
-                        >{{ tag.name }}</span
+                <mat-card-subtitle>
+                    <span class="overview-time">{{
+                        article.createdAt | date: "yyyy-MM-dd HH:mm:ss"
+                    }}</span>
+                    <span class="overview-author">
+                        {{ article.createdBy }}</span
                     >
+                    <span class="overview-tags">
+                        <span
+                            *ngFor="let tag of article.tags"
+                            class="overview-tags"
+                            class="overview-tag"
+                            >{{ tag.name }}</span
+                        >
+                    </span>
                 </mat-card-subtitle>
             </mat-card-header>
             <!-- <img mat-card-image src="../../../assets/deno.png" alt="Photo of deno" /> -->
@@ -34,10 +36,18 @@
                 ></p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-button (click)="editArticle($event, article)">
+                <button
+                    mat-button
+                    (click)="editArticle($event, article)"
+                    class="action-edit"
+                >
                     Edit
                 </button>
-                <button mat-button (click)="deleteArticle($event, article)">
+                <button
+                    mat-button
+                    (click)="deleteArticle($event, article)"
+                    class="action-delete"
+                >
                     Delete
                 </button>
             </mat-card-actions>

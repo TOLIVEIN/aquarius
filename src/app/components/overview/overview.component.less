@@ -10,9 +10,9 @@
     margin-top: 1rem;
 }
 
-.overview-card-container {
-    cursor: pointer;
-}
+// .overview-card-container {
+//     cursor: pointer;
+// }
 
 .overview {
     &-time,
@@ -23,11 +23,18 @@
     &-tag {
         margin-right: 10px;
     }
+
+    &-time,
+    &-author,
+    &-tags {
+        margin-right: 1rem;
+    }
 }
 
 .mat-card {
     height: 100%;
     opacity: 0.6;
+
     &:hover {
         opacity: 1;
         box-shadow: 0 6px 20px -6px var(--theme-color);
@@ -35,9 +42,11 @@
     }
     &-content {
         margin: 0;
+        margin-left: 2rem;
     }
     &-actions {
         padding: 0;
+        margin-left: 1rem;
     }
 }
 
@@ -54,6 +63,13 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+.action {
+    &-edit,
+    &-delete {
+        cursor: pointer;
+    }
 }
 
 :host(app-overview) {
