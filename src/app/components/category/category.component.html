@@ -1,9 +1,9 @@
 <div class="category-container">
-    <div class="category-add-tag-container" *ngIf="addable">
-        <mat-form-field class="category-add-tag-form-field">
-            <mat-label class="category-add-tag-label">Add a tag</mat-label>
+    <div class="category-add" *ngIf="addable">
+        <mat-form-field class="category-add-form">
+            <mat-label class="category-add-label">Add a tag</mat-label>
             <input
-                class="category-add-tag-input"
+                class="category-add-input"
                 matInput
                 type="text"
                 [(ngModel)]="tag.value"
@@ -22,14 +22,14 @@
         </mat-form-field>
         <button
             mat-button
-            class="category-add-tag-button"
+            class="category-add-button"
             (click)="addTag(tag.value)"
         >
             Add
         </button>
     </div>
 
-    <div class="category-get-tag-container">
+    <div class="category-get">
         <mat-chip-list>
             <mat-chip
                 color="primary"
