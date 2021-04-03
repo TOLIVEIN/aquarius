@@ -34,10 +34,12 @@
 }
 
 .header-theme-item {
+    transition: 1s;
     &:hover {
         border-radius: 1rem;
         font-weight: bold;
         text-align: center;
+        animation: themeItemAnimation 1s;
     }
 }
 
@@ -105,6 +107,11 @@
     }
 }
 
-// .mat-button-wrapper {
-//     font-size: 30px !important;
-// }
+@keyframes themeItemAnimation {
+    from {
+        background: rgba(var(--theme-rgb), 0.1);
+    }
+    to {
+        background: rgba(var(--theme-rgb), 1);
+    }
+}

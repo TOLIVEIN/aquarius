@@ -19,9 +19,17 @@ li {
     &-add,
     &-get {
         border: 1px solid fade(@color-black, 10%);
-        border-radius: 2px;
+        border-radius: 1px;
         box-shadow: 0 0 2px 2px fade(@color-grey, 10%);
         padding: 1rem;
+        transition: 1s;
+
+        &:hover {
+            animation-name: borderAnimation;
+            animation-duration: 1s;
+            border-radius: 1rem;
+            box-shadow: 0 0 5px 5px fade(@color-grey, 30%);
+        }
     }
 
     &-add {
@@ -40,5 +48,17 @@ li {
         &:hover {
             color: var(--theme-color);
         }
+    }
+}
+
+@keyframes borderAnimation {
+    from {
+        border-radius: 1px;
+        box-shadow: 0 0 2px 2px fade(@color-grey, 10%);
+    }
+
+    to {
+        border-radius: 1rem;
+        box-shadow: 0 0 5px 5px fade(@color-grey, 30%);
     }
 }
