@@ -15,6 +15,30 @@
 // }
 
 .overview {
+    &-title {
+        outline: none;
+        font-size: 2rem;
+        font-weight: bold;
+        width: 100%;
+        &:after {
+            padding-bottom: 0.5rem;
+            transition: width 0.2s ease-in-out;
+            content: "";
+            position: absolute;
+            left: 2rem;
+            top: 3rem;
+            width: 0;
+            border-bottom: solid 3px var(--theme-color);
+        }
+        &:hover {
+            cursor: pointer;
+            &:after {
+                width: calc(100% - 4rem);
+            }
+            // border-bottom: 1px solid var(--theme-color);
+            // text-decoration: underline;
+        }
+    }
     &-time,
     &-author {
         font-weight: bold;
