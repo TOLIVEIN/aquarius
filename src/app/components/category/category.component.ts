@@ -80,6 +80,13 @@ export class CategoryComponent implements OnInit, AfterViewInit {
             console.log(this.tags);
         });
     }
+    filterArticlesByTag(tag: Tag): void {
+        this.dataService.articles$.next(
+            this.dataService.articles.filter((article) =>
+                article.tags?.map((tag) => tag.id).includes(tag.id)
+            )
+        );
+    }
 
     deleteTag(tag: Tag): void {
         this.dataService.deleteTag(tag).subscribe(

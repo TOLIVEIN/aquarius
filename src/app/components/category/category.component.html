@@ -36,6 +36,7 @@
                 *ngFor="let tag of tags"
                 [removable]="removable"
                 (removed)="deleteTag(tag)"
+                (click)="filterArticlesByTag(tag)"
             >
                 {{ tag.name }}
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>

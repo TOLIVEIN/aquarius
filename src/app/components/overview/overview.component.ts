@@ -18,9 +18,9 @@ export class OverviewComponent implements OnInit {
         private utilService: UtilService,
         private router: Router
     ) {
-        // this.dataService.articles$.subscribe((articles) => {
-        //     this.articles = articles;
-        // });
+        this.dataService.articles$.subscribe((articles) => {
+            this.articles = articles;
+        });
     }
 
     ngOnInit(): void {
