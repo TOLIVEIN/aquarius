@@ -70,16 +70,20 @@ interface AuthData {
     token: string;
     permissions?: string;
 }
-interface UserData {
+interface UsersData {
     users: User[];
     total: number;
 }
-interface TagData {
+interface TagsData {
     tags: Tag[];
     total: number;
 }
 
-interface ArticleData {
+interface ArticlesData {
     articles: Article[];
     total: number;
+}
+
+interface ArticleData {
+    article: Article;
 }

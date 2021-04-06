@@ -23,6 +23,8 @@ export class DetailComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.router.snapshot.params);
+        this.dataService.getArticle(this.id).subscribe((res) => {
+            this.article = res.data.article;
+        });
     }
 }

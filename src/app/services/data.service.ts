@@ -51,36 +51,36 @@ export class DataService {
         );
     }
 
-    getTags(): Observable<ResponseData<TagData>> {
+    getTags(): Observable<ResponseData<TagsData>> {
         const api = '/api/tags';
-        return this.http.get<ResponseData<TagData>>(
+        return this.http.get<ResponseData<TagsData>>(
             `${this.configService.requestUrl}${api}`
         );
     }
 
-    getTagsByName(tagNames: string[]): Observable<ResponseData<TagData>> {
+    getTagsByName(tagNames: string[]): Observable<ResponseData<TagsData>> {
         const api = `/api/tags?tagNames=${tagNames.join(',')}`;
-        return this.http.get<ResponseData<TagData>>(
+        return this.http.get<ResponseData<TagsData>>(
             `${this.configService.requestUrl}${api}`
         );
     }
-    getArticles(): Observable<ResponseData<ArticleData>> {
+    getArticles(): Observable<ResponseData<ArticlesData>> {
         const api = '/api/articles';
+        return this.http.get<ResponseData<ArticlesData>>(
+            `${this.configService.requestUrl}${api}`
+        );
+    }
+
+    getArticle(id: string): Observable<ResponseData<ArticleData>> {
+        const api = '/api/articles/' + id;
         return this.http.get<ResponseData<ArticleData>>(
             `${this.configService.requestUrl}${api}`
         );
     }
 
-    getArticle(id: string): Observable<ResponseData<Article>> {
-        const api = '/api/articles/' + id;
-        return this.http.get<ResponseData<Article>>(
-            `${this.configService.requestUrl}${api}`
-        );
-    }
-
-    getUsers(): Observable<ResponseData<UserData>> {
+    getUsers(): Observable<ResponseData<UsersData>> {
         const api = '/api/users';
-        return this.http.get<ResponseData<UserData>>(
+        return this.http.get<ResponseData<UsersData>>(
             `${this.configService.requestUrl}${api}`,
             this.authOptions
         );
@@ -111,10 +111,10 @@ export class DataService {
             this.authOptions
         );
     }
-    deleteTag(tag: Tag): Observable<ResponseData<TagData>> {
+    deleteTag(tag: Tag): Observable<ResponseData<TagsData>> {
         const api = `/api/tags/${tag.id}`;
 
-        return this.http.delete<ResponseData<TagData>>(
+        return this.http.delete<ResponseData<TagsData>>(
             `${this.configService.requestUrl}${api}`,
             this.authOptions
         );

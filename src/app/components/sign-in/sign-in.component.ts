@@ -15,7 +15,7 @@ export class SignInComponent implements OnInit {
     // token!: string;
     // role!: string;
 
-    tags!: TagData;
+    tags!: TagsData;
     articles!: ArticleData;
     hide = true;
     constructor(
