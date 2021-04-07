@@ -1,53 +1,52 @@
 @import "/src/styles/color.less";
 
-.inspiration-editor-container {
-    // overflow: auto;
-    height: calc(100% - 12rem);
-    background: @color-white;
-    width: 100%;
-    border-radius: 0.5rem;
-    box-shadow: 0 6px 1rem -6px rgb(var(--theme-rgb), 0.5);
-    margin: 0.5rem 0;
-    &:hover {
-        box-shadow: 0 10px 1.5rem -10px rgb(var(--theme-rgb), 0.8);
+.inspiration {
+    &-container {
+        margin: 0 4rem;
+        opacity: 0.7;
+        height: 100%;
+        width: calc(100% - 4rem);
     }
-}
-.inspiration-editor-menu {
-    z-index: 10001;
-    min-width: 32rem;
-    width: 100%;
-    position: sticky;
-    top: 5rem;
-}
-.inspiration-editor-body {
-    min-width: 32rem;
-    height: calc(100% - 5rem);
-}
 
-.inspiration-container {
-    margin: 0 2rem;
-    opacity: 0.7;
-    height: 100%;
-    width: calc(100% - 4rem);
-}
-.inspiration-title-label {
-    // color: @color-clouds;
-    height: 2rem;
-}
+    &-editor-container {
+        height: calc(100% - 12rem);
+        background: @color-white;
+        width: 100%;
+        border-radius: 0.5rem;
+        box-shadow: 0 6px 1rem -6px rgb(var(--theme-rgb), 0.5);
+        margin: 0.5rem 0;
+        &:hover {
+            box-shadow: 0 10px 1.5rem -10px rgb(var(--theme-rgb), 0.8);
+        }
+    }
 
-.inspiration-title-input {
-    // color: @color-clouds;
-    height: 2rem;
-}
+    &-editor-menu {
+        z-index: 100;
+        min-width: 32rem;
+        width: 100%;
+        position: sticky;
+        top: 5rem;
+    }
 
-.inspiration-title-button {
-    width: fit-content;
-    // color: @color-clouds;
-    height: 4rem;
+    &-editor-body {
+        min-width: 32rem;
+        height: calc(100% - 5rem);
+    }
+
+    &-title-label,
+    &-title-input {
+        height: 2rem;
+    }
+
+    &-title-button {
+        width: fit-content;
+        height: 4rem;
+    }
 }
 
 :host(app-inspiration) {
     // overflow: auto;
     height: 100%;
     width: 100%;
+    padding: 0 4rem;
 }

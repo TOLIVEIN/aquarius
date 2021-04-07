@@ -72,7 +72,7 @@ export class InspirationComponent implements OnInit, AfterViewInit {
         //     console.log(res.data);
         // });
         // this.dataService.editArticle()
-        console.log('edit: ', title);
+        console.log('edit: ', title.value);
     }
     clearTitle(title: { value: string }): void {
         title.value = '';
