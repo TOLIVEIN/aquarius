@@ -18,6 +18,8 @@
     }
 
     &-editor-container {
+        display: flex;
+        flex-direction: column;
         height: calc(100% - 13rem);
         background: @color-white;
         width: 100%;
@@ -33,13 +35,17 @@
         z-index: 100;
         min-width: 32rem;
         width: 100%;
+        // flex: 1 0 40px;
+        // max-height: 200px;
         position: sticky;
         top: 5rem;
     }
 
     &-editor-body {
         min-width: 32rem;
-        height: calc(100% - 40px);
+        // height: calc(100% - 40px);
+        z-index: 0;
+        flex: 1;
 
         // max-height: calc(100% - 40px);
         overflow: auto;
