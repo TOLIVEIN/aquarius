@@ -41,11 +41,8 @@
                 >
                     Edit
                 </button>
-                <button
-                    mat-button
-                    (click)="deleteArticle($event, article)"
-                    class="action-delete"
-                >
+                <button mat-button class="action-delete" (click)="openDialog()">
+                    <!-- (click)="deleteArticle($event, article)" -->
                     Delete
                 </button>
             </mat-card-actions>

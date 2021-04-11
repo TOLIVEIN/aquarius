@@ -6,6 +6,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +18,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './components/category/category.component';
+import { ConfrimDialogComponent } from './components/confrim-dialog/confrim-dialog.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { InspirationComponent } from './components/inspiration/inspiration.component';
 import { OverviewComponent } from './components/overview/overview.component';
@@ -42,6 +44,7 @@ export const tokenGetter = (): string | null =>
         SignInComponent,
         SignUpComponent,
         SelectTagComponent,
+        ConfrimDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -59,6 +62,7 @@ export const tokenGetter = (): string | null =>
         MatInputModule,
         MatMenuModule,
         MatSnackBarModule,
+        MatDialogModule,
         //  HighlightModule
         JwtModule.forRoot({
             config: {

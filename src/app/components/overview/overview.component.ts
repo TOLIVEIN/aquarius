@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { UtilService } from 'src/app/services/util.service';
+import { ConfrimDialogComponent } from '../confrim-dialog/confrim-dialog.component';
 
 @Component({
     selector: 'app-overview',
@@ -16,7 +18,8 @@ export class OverviewComponent implements OnInit {
         private authService: AuthService,
         private dataService: DataService,
         private utilService: UtilService,
-        private router: Router
+        private router: Router,
+        private dialog: MatDialog
     ) {
         this.dataService.articles$.subscribe((articles) => {
             this.articles = articles;
@@ -74,5 +77,16 @@ export class OverviewComponent implements OnInit {
                 }
             }
         );
+    }
+
+    openDialog(): void {
+        const dialogRef = this.dialog.open(ConfrimDialogComponent, {
+            width: '250px',
+            data: true,
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+            console.log('The dialog was closed');
+        });
     }
 }

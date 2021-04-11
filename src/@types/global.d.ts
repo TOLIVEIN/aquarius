@@ -87,3 +87,8 @@ interface ArticlesData {
 interface ArticleData {
     article: Article;
 }
+
+interface DialogData {
+    name: string;
+    content: string;
+}
