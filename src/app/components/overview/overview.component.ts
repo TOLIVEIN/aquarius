@@ -39,12 +39,10 @@ export class OverviewComponent implements OnInit {
         });
     }
     editArticle(event: Event, article: Article): void {
-        event.stopPropagation();
         this.router.navigate(['write'], { queryParams: { id: article.id } });
         // console.log('edit: ', article);
     }
-    deleteArticle(event: Event, article: Article): void {
-        event.stopPropagation();
+    deleteArticle(article: Article): void {
         this.dataService.deleteArticle(article).subscribe(
             (res) => {
                 console.log(res);
@@ -79,14 +77,21 @@ export class OverviewComponent implements OnInit {
         );
     }
 
-    openDialog(): void {
+    openDialog(event: Event, article: Article): void {
+        event.stopPropagation();
+
         const dialogRef = this.dialog.open(ConfrimDialogComponent, {
-            width: '250px',
-            data: true,
+            width: '300px',
+            data: {
+                name: 'delete confirm',
+                content: `Are you sure to delete ${article.title}?`,
+            },
         });
 
         dialogRef.afterClosed().subscribe((result) => {
-            console.log('The dialog was closed');
+            if (result) {
+                this.deleteArticle(article);
+            }
         });
     }
 }

@@ -12,11 +12,9 @@ export class ConfrimDialogComponent {
     ) {}
 
     onCancel(): void {
-        console.log('no....');
-
-        this.dialogRef.close();
+        this.dialogRef.close(false);
     }
     onConfirm(): void {
-        console.log('yes....');
+        this.dialogRef.close(true);
     }
 }

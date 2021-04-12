@@ -41,7 +41,11 @@
                 >
                     Edit
                 </button>
-                <button mat-button class="action-delete" (click)="openDialog()">
+                <button
+                    mat-button
+                    class="action-delete"
+                    (click)="openDialog($event, article)"
+                >
                     <!-- (click)="deleteArticle($event, article)" -->
                     Delete
                 </button>

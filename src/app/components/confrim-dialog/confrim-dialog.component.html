@@ -1,9 +1,8 @@
 <h1 mat-dialog-title>{{ data.name }}</h1>
 <div mat-dialog-content>
-    <mat-form-field>
-        <mat-label>content</mat-label>
-        <!-- <input matInput [(ngModel)]="data.content" /> -->
-    </mat-form-field>
+    <mat-label>{{ data.content }}</mat-label>
+
+    <!-- <input matInput [(ngModel)]="data.content" /> -->
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onCancel()">No</button>
