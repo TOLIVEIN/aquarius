@@ -92,7 +92,7 @@ export class InspirationComponent implements OnInit, AfterViewInit {
             this.isEditing = true;
         }
         const article = this.dataService.articles.filter(
-            (article) => article.id?.toString() === id
+            (a) => a.id?.toString() === id
         )[0];
         this.titleRef.nativeElement.value = article.title;
 

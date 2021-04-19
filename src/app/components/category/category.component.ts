@@ -83,7 +83,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     filterArticlesByTag(tag: Tag): void {
         this.dataService.articles$.next(
             this.dataService.articles.filter((article) =>
-                article.tags?.map((tag) => tag.id).includes(tag.id)
+                article.tags?.map((t) => t.id).includes(tag.id)
             )
         );
     }

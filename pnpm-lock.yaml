@@ -30,6 +30,7 @@ specifiers:
   eslint-plugin-jsdoc: 32.3.0
   eslint-plugin-prefer-arrow: 1.2.3
   highlight.js: ^10.7.2
+  husky: ^6.0.0
   jasmine-core: ~3.7.1
   jasmine-spec-reporter: ~7.0.0
   karma: ~6.3.2
@@ -83,6 +84,7 @@ devDependencies:
   eslint-plugin-import: 2.22.1_eslint@7.24.0
   eslint-plugin-jsdoc: 32.3.0_eslint@7.24.0
   eslint-plugin-prefer-arrow: 1.2.3_eslint@7.24.0
+  husky: 6.0.0
   jasmine-core: 3.7.1
   jasmine-spec-reporter: 7.0.0
   karma: 6.3.2
@@ -5329,6 +5331,11 @@ packages:
     resolution: {integrity: sha1-xG4xWaKT9riW2ikxbYtv6Lt5u+0=}
     dependencies:
       ms: 2.1.3
+    dev: true
+
+  /husky/6.0.0:
+    resolution: {integrity: sha512-SQS2gDTB7tBN486QSoKPKQItZw97BMOd+Kdb6ghfpBc0yXyzrddI0oDV5MkDAbuB4X2mO3/nj60TRMcYxwzZeQ==}
+    hasBin: true
     dev: true
 
   /iconv-lite/0.4.24:
