@@ -38,6 +38,7 @@
                     mat-button
                     (click)="editArticle($event, article)"
                     class="action-edit"
+                    *ngIf="editable"
                 >
                     Edit
                 </button>
@@ -45,6 +46,7 @@
                     mat-button
                     class="action-delete"
                     (click)="openDialog($event, article)"
+                    *ngIf="removable"
                 >
                     <!-- (click)="deleteArticle($event, article)" -->
                     Delete

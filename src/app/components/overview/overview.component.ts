@@ -14,6 +14,8 @@ import { ConfrimDialogComponent } from '../confrim-dialog/confrim-dialog.compone
 export class OverviewComponent implements OnInit {
     nums = 5;
     articles!: Article[];
+    editable: boolean;
+    removable: boolean;
     constructor(
         private authService: AuthService,
         private dataService: DataService,
@@ -23,6 +25,16 @@ export class OverviewComponent implements OnInit {
     ) {
         this.dataService.articles$.subscribe((articles) => {
             this.articles = articles;
+        });
+        this.removable = this.authService.permissions.includes('admin');
+        this.editable = this.authService.permissions.includes('user');
+        this.authService.isSignIn.subscribe(() => {
+            this.removable = (
+                localStorage.getItem('permissions')?.split(',') ?? []
+            ).includes('admin');
+            this.editable = (
+                localStorage.getItem('permissions')?.split(',') ?? []
+            ).includes('user');
         });
     }
 
@@ -64,6 +76,12 @@ export class OverviewComponent implements OnInit {
         this.dataService.checkToken().subscribe(
             (res) => {
                 // this.tags.push(...res.data);
+                // if (res.code === 200) {
+                //     this.isLogin =
+                //         localStorage.getItem('permissions')?.includes('user') ??
+                //         false;
+                // }
+                // console.log('login status', this.isLogin);
                 console.log(res);
             },
             (error) => {
