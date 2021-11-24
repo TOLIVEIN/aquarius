@@ -21,6 +21,10 @@ export class SignUpComponent implements OnInit {
         private utilService: UtilService
     ) {}
 
+    get signUpForm(): FormGroup {
+        return this.authService.signUpForm;
+    }
+
     ngOnInit(): void {}
 
     getUsernameErrorMessage() {
@@ -80,8 +84,5 @@ export class SignUpComponent implements OnInit {
                 'OK'
             );
         });
-    }
-    get signUpForm(): FormGroup {
-        return this.authService.signUpForm;
     }
 }

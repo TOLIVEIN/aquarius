@@ -18,6 +18,7 @@ export class SignInComponent implements OnInit {
     tags!: TagsData;
     articles!: ArticleData;
     hide = true;
+
     constructor(
         private dataService: DataService,
         private authService: AuthService,
@@ -25,6 +26,9 @@ export class SignInComponent implements OnInit {
         private utilService: UtilService
     ) {}
 
+    get signInForm(): FormGroup {
+        return this.authService.signInForm;
+    }
     ngOnInit(): void {}
 
     getUsernameErrorMessage() {
@@ -90,9 +94,5 @@ export class SignInComponent implements OnInit {
                 document.cookie = `${key}=${value}; expires=${expires}`;
             }
         );
-    }
-
-    get signInForm(): FormGroup {
-        return this.authService.signInForm;
     }
 }
